@@ -1,44 +1,37 @@
-<!--
-tostyle (si on doit arranger les dispositions ou l'aspect des éléments
-toscript (si le js est vide ou pété)
--->
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="@/assets/logo.png">
-    <h1>Welcome</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>  
-  </div>
+<!--toroute
+    tostyle-->
+<template>        
+    <v-card class="mx-auto"
+        style="width:500px; max-width: 550px;">
+
+    <v-row 
+        v-for="k in 2" 
+        :key="k">
+        <v-col v-for="n in 3"    
+            :key="n">
+            <v-card class="d-flex justify-space-around align-center flex-column"
+                style="height:200px">
+                <v-card-title v-text="Menu[n + k].label"></v-card-title>
+                <v-icon x-large v-text="Menu[n + k].icon"></v-icon>
+            </v-card>
+        </v-col>
+            
+    </v-row>
+
+    </v-card>
 </template>
 
 <script>
 export default {
-  name: 'Home'
-}
+data: () => ({
+            Menu :[
+                {label : 'Membres', icon : 'mdi-account-group'},
+                {label : 'Sport', icon : 'mdi-medal'},
+                {label : 'Evènements', icon : 'mdi-calendar-month-outline'},
+                {label : 'Actualités', icon : 'mdi-newspaper-variant-multiple-outline'},
+                {label : 'Comptabilité', icon : 'mdi-wallet-outline'},
+                {label : 'Divers', icon :'mdi-dots-horizontal-circle-outline'},
+            ]
+        }),
+    }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

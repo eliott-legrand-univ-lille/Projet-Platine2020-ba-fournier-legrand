@@ -1,5 +1,6 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
+    <v-container>
     <v-text-field
       v-model="name"
       :counter="10"
@@ -54,6 +55,7 @@
     <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
 
     <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+    </v-container>
   </v-form>
 </template>
 
