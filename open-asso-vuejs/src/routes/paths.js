@@ -9,7 +9,7 @@ const paths = {
         path: "/test"
     },
     userSubscribe: {
-        path: "user-subscribe"
+        path: "/user-subscribe"
     },
     assoSubscribe:{
         path: "/asso-subscribe"

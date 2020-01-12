@@ -1,10 +1,10 @@
 import Home from "@/components/Home.vue";
 import Events from "@/components/Events/Events.vue";
-import FormSubscribeUser from "@/components/FormSubscribeUser.vue";
+import FormSubscribeUser from "@/components/subscribe/FormSubscribeUser.vue";
 import TestingVue from "@/components/TestingVue.vue";
-import FormSubscribeAsso from "@/components/FormSubscribeAsso.vue";
+import FormSubscribeAsso from "@/components/subscribe/FormSubscribeAsso.vue";
 import paths from "@/routes/paths.js";
-import Profile2 from "@/components/profile/Profile2"
+import Profile from "@/components/profile/Profile";
 
 //Define the routes to the different pages
 const routes = [
@@ -36,7 +36,7 @@ const routes = [
     {
       path: paths.profile.path,
       name: "Profil user",
-      component: Profile2
+      component: Profile
     }
     
 ];

@@ -21,6 +21,6 @@
 </template>
 <script>
 export default {
-  name: 'Profile2'
+  name: 'Profile'
 }
 </script>

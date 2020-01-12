@@ -1,29 +1,29 @@
 <template>
     <div>
         <h1>Hello everybody we test here</h1>
-        <Profile2></Profile2>
+        <Profile></Profile>
         <v-divider></v-divider>
         <Documents></Documents>
         <v-divider></v-divider>
         <Agenda></Agenda>
-        <v-divider></v-divider>
-        <MainMenu></MainMenu>
+        <FormSubscribeUser></FormSubscribeUser>
     </div>
 </template>
 
 <script>
-import Profile2 from '@/components/profile/Profile2.vue';
+import Profile from '@/components/profile/Profile.vue';
 import Documents from '@/components/profile/Documents.vue';
-import Agenda from '@/components/Agenda.vue';
-import MainMenu from '@/components/MainMenu.vue';
+import Agenda from '@/components/profile/Agenda.vue';
+import FormSubscribeUser from "@/components/subscribe/FormSubscribeUser.vue";
+
 
 export default {
   name: 'TestingVue',
   components: {
-      Profile2, 
+      Profile, 
       Documents,
       Agenda,
-      MainMenu
+      FormSubscribeUser
   }
 }
 </script>
