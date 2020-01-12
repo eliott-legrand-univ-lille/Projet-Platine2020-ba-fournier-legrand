@@ -1,8 +1,6 @@
 <!-- test -->
 <template>
-  <v-card class="mx-auto"
-      style="max-width: 550px;"
-  >
+<v-container>
     <v-btn color="success">Ajouter un document</v-btn>
       <v-list two-line>
         <v-list-item v-for="(document, i) in documents"
@@ -15,7 +13,7 @@
             </v-list-item-icon>
         </v-list-item>    
       </v-list>
-  </v-card>
+</v-container>
 </template>
 <script>
 export default{

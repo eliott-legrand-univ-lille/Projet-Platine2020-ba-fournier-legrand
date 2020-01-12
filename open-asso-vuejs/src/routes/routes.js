@@ -35,7 +35,7 @@ const routes = [
     },
     {
       path: "/profil",
-      name: "Form Asso",
+      name: "Profil user",
       component: Profile2
     }
     
