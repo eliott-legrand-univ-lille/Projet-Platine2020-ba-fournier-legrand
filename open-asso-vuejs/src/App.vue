@@ -40,8 +40,8 @@
         <router-view></router-view>
       </v-container>
     </v-content>
+    
     <v-footer app>
-      <!-- -->
     </v-footer>
   </v-app>
 </template>
@@ -55,18 +55,14 @@ export default {
       drawer: true,
       items: [
         { title: "Accueil", icon: "mdi-home", link: paths.home.path },
-        { title: "Profil", icon: "mdi-account", link: "/profil" },
+        { title: "Profil", icon: "mdi-account", link: paths.profile.path },
         { title: "Menbres", icon: "mdi-account-group"},
         { title: "Evénements", icon: "mdi-calendar", link: paths.events.path },
         { title: "Sport", icon: "mdi-basketball",},
         { title: "Actualités", icon: "mdi-newspaper",},
-        { title: "S'inscrire", icon: "mdi-login", link: "/user" },
+        { title: "S'inscrire", icon: "mdi-login", link: paths.userSubscribe.path },
         { title: "Test", icon: "mdi-help-circle", link: paths.test.path },
-        {
-          title: "test_Subscribe_Asso",
-          icon: "mdi-briefcase-plus",
-          link: "/asso"
-        }
+        { title: "test_Subscribe_Asso", icon: "mdi-briefcase-plus", link: paths.assoSubscribe.path }
       ]
     };
   }

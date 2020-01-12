@@ -8,5 +8,14 @@ const paths = {
     test: {
         path: "/test"
     },
+    userSubscribe: {
+        path: "user-subscribe"
+    },
+    assoSubscribe:{
+        path: "/asso-subscribe"
+    },
+    profile:{
+        path: "/profile"
+    }
 }
 export default paths;

@@ -9,32 +9,32 @@ import Profile2 from "@/components/profile/Profile2"
 //Define the routes to the different pages
 const routes = [
     {
-        path: paths.home.path,
-        name: "Home",
-        component: Home
-      },
-      {
-        path: paths.events.path,
-        name: "Events",
-        component: Events
-      }, 
-      {
-        path: paths.test.path,
-        name: "Test",
-        component: TestingVue
+      path: paths.home.path,
+      name: "Home",
+      component: Home
     },
     {
-        path: "/user",
-        name: "Form User",
-        component: FormSubscribeUser
+      path: paths.events.path,
+      name: "Events",
+      component: Events
+    }, 
+    {
+      path: paths.test.path,
+      name: "Test",
+      component: TestingVue
     },
     {
-        path: "/asso",
-        name: "Form Asso",
-        component: FormSubscribeAsso
+      path: paths.userSubscribe.path,
+      name: "Form User",
+      component: FormSubscribeUser
     },
     {
-      path: "/profil",
+      path: paths.assoSubscribe.path,
+      name: "Form Asso",
+      component: FormSubscribeAsso
+    },
+    {
+      path: paths.profile.path,
       name: "Profil user",
       component: Profile2
     }
