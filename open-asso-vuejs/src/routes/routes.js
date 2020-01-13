@@ -5,6 +5,7 @@ import TestingVue from "@/components/TestingVue.vue";
 import FormSubscribeAsso from "@/components/subscribe/FormSubscribeAsso.vue";
 import paths from "@/routes/paths.js";
 import Profile from "@/components/profile/Profile";
+import Login from "@/components/Login";
 import Agenda from "@/components/profile/Agenda";
 import Documents from "@/components/profile/Documents";
 
@@ -39,6 +40,11 @@ const routes = [
       path: paths.profile.path,
       name: "Profil user",
       component: Profile
+    },
+    {
+    path: paths.login.path,
+    name: "login",
+    component: Login
     },
     {
       path: paths.agenda.path,

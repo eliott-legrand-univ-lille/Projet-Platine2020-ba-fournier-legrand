@@ -17,6 +17,9 @@ const paths = {
     profile:{
         path: "/profile"
     },
+    login:{
+        path: "/login"
+    },
     agenda: {
         path: "/profile/agenda"
     },
