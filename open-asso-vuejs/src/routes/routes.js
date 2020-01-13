@@ -5,6 +5,8 @@ import TestingVue from "@/components/TestingVue.vue";
 import FormSubscribeAsso from "@/components/subscribe/FormSubscribeAsso.vue";
 import paths from "@/routes/paths.js";
 import Profile from "@/components/profile/Profile";
+import Agenda from "@/components/profile/Agenda";
+import Documents from "@/components/profile/Documents";
 
 //Define the routes to the different pages
 const routes = [
@@ -37,6 +39,16 @@ const routes = [
       path: paths.profile.path,
       name: "Profil user",
       component: Profile
+    },
+    {
+      path: paths.agenda.path,
+      name: "Agenda",
+      component: Agenda
+    },
+    {
+      path: paths.myDocuments.path,
+      name: "Mes Documents",
+      component: Documents
     }
     
 ];

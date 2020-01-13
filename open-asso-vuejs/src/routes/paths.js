@@ -16,6 +16,12 @@ const paths = {
     },
     profile:{
         path: "/profile"
+    },
+    agenda: {
+        path: "/profile/agenda"
+    },
+    myDocuments: {
+        path: "/profile/my-documents"
     }
 }
 export default paths;
