@@ -1,20 +1,26 @@
 <!--toroute
     tostyle-->
 <template>
-  <v-container fluid>
-    <v-row v-for="k in 2" :key="k">
-      <v-col v-for="n in 3" :key="n">
-        <v-card class="d-flex justify-space-around align-center flex-column" 
-        :color="Menu[n + k].color" tile>
-          <v-card-title v-text="Menu[n + k].label"></v-card-title>
-          <v-icon x-large v-text="Menu[n + k].icon"></v-icon>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+<div>
+    <TopBar title="OpenAsso"></TopBar>
+    <v-content>
+        <v-container fluid>
+          <v-row v-for="k in 2" :key="k">
+            <v-col v-for="n in 3" :key="n">
+              <v-card class="d-flex justify-space-around align-center flex-column" 
+              :color="Menu[n + k].color" tile>
+                <v-card-title v-text="Menu[n + k].label"></v-card-title>
+                <v-icon x-large v-text="Menu[n + k].icon"></v-icon>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+    </v-content>
+</div>
 </template>
 
 <script>
+import TopBar from "@/components/commons/TopBar.vue"
 export default {
   data: () => ({
     Menu: [
@@ -25,6 +31,9 @@ export default {
       { label: "Comptabilité", icon: "mdi-wallet-outline",color: "#673ab7" },
       { label: "Divers", icon: "mdi-dots-horizontal-circle-outline",color: "#1e35b4" }
     ]
-  })
+  }),
+  components: {
+    TopBar
+  }
 };
 </script>

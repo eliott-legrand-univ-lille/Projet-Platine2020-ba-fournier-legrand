@@ -1,29 +1,26 @@
 <template>
-    <div>
-        <h1>Hello everybody we test here</h1>
-        <Profile></Profile>
-        <v-divider></v-divider>
-        <Documents></Documents>
-        <v-divider></v-divider>
-        <Agenda></Agenda>
-        <FormSubscribeUser></FormSubscribeUser>
-    </div>
+<div>
+    <TopBar title="Test"></TopBar>
+    <v-content>
+        <!-- Provides the application the proper gutter -->
+        <v-container fluid>
+            <h1>Hello everybody we test here</h1>
+            <v-divider></v-divider>
+            <FormSubscribeUser></FormSubscribeUser>
+        </v-container>
+    </v-content>
+</div>
 </template>
 
 <script>
-import Profile from '@/components/profile/Profile.vue';
-import Documents from '@/components/profile/Documents.vue';
-import Agenda from '@/components/profile/Agenda.vue';
 import FormSubscribeUser from "@/components/subscribe/FormSubscribeUser.vue";
-
+import TopBar from "@/components/commons/TopBar.vue";
 
 export default {
   name: 'TestingVue',
   components: {
-      Profile, 
-      Documents,
-      Agenda,
-      FormSubscribeUser
+      FormSubscribeUser,
+      TopBar
   }
 }
 </script>

@@ -1,5 +1,5 @@
 import Home from "@/components/Home.vue";
-import Events from "@/components/Events/Events.vue";
+import Events from "@/components/events/Events.vue";
 import FormSubscribeUser from "@/components/subscribe/FormSubscribeUser.vue";
 import TestingVue from "@/components/TestingVue.vue";
 import FormSubscribeAsso from "@/components/subscribe/FormSubscribeAsso.vue";

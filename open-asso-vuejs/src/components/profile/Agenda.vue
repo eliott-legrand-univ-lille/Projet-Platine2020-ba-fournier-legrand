@@ -2,37 +2,47 @@
     tostyle
     toscript-->
 <template name="component-name">
-  <v-card
-    class="mx-auto"         
-    style="width:500px; max-width: 550px;"
-  >
-    <v-list 
-      subheader
-      three-line                    
-      v-for="(date, index) in allevents"
-      :key="index">
-      <v-subheader v-text="date.date"></v-subheader>
-          <v-list-item v-for="(event, i) in date.event"
-                        :key="i">
-            <v-list-item-avatar>
-              <v-img :src="event[3]" style="background-color:orange;"></v-img>
-            </v-list-item-avatar>
-            <v-list-item-content>
-            <v-list-item-title v-text="event[0]"></v-list-item-title>
-            <v-list-item-subtitle-text style="font-color:gray; font-size:12px" v-text="event[2]"></v-list-item-subtitle-text>
-              </v-list-item-content>
-            <v-list-item-action> 
-              <v-list-item-action-text v-text="event[1]">
-            </v-list-item-action-text>
-            </v-list-item-action>
-            </v-list-item>
-    </v-list>
-         
-  </v-card>
+<div>
+  <TopBar title="Mon Agenda"></TopBar>
+  <v-content>
+    <v-container fluid>
+        <v-card
+        class="mx-auto"         
+        style="width:500px; max-width: 550px;"
+      >
+        <v-list 
+          subheader
+          three-line                    
+          v-for="(date, index) in allevents"
+          :key="index">
+          <v-subheader v-text="date.date"></v-subheader>
+              <v-list-item v-for="(event, i) in date.event"
+                            :key="i">
+                <v-list-item-avatar>
+                  <v-img :src="event[3]" style="background-color:orange;"></v-img>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                <v-list-item-title v-text="event[0]"></v-list-item-title>
+                <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event[2]"></v-list-item-subtitle>
+                  </v-list-item-content>
+                <v-list-item-action> 
+                  <v-list-item-action-text v-text="event[1]">
+                </v-list-item-action-text>
+                </v-list-item-action>
+                </v-list-item>
+        </v-list> 
+      </v-card>
+    </v-container>
+  </v-content>
+</div>
 </template>
 
 <script>
+import TopBar from "@/components/commons/TopBar.vue";
 export default {
+  components: {
+    TopBar
+  },
   data: () => ({
     allevents: [
       {date : 'Aujourd\'hui', 
