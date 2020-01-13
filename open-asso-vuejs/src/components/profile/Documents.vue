@@ -11,10 +11,10 @@
               <v-list-item v-for="(document, i) in documents" :key="i" :inactive="true">
                 <v-list-item-title v-text="document"></v-list-item-title>
                 <v-list-item-icon>
-                  <v-btn>
+                  <v-btn icon>
                     <v-icon>mdi-download</v-icon>
                   </v-btn>
-                  <v-btn>
+                  <v-btn icon>
                     <v-icon>mdi-delete</v-icon>
                   </v-btn>
                 </v-list-item-icon>
