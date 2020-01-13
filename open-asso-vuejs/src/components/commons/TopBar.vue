@@ -2,12 +2,11 @@
     <div>
         <v-app-bar app color="primary" dark>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <!--<v-btn @click="$router.go(-1)">Back</v-btn>-->
             <v-spacer></v-spacer>
             <v-toolbar-title class="justify-center">{{ title }}</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn icon>
-              <v-icon>mdi-bell</v-icon>
-            </v-btn>
+            <v-btn icon><v-icon>mdi-bell</v-icon></v-btn>
         </v-app-bar>
 
         <v-navigation-drawer v-model="drawer" app temporary>
