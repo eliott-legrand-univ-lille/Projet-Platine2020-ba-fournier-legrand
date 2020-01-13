@@ -56,6 +56,7 @@ export default {
         { title: "Evénements", icon: "mdi-calendar", link: paths.events.path },
         { title: "Sport", icon: "mdi-basketball",},
         { title: "Actualités", icon: "mdi-newspaper",},
+        { title: "Login", icon: "mdi-login", link: paths.login.path },
         { title: "S'inscrire", icon: "mdi-login", link: paths.userSubscribe.path },
         { title: "Test", icon: "mdi-help-circle", link: paths.test.path },
         { title: "Créer une Asso", icon: "mdi-briefcase-plus", link: paths.assoSubscribe.path }
