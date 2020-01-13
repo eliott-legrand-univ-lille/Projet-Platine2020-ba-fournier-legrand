@@ -52,7 +52,7 @@ export default {
   name: "App",
   data() {
     return {
-      drawer: true,
+      drawer: false,
       items: [
         { title: "Accueil", icon: "mdi-home", link: paths.home.path },
         { title: "Profil", icon: "mdi-account", link: paths.profile.path },
