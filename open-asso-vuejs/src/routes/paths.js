@@ -28,6 +28,13 @@ const paths = {
     },
     myDocuments: {
         path: "/profile/my-documents"
+    },
+    sports: {
+        path: "/sport-menu"
+    }
+    ,
+    eventsmenu: {
+        path: "/event-menu"
     }
 }
 export default paths;

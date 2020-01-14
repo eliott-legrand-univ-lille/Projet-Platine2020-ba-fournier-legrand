@@ -72,7 +72,7 @@ export default {
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
-        this.snackbar = true;
+        true;
       }
     },
     reset() {

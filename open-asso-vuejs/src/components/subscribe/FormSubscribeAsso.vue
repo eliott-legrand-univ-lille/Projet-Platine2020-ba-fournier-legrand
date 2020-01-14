@@ -1,4 +1,6 @@
 <template>
+<div>
+  <v-content>
   <v-form ref="form" v-model="valid" lazy-validation>
     <v-container>
     <v-text-field
@@ -57,6 +59,8 @@
     <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
     </v-container>
   </v-form>
+  </v-content>
+</div>
 </template>
 
 <style scoped>

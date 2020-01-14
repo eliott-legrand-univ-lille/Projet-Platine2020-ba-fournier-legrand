@@ -1,6 +1,5 @@
 import Home from "@/components/Home.vue";
-import Events from "@/components/Events/Events.vue";
-import CreateEvent from "@/components/Events/CreateEvent.vue";
+import Events from "@/components/events/Events.vue";
 import FormSubscribeUser from "@/components/subscribe/FormSubscribeUser.vue";
 import TestingVue from "@/components/TestingVue.vue";
 import FormSubscribeAsso from "@/components/subscribe/FormSubscribeAsso.vue";
@@ -9,6 +8,9 @@ import Profile from "@/components/profile/Profile";
 import Login from "@/components/Login";
 import Agenda from "@/components/profile/Agenda";
 import Documents from "@/components/profile/Documents";
+import SportMenu from "@/components/sport/SportMenu";
+import EventMenu from "@/components/events/MenuEvent";
+import CreateEvent from "@/components/events/CreateEvent";
 
 //Define the routes to the different pages
 const routes = [
@@ -48,9 +50,9 @@ const routes = [
       component: Profile
     },
     {
-      path: paths.login.path,
-      name: "Login",
-      component: Login
+    path: paths.login.path,
+    name: "login",
+    component: Login
     },
     {
       path: paths.agenda.path,
@@ -61,7 +63,18 @@ const routes = [
       path: paths.myDocuments.path,
       name: "Mes Documents",
       component: Documents
+    },
+    {
+      path: paths.sports.path,
+      name: "Menu Sports",
+      component: SportMenu
+    },
+    {
+      path: paths.eventsmenu.path,
+      name: "Menu Évènements",
+      component: EventMenu
     }
+
     
 ];
 

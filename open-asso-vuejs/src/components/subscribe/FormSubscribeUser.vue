@@ -1,4 +1,6 @@
 <template>
+<div>
+  <v-content>
   <v-form
     ref="form"
     v-model="valid"
@@ -73,7 +75,10 @@
       Reset Validation
     </v-btn>
   </v-form>
+  </v-content>
+</div>
 </template>
+
 <style scoped>
   .md-progress-bar {
     position: absolute;

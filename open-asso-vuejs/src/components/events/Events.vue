@@ -1,9 +1,6 @@
-<!--toroute
-    tostyle
-    toscript-->
-<template name="component-name">
+<template>
   <div>
-    <TopBar title="Mon Agenda"></TopBar>
+    <TopBar title="Evénements"></TopBar>
     <v-content>
       <v-container fill-height fluid>
         <v-row align="center" justify="center">
@@ -29,7 +26,6 @@
     </v-content>
   </div>
 </template>
-
 <script>
 import TopBar from "@/components/commons/TopBar.vue";
 export default {
