@@ -16,6 +16,7 @@
     </v-content>
   </div>
 </template>
+
 <script>
 import TopBar from "@/components/commons/TopBar.vue";
 import firebase from "firebase";

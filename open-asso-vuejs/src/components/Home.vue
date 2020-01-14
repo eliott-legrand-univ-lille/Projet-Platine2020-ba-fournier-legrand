@@ -14,7 +14,7 @@
             sm="4"
           >
             <v-card class="d-flex justify-space-around align-center flex-column" 
-              :color="Menu[n-1].color" tile>
+              :color="Menu[n-1].color" tile link :to="Menu[n-1].link">
               <v-card-title v-text="Menu[n-1].label"></v-card-title>
               <v-icon x-large v-text="Menu[n-1].icon"></v-icon>
             </v-card>
@@ -27,16 +27,17 @@
 </template>
 
 <script>
-import TopBar from "@/components/commons/TopBar.vue"
+import TopBar from "@/components/commons/TopBar.vue";
+import paths from "@/routes/paths.js";
 export default {
   data: () => ({
     Menu: [
-      { label: "Membres", icon: "mdi-account-group" ,color: "#1e35b4" },
-      { label: "Sport", icon: "mdi-medal" ,color: "#673ab7"},
-      { label: "Evènements", icon: "mdi-calendar-month-outline" ,color: "#1e35b4"},
-      { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,color: "#673ab7"},
-      { label: "Comptabilité", icon: "mdi-wallet-outline",color: "#1e35b4" },
-      { label: "Divers", icon: "mdi-dots-horizontal-circle-outline",color: "#673ab7" }
+      { label: "Membres", icon: "mdi-account-group" ,color: "#1e35b4", link: "" },
+      { label: "Sports", icon: "mdi-medal" ,color: "#673ab7", link: paths.sports.path },
+      { label: "Évènements", icon: "mdi-calendar-month-outline" ,color: "#1e35b4", link: paths.eventsmenu.path },
+      { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,color: "#673ab7", link: "" },
+      { label: "Comptabilité", icon: "mdi-wallet-outline",color: "#1e35b4", link: "" },
+      { label: "Divers", icon: "mdi-dots-horizontal-circle-outline",color: "#673ab7", link: "" }
     ]
   }),
   components: {
