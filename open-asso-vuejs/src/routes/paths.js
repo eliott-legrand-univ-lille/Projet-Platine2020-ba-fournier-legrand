@@ -29,5 +29,9 @@ const paths = {
     sports: {
         path: "/sport-menu"
     }
+    ,
+    eventsmenu: {
+        path: "/event-menu"
+    }
 }
 export default paths;
