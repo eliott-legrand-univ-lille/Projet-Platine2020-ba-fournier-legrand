@@ -5,6 +5,9 @@ const paths = {
     events: {
         path: "/events"
     },
+    createevent: {
+        path: "/createevent"
+    },
     test: {
         path: "/test"
     },
@@ -16,6 +19,9 @@ const paths = {
     },
     profile:{
         path: "/profile"
+    },
+    login:{
+        path: "/login"
     },
     agenda: {
         path: "/profile/agenda"

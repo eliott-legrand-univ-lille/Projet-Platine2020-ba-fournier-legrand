@@ -6,6 +6,9 @@ import routes from "./routes/routes";
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
 
+
+
+
 Vue.use(VueRouter);
 
 // configure router

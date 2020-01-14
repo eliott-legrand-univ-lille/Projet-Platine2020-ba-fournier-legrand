@@ -1,10 +1,12 @@
 import Home from "@/components/Home.vue";
 import Events from "@/components/Events/Events.vue";
+import CreateEvent from "@/components/Events/CreateEvent.vue";
 import FormSubscribeUser from "@/components/subscribe/FormSubscribeUser.vue";
 import TestingVue from "@/components/TestingVue.vue";
 import FormSubscribeAsso from "@/components/subscribe/FormSubscribeAsso.vue";
 import paths from "@/routes/paths.js";
 import Profile from "@/components/profile/Profile";
+import Login from "@/components/Login";
 import Agenda from "@/components/profile/Agenda";
 import Documents from "@/components/profile/Documents";
 
@@ -19,6 +21,11 @@ const routes = [
       path: paths.events.path,
       name: "Events",
       component: Events
+    }, 
+    {
+      path: paths.createevent.path,
+      name: "CreateEvent",
+      component: CreateEvent
     }, 
     {
       path: paths.test.path,
@@ -39,6 +46,11 @@ const routes = [
       path: paths.profile.path,
       name: "Profil user",
       component: Profile
+    },
+    {
+      path: paths.login.path,
+      name: "Login",
+      component: Login
     },
     {
       path: paths.agenda.path,
