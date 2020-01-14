@@ -25,6 +25,9 @@ const paths = {
     },
     myDocuments: {
         path: "/profile/my-documents"
+    },
+    sports: {
+        path: "/sport-menu"
     }
 }
 export default paths;

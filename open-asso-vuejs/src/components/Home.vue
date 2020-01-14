@@ -24,7 +24,7 @@ import TopBar from "@/components/commons/TopBar.vue"
 export default {
   data: () => ({
     Menu: [
-      { label: "Membres", icon: "mdi-account-group" ,color: "##673ab7" },
+      { label: "Membres", icon: "mdi-account-group" ,color: "#673ab7" },
       { label: "Sport", icon: "mdi-medal" ,color: "#1e35b4"},
       { label: "Evènements", icon: "mdi-calendar-month-outline" ,color: "#673ab7"},
       { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,color: "#1e35b4"},
