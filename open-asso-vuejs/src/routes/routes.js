@@ -9,6 +9,7 @@ import Login from "@/components/Login";
 import Agenda from "@/components/profile/Agenda";
 import Documents from "@/components/profile/Documents";
 import SportMenu from "@/components/sport/SportMenu";
+import EventMenu from "@/components/events/MenuEvent";
 
 //Define the routes to the different pages
 const routes = [
@@ -61,7 +62,13 @@ const routes = [
       path: paths.sports.path,
       name: "Menu Sports",
       component: SportMenu
+    },
+    {
+      path: paths.eventsmenu.path,
+      name: "Menu Évènements",
+      component: EventMenu
     }
+
     
 ];
 
