@@ -8,9 +8,9 @@
           <v-row v-for="k in 2" :key="k">
             <v-col v-for="n in 3" :key="n">
               <v-card class="d-flex justify-space-around align-center flex-column" 
-              :color="Menu[n + k].color" tile>
-                <v-card-title v-text="Menu[n + k].label"></v-card-title>
-                <v-icon x-large v-text="Menu[n + k].icon"></v-icon>
+              :color="Menu[n  - 1 + 3 * (k - 1)].color" tile>
+                <v-card-title v-text="Menu[n  - 1 + 3 * (k - 1) ].label"></v-card-title>
+                <v-icon x-large v-text="Menu[n  - 1 + 3 * (k - 1)].icon"></v-icon>
               </v-card>
             </v-col>
           </v-row>
