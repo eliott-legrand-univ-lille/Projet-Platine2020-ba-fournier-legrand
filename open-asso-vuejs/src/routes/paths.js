@@ -35,6 +35,9 @@ const paths = {
     ,
     eventsmenu: {
         path: "/event-menu"
-    }
+    },
+    members: {
+        path: "/members"
+    },
 }
 export default paths;

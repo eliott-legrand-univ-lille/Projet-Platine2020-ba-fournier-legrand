@@ -51,7 +51,7 @@ export default {
       items: [
         { title: "Accueil", icon: "mdi-home", link: paths.home.path },
         { title: "Profil", icon: "mdi-account", link: paths.profile.path },
-        { title: "Menbres", icon: "mdi-account-group"},
+        { title: "Membres", icon: "mdi-account-group", link: paths.members.path },
         { title: "Evénements", icon: "mdi-calendar", link: paths.eventsmenu.path },
         { title: "Sport", icon: "mdi-basketball", link: paths.sports.path},
         { title: "Actualités", icon: "mdi-newspaper",},
