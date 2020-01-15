@@ -31,8 +31,10 @@ const paths = {
     },
     sports: {
         path: "/sport-menu"
-    }
-    ,
+    },
+    creatematch: {
+        path: "/creatematch"
+    },
     eventsmenu: {
         path: "/event-menu"
     },

@@ -11,6 +11,7 @@ import Documents from "@/components/profile/Documents";
 import SportMenu from "@/components/sport/SportMenu";
 import EventMenu from "@/components/events/MenuEvent";
 import CreateEvent from "@/components/events/CreateEvent";
+import CreateMatch from "@/components/sport/CreateMatch";
 import MemberList from "@/components/members/MemberList.vue";
 
 //Define the routes to the different pages
@@ -29,6 +30,11 @@ const routes = [
       path: paths.createevent.path,
       name: "CreateEvent",
       component: CreateEvent
+    }, 
+    {
+      path: paths.creatematch.path,
+      name: "CreateMatch",
+      component: CreateMatch
     }, 
     {
       path: paths.test.path,
