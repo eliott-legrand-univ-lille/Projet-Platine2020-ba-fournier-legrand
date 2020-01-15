@@ -1,8 +1,10 @@
 <template>
   <div>
-    <TopBar title="Evénements"></TopBar>
+    <TopBar title="Évènements"></TopBar>
+
     <v-content>
       <v-container fill-height fluid>
+
         <v-row align="center" justify="center">
           <v-col>
             <v-list subheader three-line v-for="(date, index) in allevents" :key="index">
@@ -22,23 +24,32 @@
             </v-list>
           </v-col>
         </v-row>
-      </v-container>
+
+        <v-fab-transition>
+          <v-btn color="orange" dark fixed bottom right fab link :to="createEvPath">
+            <v-icon>mdi-plus</v-icon>
+          </v-btn>
+        </v-fab-transition>
+      
+      </v-container>  
     </v-content>
   </div>
 </template>
 <script>
 import TopBar from "@/components/commons/TopBar.vue";
+import paths from "@/routes/paths.js";
 export default {
   components: {
     TopBar
   },
   data: () => ({
+    createEvPath: paths.createevent.path,
     allevents: [
       {
         date: "Aujourd'hui",
         event: [
           ["Projection match", "19h-20", "Match de l'équipe de France", "img_link"],
-          ["Barbecue", "18h", "Oulalah du viande", ""]
+          ["Barbecue", "18h", "Oulalah de la viande", ""]
         ]
       },
       {
