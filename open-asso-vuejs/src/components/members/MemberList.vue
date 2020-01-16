@@ -18,7 +18,7 @@
             <!--Admin only-->
             <v-btn color="success">Ajouter un Membre</v-btn>
             <v-list>
-              <v-list-item three-line v-for="member in Members" :key="member" :inactive="true">
+              <v-list-item two-line v-for="member in Members" :key="member.noù" :inactive="true">
                 <v-list>
                   <v-list-item-title v-text="member.nom"></v-list-item-title>
                   <v-list-item-subtitle v-text="member.role"></v-list-item-subtitle>
