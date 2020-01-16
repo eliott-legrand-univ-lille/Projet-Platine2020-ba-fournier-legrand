@@ -6,7 +6,7 @@
     <TopBar title="Membres"></TopBar>
     <v-content>
       <v-container fill-height fluid>
-       <!-- <v-row>
+        <!-- <v-row>
           <v-autocomplete
             :item="Members"
             hide-selected
@@ -19,11 +19,10 @@
             <v-btn color="success">Ajouter un Membre</v-btn>
             <v-list>
               <v-list-item three-line v-for="member in Members" :key="member" :inactive="true">
-                <v-list-content>
-                <v-list-item-title v-text="member.nom"></v-list-item-title>
-                <v-list-item-subtitle v-text="member.role"></v-list-item-subtitle>
-                
-                </v-list-content>
+                <v-list>
+                  <v-list-item-title v-text="member.nom"></v-list-item-title>
+                  <v-list-item-subtitle v-text="member.role"></v-list-item-subtitle>
+                </v-list>
                 <v-list-item-icon>
                   <!--Admin only-->
                   <v-btn icon>

@@ -39,6 +39,8 @@
           <v-btn :disabled="!valid" color="success" class="mr-4" @click="signin">Validate</v-btn>
 
           <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+
+          <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
         </v-form>
       </v-container>
     </v-content>
@@ -51,6 +53,8 @@ import firebase from "firebase";
 export default {
   name: "FormSubscribeUser",
   data: () => ({
+    snackbar: false,
+    text: "Veuillez remplir le formulaire",
     show: false,
     show2: false,
     valid: true,
@@ -87,24 +91,28 @@ export default {
       this.$refs.form.reset();
     },
     signin: function() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(cred => {
-          return firebase
-            .firestore()
-            .collection("users")
-            .doc(cred.user.uid)
-            .set({
-              name: this.name,
-              firstname: this.firstname
-            });
-        })
-        .catch(function(error) {
-          // Handle Errors here.
-          alert(error);
-          // ...
-        });
+      if (this.$refs.form.validate()) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then(cred => {
+            return firebase
+              .firestore()
+              .collection("users")
+              .doc(cred.user.uid)
+              .set({
+                name: this.name,
+                firstname: this.firstname
+              });
+          })
+          .catch(function(error) {
+            // Handle Errors here.
+            alert(error);
+          });
+          this.$router.push({ name: 'Home'});
+      } else {
+        this.snackbar = true;
+      }
     }
   }
 };
