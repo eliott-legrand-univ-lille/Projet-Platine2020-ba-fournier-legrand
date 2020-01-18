@@ -19,16 +19,20 @@
             <v-btn color="success">Ajouter un Membre</v-btn>
             <v-list>
               <v-list-item two-line v-for="member in Members" :key="member.noù" :inactive="true">
-                <v-list>
+                <v-list-item-content>
                   <v-list-item-title v-text="member.nom"></v-list-item-title>
                   <v-list-item-subtitle v-text="member.role"></v-list-item-subtitle>
-                </v-list>
-                <v-list-item-icon>
+                </v-list-item-content>
+                <v-list-item-action>
+                  <v-list-item-icon>
                   <!--Admin only-->
                   <v-btn icon>
                     <v-icon>mdi-pencil</v-icon>
                   </v-btn>
-                </v-list-item-icon>
+                  </v-list-item-icon>
+                </v-list-item-action>
+                
+
               </v-list-item>
             </v-list>
           </v-col>

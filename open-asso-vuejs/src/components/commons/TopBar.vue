@@ -60,11 +60,11 @@ export default {
           link: paths.members.path
         },
         {
-          title: "Evénements",
+          title: "Évènements",
           icon: "mdi-calendar",
           link: paths.eventsmenu.path
         },
-        { title: "Sport", icon: "mdi-basketball", link: paths.sports.path },
+        { title: "Sports", icon: "mdi-basketball", link: paths.sports.path },
         { title: "Actualités", icon: "mdi-newspaper" },
         { title: "Login", icon: "mdi-login", link: paths.login.path },
         {
