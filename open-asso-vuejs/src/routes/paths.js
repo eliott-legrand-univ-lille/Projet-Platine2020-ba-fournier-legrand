@@ -43,6 +43,9 @@ const paths = {
     },
     matchs: {
         path: "/matchs"
+    },
+    strats: {
+        path: "/strats"
     }
 }
 export default paths;

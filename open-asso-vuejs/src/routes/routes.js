@@ -14,6 +14,7 @@ import CreateEvent from "@/components/events/CreateEvent";
 import CreateMatch from "@/components/sport/CreateMatch";
 import MemberList from "@/components/members/MemberList.vue";
 import Matchs from "@/components/sport/Matchs.vue";
+import Strategies from "@/components/sport/Strategies.vue";
 
 //Define the routes to the different pages
 const routes = [
@@ -91,6 +92,11 @@ const routes = [
       path: paths.matchs.path,
       name: "Liste des matchs",
       component: Matchs
+    },
+    {
+      path: paths.strats.path,
+      name: "Liste des strats",
+      component: Strategies
     }
     
 ];
