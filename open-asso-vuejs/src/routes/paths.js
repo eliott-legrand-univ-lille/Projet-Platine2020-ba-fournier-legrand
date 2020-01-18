@@ -41,5 +41,8 @@ const paths = {
     members: {
         path: "/members"
     },
+    matchs: {
+        path: "/matchs"
+    }
 }
 export default paths;

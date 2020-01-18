@@ -13,6 +13,7 @@ import EventMenu from "@/components/events/MenuEvent";
 import CreateEvent from "@/components/events/CreateEvent";
 import CreateMatch from "@/components/sport/CreateMatch";
 import MemberList from "@/components/members/MemberList.vue";
+import Matchs from "@/components/sport/Matchs.vue";
 
 //Define the routes to the different pages
 const routes = [
@@ -86,7 +87,11 @@ const routes = [
       name: "Liste des membres",
       component: MemberList
     },
-
+    {
+      path: paths.matchs.path,
+      name: "Liste des matchs",
+      component: Matchs
+    }
     
 ];
 

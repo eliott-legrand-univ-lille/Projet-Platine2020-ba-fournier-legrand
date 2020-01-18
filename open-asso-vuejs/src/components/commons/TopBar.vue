@@ -3,7 +3,7 @@
     <v-app-bar app color="#1e35b4" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-img :src="require('@/assets/logoseule.png')" max-width="40" max-height="40"></v-img>
+      <router-link to="/"><v-img :src="require('@/assets/logoseul.png')" max-width="40" max-height="40"></v-img></router-link>
       <!--<v-btn @click="$router.go(-1)">Back</v-btn>-->
       <v-toolbar-title class="justify-center">{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
