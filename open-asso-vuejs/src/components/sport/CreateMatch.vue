@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Créer un événement"></TopBar>
+    <TopBar title="Créer un match"></TopBar>
     <v-content>
       <v-container>
         <v-form ref="form" v-model="valid" lazy-validation>
@@ -52,6 +52,7 @@ export default {
         "La description doit faire moins de 148 caractères"
     ],
     address: "",
+    place: "",
     city: "",
     cityRules: [v => !!v || "Ville obligatoire"],
     postal: "",

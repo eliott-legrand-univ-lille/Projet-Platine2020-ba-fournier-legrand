@@ -8,7 +8,7 @@
       <v-container fill-height fluid>
         <v-row align="center" justify="center">
           <v-col :cols="2"></v-col>
-          <v-col :cols="8" align="center">
+          <v-col class="text-center" :cols="8">
             <v-avatar>
               <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
             </v-avatar>
@@ -18,16 +18,16 @@
             <div>membre depuis le 29/08/2018</div>
             <v-list>
               <v-list-item>
-                <v-btn min-width="200">Modifier la photo</v-btn>
+                <v-btn color="#1e35b4" min-width="200"><span class="white--text">Modifier la photo</span></v-btn>
               </v-list-item>
               <v-list-item>
-                <v-btn min-width="200" link :to="docPath">Mes documents</v-btn>
+                <v-btn color="#1e35b4" min-width="200" link :to="docPath"><span class="white--text">Mes documents</span></v-btn>
               </v-list-item>
               <v-list-item>
-                <v-btn min-width="200">Mes statistiques</v-btn>
+                <v-btn color="#1e35b4" min-width="200"><span class="white--text">Mes statistiques</span></v-btn>
               </v-list-item>
               <v-list-item>
-                <v-btn min-width="200" link :to="agendaPath">Mon agenda</v-btn>
+                <v-btn color="#1e35b4" min-width="200" link :to="agendaPath"><span class="white--text">Mon agenda</span></v-btn>
               </v-list-item>
             </v-list>
           </v-col>

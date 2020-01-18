@@ -35,11 +35,11 @@
           <v-row>
             <v-col>
               <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
-              <v-btn color="error" @click="reset">Reset Form</v-btn>
+              <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
             </v-col>
             <v-col>
               <v-text-field v-model="postal" :rules="postalRules" label="Code postal" required></v-text-field>
-              <v-btn color="success">Validate</v-btn>
+              <v-btn min-width="150" color="success">Valider</v-btn>
             </v-col>
           </v-row>
         </v-form>

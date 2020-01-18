@@ -13,7 +13,7 @@
             placeholder="Entrez le nom ou le prénom d'un membre"
             prepend-icon="mdi-database-search"></v-autocomplete>
         </v-row>-->
-        <v-row align="center" justify="center">
+        <v-row justify="center">
           <v-col>
             <!--Admin only-->
             <v-btn color="success">Ajouter un Membre</v-btn>
