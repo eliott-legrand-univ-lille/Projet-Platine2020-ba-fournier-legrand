@@ -5,13 +5,23 @@
     <TopBar title="Sports"></TopBar>
     <v-content>
         <v-container fluid>
-          <v-row v-for="k in 3" :key="k">
-            <v-col v-for="n in 2" :key="n">
+
+          <v-row>
+            <v-col
+              class="d-flex flex-column"
+              v-for="n in Menu.length"
+              :key="n"
+              cols="6"
+              sm="4"
+            >
               <v-card class="d-flex justify-space-around align-center flex-column" 
-              :color="Menu[n - 1 + 2 * (k - 1)].color" tile link :to="Menu[n - 1 + 2 * (k - 1)].link">
-                <v-card-title v-text="Menu[n - 1 + 2 * (k - 1)].label"></v-card-title>
-                <v-icon x-large v-text="Menu[n - 1 + 2 * (k - 1)].icon"></v-icon>
+              :color="Menu[n - 1].color" tile link :to="Menu[n-1].link">
+                <v-card-title primary-title style="word-break:normal" class="orange--text pb-1 pt-3 px-2">
+                  <h4 class="text-xs-center">{{Menu[n - 1].label}}</h4>
+                </v-card-title>
+                <v-icon color="white" x-large v-text="Menu[n - 1].icon"></v-icon>
               </v-card>
+
             </v-col>
           </v-row>
         </v-container>

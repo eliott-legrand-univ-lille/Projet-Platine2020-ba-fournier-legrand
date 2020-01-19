@@ -15,7 +15,7 @@
           >
             <v-card class="d-flex justify-space-around align-center flex-column" 
               :color="Menu[n-1].color" tile link :to="Menu[n-1].link">
-              <v-card-title>
+              <v-card-title style="word-break:normal">
                   <p class="orange--text">{{Menu[n-1].label}}</p>
               </v-card-title>
               <v-icon color="white" x-large v-text="Menu[n-1].icon"></v-icon>
