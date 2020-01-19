@@ -16,6 +16,7 @@ import MemberList from "@/components/members/MemberList.vue";
 import Matchs from "@/components/sport/Matchs.vue";
 import Strategies from "@/components/sport/Strategies.vue";
 import ActualityList from "@/components/actualities/ActualityList.vue";
+import Stats from "@/components/sport/Stats.vue";
 
 //Define the routes to the different pages
 const routes = [
@@ -103,6 +104,11 @@ const routes = [
       path: paths.actualities.path,
       name: "Actualités",
       component: ActualityList
+    },
+    {
+      path: paths.stats.path,
+      name: "Statistiques",
+      component: Stats
     }
     
 ];

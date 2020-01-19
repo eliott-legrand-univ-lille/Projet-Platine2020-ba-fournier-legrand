@@ -36,7 +36,7 @@ export default {
   data: () => ({
     Menu: [
       { label: "Matchs", icon: "mdi-tshirt-crew-outline" ,color: "#673ab7", link: paths.matchs.path},
-      { label: "Statistiques", icon: "mdi-medal" ,color: "#673ab7" , link: ""},
+      { label: "Statistiques", icon: "mdi-medal" ,color: "#673ab7" , link: paths.stats.path},
       { label: "Stratégies", icon: "mdi-target" ,color: "#673ab7", link: paths.strats.path},
       { label: "Créer un schéma", icon: "mdi-lead-pencil" ,color: "#673ab7", link: ""},
       { label: "Créer un match", icon: "mdi-podium-gold",color: "#673ab7" , link: paths.creatematch.path},

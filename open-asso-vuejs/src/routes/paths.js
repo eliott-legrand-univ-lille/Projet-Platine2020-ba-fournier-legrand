@@ -49,6 +49,9 @@ const paths = {
     },
     actualities:{
         path: "/actualities"
+    },
+    stats:{
+        path: "/stats"
     }
 }
 export default paths;
