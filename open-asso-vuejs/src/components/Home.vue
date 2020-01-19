@@ -34,7 +34,7 @@ import paths from "@/routes/paths.js";
 export default {
   data: () => ({
     Menu: [
-      { label: "Membres", icon: "mdi-account-group" ,textcolor:"#FF9052",color: "#1e35b4", link: "" },
+      { label: "Membres", icon: "mdi-account-group" ,textcolor:"#FF9052",color: "#1e35b4", link: paths.members.path },
       { label: "Sports", icon: "mdi-medal" ,color: "#673ab7", link: paths.sports.path },
       { label: "Évènements", icon: "mdi-calendar-month-outline" ,color: "#1e35b4", link: paths.eventsmenu.path },
       { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,color: "#673ab7", link: paths.actualities.path },
