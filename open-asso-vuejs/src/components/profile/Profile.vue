@@ -3,7 +3,7 @@
 <!--toscript-->
 <template>
   <div>
-    <TopBar title="Mon Profil"></TopBar>
+    <TopBar title="Mon Profil" back></TopBar>
     <v-content>
       <v-container fill-height fluid>
         <v-row align="center" justify="center">

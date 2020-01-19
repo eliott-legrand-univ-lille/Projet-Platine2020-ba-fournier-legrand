@@ -1,7 +1,7 @@
 <!-- test -->
 <template>
   <div>
-    <TopBar title="Mes Documents"></TopBar>
+    <TopBar title="Mes Documents" back></TopBar>
     <v-content>
       <v-container>
         <v-row justify="center">

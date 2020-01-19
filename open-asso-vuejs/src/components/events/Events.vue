@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Évènements"></TopBar>
+    <TopBar title="Évènements" back></TopBar>
 
     <v-content>
       <v-container fill-height fluid>

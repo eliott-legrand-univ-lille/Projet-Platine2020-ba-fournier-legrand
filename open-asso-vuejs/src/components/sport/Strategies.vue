@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Stratégies"></TopBar>
+    <TopBar title="Stratégies" back></TopBar>
 
     <v-content>
         <v-container fluid>

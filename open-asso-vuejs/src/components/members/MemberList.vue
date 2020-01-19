@@ -3,7 +3,7 @@
     toscript (in case of admin type user)-->
 <template name="component-name">
   <div>
-    <TopBar title="Membres"></TopBar>
+    <TopBar title="Membres" back></TopBar>
     <v-content>
       <v-container fill-height fluid>
         <!-- <v-row>

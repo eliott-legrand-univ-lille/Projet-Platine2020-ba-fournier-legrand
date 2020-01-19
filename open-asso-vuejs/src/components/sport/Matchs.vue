@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Matchs"></TopBar>
+    <TopBar title="Matchs" back></TopBar>
 
     <v-content>
         <v-container fluid>
