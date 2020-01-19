@@ -46,6 +46,9 @@ const paths = {
     },
     strats: {
         path: "/strats"
+    },
+    actualities:{
+        path: "/actualities"
     }
 }
 export default paths;
