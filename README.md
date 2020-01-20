@@ -7,6 +7,7 @@ Le dépôt du projet Platine
 1. npm install -g @vue/cli 
 npm install -g @vue/cli-service-global (only once)
 2. cd open-asso-vuejs/
-3. npm install
-4. npm run serve 
+3. mkdir dist/
+4. npm install
+5. npm run serve 
 ```
