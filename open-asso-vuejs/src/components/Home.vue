@@ -15,8 +15,10 @@
           >
             <v-card class="d-flex justify-space-around align-center flex-column" 
               :color="Menu[n-1].color" tile link :to="Menu[n-1].link">
-              <v-card-title v-text="Menu[n-1].label"></v-card-title>
-              <v-icon x-large v-text="Menu[n-1].icon"></v-icon>
+              <v-card-title style="word-break:normal">
+                  <p class="orange--text">{{Menu[n-1].label}}</p>
+              </v-card-title>
+              <v-icon color="white" x-large v-text="Menu[n-1].icon"></v-icon>
             </v-card>
           </v-col>
         </v-row>
@@ -32,10 +34,10 @@ import paths from "@/routes/paths.js";
 export default {
   data: () => ({
     Menu: [
-      { label: "Membres", icon: "mdi-account-group" ,color: "#1e35b4", link: "" },
+      { label: "Membres", icon: "mdi-account-group" ,textcolor:"#FF9052",color: "#1e35b4", link: paths.members.path },
       { label: "Sports", icon: "mdi-medal" ,color: "#673ab7", link: paths.sports.path },
       { label: "Évènements", icon: "mdi-calendar-month-outline" ,color: "#1e35b4", link: paths.eventsmenu.path },
-      { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,color: "#673ab7", link: "" },
+      { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,color: "#673ab7", link: paths.actualities.path },
       { label: "Comptabilité", icon: "mdi-wallet-outline",color: "#1e35b4", link: "" },
       { label: "Divers", icon: "mdi-dots-horizontal-circle-outline",color: "#673ab7", link: "" }
     ]

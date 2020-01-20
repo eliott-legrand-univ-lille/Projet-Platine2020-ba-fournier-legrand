@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Créer un événement" back></TopBar>
+    <TopBar title="Créer un match" back></TopBar>
     <v-content>
       <v-container>
         <v-form ref="form" v-model="valid" lazy-validation>
@@ -8,16 +8,9 @@
             v-model="name"
             :rules="nameRules"
             :counter="30"
-            label="Nom de l'événement"
+            label="Nom du match"
             required
           ></v-text-field>
-
-          <v-textarea
-            no-resize
-            :counter="148"
-            :rules="descriptionRules"
-            label="Entrer votre description"
-          ></v-textarea>
 
           <v-dialog ref="dialog" v-model="modal" :return-value.sync="date" persistent>
             <template v-slot:activator="{ on }">
@@ -30,18 +23,8 @@
             </v-date-picker>
           </v-dialog>
 
-          <v-text-field v-model="address" label="Rue" required></v-text-field>
+          <v-text-field v-model="place" label="Lieu de rencontre" required></v-text-field>
 
-          <v-row>
-            <v-col>
-              <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
-              <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
-            </v-col>
-            <v-col>
-              <v-text-field v-model="postal" :rules="postalRules" label="Code postal" required></v-text-field>
-              <v-btn min-width="150" color="success">Valider</v-btn>
-            </v-col>
-          </v-row>
         </v-form>
       </v-container>
     </v-content>
@@ -69,6 +52,7 @@ export default {
         "La description doit faire moins de 148 caractères"
     ],
     address: "",
+    place: "",
     city: "",
     cityRules: [v => !!v || "Ville obligatoire"],
     postal: "",
@@ -78,7 +62,9 @@ export default {
     ],
 
     date: new Date().toISOString().substr(0, 10),
+    menu: false,
     modal: false,
+    menu2: false
   }),
 
   methods: {

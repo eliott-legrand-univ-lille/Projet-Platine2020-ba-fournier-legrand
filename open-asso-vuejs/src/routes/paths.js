@@ -31,13 +31,27 @@ const paths = {
     },
     sports: {
         path: "/sport-menu"
-    }
-    ,
+    },
+    creatematch: {
+        path: "/creatematch"
+    },
     eventsmenu: {
         path: "/event-menu"
     },
     members: {
         path: "/members"
     },
+    matchs: {
+        path: "/matchs"
+    },
+    strats: {
+        path: "/strats"
+    },
+    actualities:{
+        path: "/actualities"
+    },
+    stats:{
+        path: "/stats"
+    }
 }
 export default paths;

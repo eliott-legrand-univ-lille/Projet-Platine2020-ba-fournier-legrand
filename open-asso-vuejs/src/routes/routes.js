@@ -11,7 +11,12 @@ import Documents from "@/components/profile/Documents";
 import SportMenu from "@/components/sport/SportMenu";
 import EventMenu from "@/components/events/MenuEvent";
 import CreateEvent from "@/components/events/CreateEvent";
+import CreateMatch from "@/components/sport/CreateMatch";
 import MemberList from "@/components/members/MemberList.vue";
+import Matchs from "@/components/sport/Matchs.vue";
+import Strategies from "@/components/sport/Strategies.vue";
+import ActualityList from "@/components/actualities/ActualityList.vue";
+import Stats from "@/components/sport/Stats.vue";
 
 //Define the routes to the different pages
 const routes = [
@@ -29,6 +34,11 @@ const routes = [
       path: paths.createevent.path,
       name: "CreateEvent",
       component: CreateEvent
+    }, 
+    {
+      path: paths.creatematch.path,
+      name: "CreateMatch",
+      component: CreateMatch
     }, 
     {
       path: paths.test.path,
@@ -80,7 +90,26 @@ const routes = [
       name: "Liste des membres",
       component: MemberList
     },
-
+    {
+      path: paths.matchs.path,
+      name: "Liste des matchs",
+      component: Matchs
+    },
+    {
+      path: paths.strats.path,
+      name: "Liste des strats",
+      component: Strategies
+    },
+    {
+      path: paths.actualities.path,
+      name: "Actualités",
+      component: ActualityList
+    },
+    {
+      path: paths.stats.path,
+      name: "Statistiques",
+      component: Stats
+    }
     
 ];
 

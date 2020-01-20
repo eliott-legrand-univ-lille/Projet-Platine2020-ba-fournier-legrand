@@ -1,12 +1,11 @@
 <!-- test -->
 <template>
   <div>
-    <TopBar title="Mes Documents"></TopBar>
+    <TopBar title="Mes Documents" back></TopBar>
     <v-content>
-      <v-container fill-height fluid>
-        <v-row align="center" justify="center">
+      <v-container>
+        <v-row justify="center">
           <v-col>
-            <v-btn color="success">Ajouter un document</v-btn>
             <v-list>
               <v-list-item v-for="(document, i) in documents" :key="i" :inactive="true">
                 <v-list-item-title v-text="document"></v-list-item-title>
@@ -21,6 +20,9 @@
               </v-list-item>
             </v-list>
           </v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-btn color="#1e35b4"><span class="white--text">Ajouter un document</span></v-btn>
         </v-row>
       </v-container>
     </v-content>
