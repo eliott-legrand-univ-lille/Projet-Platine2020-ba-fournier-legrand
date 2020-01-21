@@ -5,13 +5,11 @@
       
       <v-btn icon v-if="back" @click="$router.go(-1)"><v-icon>mdi-arrow-left</v-icon></v-btn>
       
-
-        <router-link to="/">
-          <v-btn icon>
-            <v-img :src="require('@/assets/logoseul.png')" link to="/" max-width="40" max-height="40"></v-img>
-          </v-btn>
-        </router-link>
-
+      <router-link to="/">
+        <v-btn icon>
+          <v-img :src="require('@/assets/logoseul.png')" link to="/" max-width="40" max-height="40"></v-img>
+        </v-btn>
+      </router-link>
 
       <v-toolbar-title class="justify-center">{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
