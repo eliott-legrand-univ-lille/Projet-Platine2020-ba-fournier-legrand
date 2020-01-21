@@ -24,6 +24,11 @@
             </v-list>
           </v-col>
         </v-row>
+        <ul>
+      <li v-for="doc in documents" :key="doc.id">
+        <p>{{doc.ttitre}}</p>
+      </li>
+    </ul>
 
         <v-fab-transition>
           <v-btn color="orange" dark fixed bottom right fab link :to="createEvPath">
@@ -38,11 +43,16 @@
 <script>
 import TopBar from "@/components/commons/TopBar.vue";
 import paths from "@/routes/paths.js";
+import { db } from '../../db';
 export default {
   components: {
     TopBar
   },
+  firestore: {
+    documents: db.collection('documents'),
+  },
   data: () => ({
+    documents: [],
     createEvPath: paths.createevent.path,
     allevents: [
       {
