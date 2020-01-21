@@ -7,21 +7,21 @@
             <v-row align="center" justify="center">
             <v-col>
                 <v-list three-line 
-                  v-for="n in Menu.length"
+                  v-for="n in Content.length"
                   :key="n"
                 >
-                    <v-list-item v-if="Menu[n-1].season">
-                        <v-subheader>{{Menu[n-1].season}}</v-subheader>
+                    <v-list-item v-if="Content[n-1].season">
+                        <v-subheader>{{Content[n-1].season}}</v-subheader>
                     </v-list-item>
                     <v-list-item v-else>
                         <v-list-item-avatar>
                             <v-img  style="background-color:orange;"></v-img>
                         </v-list-item-avatar>
                         <v-list-item-content>
-                            <v-list-item-title>{{Menu[n-1].title}}</v-list-item-title>
-                            <v-list-item-subtitle>Le {{Menu[n-1].date}}</v-list-item-subtitle>
-                            <v-list-item-subtitle>Lieu: {{Menu[n-1].adress}}</v-list-item-subtitle>
-                            <v-list-item-subtitle>Score: {{Menu[n-1].result}}</v-list-item-subtitle>
+                            <v-list-item-title>{{Content[n-1].title}}</v-list-item-title>
+                            <v-list-item-subtitle>Le {{Content[n-1].date}}</v-list-item-subtitle>
+                            <v-list-item-subtitle>Lieu: {{Content[n-1].adress}}</v-list-item-subtitle>
+                            <v-list-item-subtitle>Score: {{Content[n-1].result}}</v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list>
@@ -39,7 +39,7 @@ export default {
     TopBar
   },
   data: () => ({
-    Menu: [
+    Content: [
       {
         season: "Saison 2019-2020"
       },
