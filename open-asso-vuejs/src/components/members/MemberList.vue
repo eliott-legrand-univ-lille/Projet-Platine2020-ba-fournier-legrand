@@ -1,6 +1,6 @@
 <!--toroute
     tostyle
-    toscript (in case of admin type user)-->
+    toscript (in case of admin type user) va voir banner pour le changement de role-->
 <template name="component-name">
   <div>
     <TopBar title="Membres" color="#1e35b4" back></TopBar>

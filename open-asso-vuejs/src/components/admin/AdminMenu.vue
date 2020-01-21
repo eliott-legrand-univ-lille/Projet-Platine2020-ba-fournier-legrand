@@ -10,7 +10,7 @@ toscript for size-->
                   <v-card width="150px" height="150px" class="d-flex flex-column justify-center align-center"
                   color="#673ab7" link :to="Menu[n-1].link"
                   >
-                    <v-card-title v-text="Menu[n - 1].name" style="color:#FF9052;word-break:normal; text-align:center"></v-card-title>
+                    <v-card-title v-text="Menu[n - 1].name" style="color:white;word-break:normal; text-align:center"></v-card-title>
                   </v-card>
                  </v-col>
              </v-row>

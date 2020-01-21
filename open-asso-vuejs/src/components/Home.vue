@@ -41,7 +41,7 @@ export default {
       { label: "Sports", icon: "mdi-medal" ,textcolor:"white",color: "#673ab7", link: paths.sports.path },
       { label: "Évènements", icon: "mdi-calendar-month-outline" ,textcolor:"#FF9052", color: "#1e35b4", link: paths.eventsmenu.path },
       { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,textcolor:"white",color: "#673ab7", link: paths.actualities.path },
-      { label: "Comptabilité", icon: "mdi-wallet-outline", textcolor:"#FF9052",color: "#1e35b4", link: paths.manage.path },
+      { label: "Gestion", icon: "mdi-wallet-outline", textcolor:"#FF9052",color: "#1e35b4", link: paths.manage.path },
       { label: "Divers", icon: "mdi-dots-horizontal-circle-outline",textcolor:"white",color: "#673ab7", link: "" }
     ]
   }),
