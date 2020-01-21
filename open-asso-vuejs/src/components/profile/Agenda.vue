@@ -3,7 +3,7 @@
     toscript-->
 <template name="component-name">
   <div>
-    <TopBar title="Mon Agenda" back></TopBar>
+    <TopBar title="Mon Agenda" color="#1e35b4" back></TopBar>
     <v-content>
       <v-container fill-height fluid>
         <v-row align="center" justify="center">

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Créer un match" back></TopBar>
+    <TopBar title="Créer un match" color="#673ab7" back></TopBar>
     <v-content>
       <v-container>
         <v-form ref="form" v-model="valid" lazy-validation>

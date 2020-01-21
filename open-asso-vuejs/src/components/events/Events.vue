@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Évènements" back></TopBar>
+    <TopBar title="Évènements" color="#1e35b4" back></TopBar>
 
     <v-content>
       <v-container fill-height fluid>

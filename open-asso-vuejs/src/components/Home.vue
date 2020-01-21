@@ -2,7 +2,7 @@
     tostyle-->
 <template>
 <div>
-    <TopBar title="OpenAsso"></TopBar>
+    <TopBar title="OpenAsso" color="#1e35b4"></TopBar>
     <v-content>
 
       <v-container fluid>
@@ -15,10 +15,13 @@
           >
             <v-card class="d-flex justify-space-around align-center flex-column" 
               :color="Menu[n-1].color" tile link :to="Menu[n-1].link">
-              <v-card-title style="word-break:normal">
+              <v-card-title v-if="Menu[n - 1].color === '#1e35b4'" style="word-break:normal">
                   <p class="orange--text">{{Menu[n-1].label}}</p>
               </v-card-title>
-              <v-icon color="white" x-large v-text="Menu[n-1].icon"></v-icon>
+              <v-card-title v-else style="word-break:normal">
+                  <p class="white--text">{{Menu[n-1].label}}</p>
+              </v-card-title>
+              <v-icon :color="Menu[n-1].textcolor" x-large v-text="Menu[n-1].icon"></v-icon>
             </v-card>
           </v-col>
         </v-row>
@@ -35,11 +38,11 @@ export default {
   data: () => ({
     Menu: [
       { label: "Membres", icon: "mdi-account-group" ,textcolor:"#FF9052",color: "#1e35b4", link: paths.members.path },
-      { label: "Sports", icon: "mdi-medal" ,color: "#673ab7", link: paths.sports.path },
-      { label: "Évènements", icon: "mdi-calendar-month-outline" ,color: "#1e35b4", link: paths.eventsmenu.path },
-      { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,color: "#673ab7", link: paths.actualities.path },
-      { label: "Comptabilité", icon: "mdi-wallet-outline",color: "#1e35b4", link: "" },
-      { label: "Divers", icon: "mdi-dots-horizontal-circle-outline",color: "#673ab7", link: "" }
+      { label: "Sports", icon: "mdi-medal" ,textcolor:"white",color: "#673ab7", link: paths.sports.path },
+      { label: "Évènements", icon: "mdi-calendar-month-outline" ,textcolor:"#FF9052", color: "#1e35b4", link: paths.eventsmenu.path },
+      { label: "Actualités", icon: "mdi-newspaper-variant-multiple-outline" ,textcolor:"white",color: "#673ab7", link: paths.actualities.path },
+      { label: "Comptabilité", icon: "mdi-wallet-outline", textcolor:"#FF9052",color: "#1e35b4", link: paths.manage.path },
+      { label: "Divers", icon: "mdi-dots-horizontal-circle-outline",textcolor:"white",color: "#673ab7", link: "" }
     ]
   }),
   components: {

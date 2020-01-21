@@ -3,12 +3,12 @@
 -->
 <template>
 <div>
-    <TopBar title="Évènements"></TopBar>
+    <TopBar title="Évènements" color="#1e35b4"></TopBar>
     <v-content>
         <v-container fluid>
              <v-row v-for="n in 3" :key="n">
                 <v-col class="d-flex flex-column align-center">
-                  <v-card width="200px" height="200px" class="d-flex flex-column justify-center"
+                  <v-card width="150px" height="150px" class="d-flex flex-column justify-center"
                   color="#1e35b4" link :to="Menu[n-1].link"
                   >
                     <v-card-title v-text="Menu[n - 1].name" style="color:#FF9052;word-break:normal; text-align:center"></v-card-title>

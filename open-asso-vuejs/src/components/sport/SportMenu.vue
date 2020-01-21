@@ -2,7 +2,7 @@
     tostyle-->
 <template>
 <div>
-    <TopBar title="Sports"></TopBar>
+    <TopBar title="Sports" color="#673ab7"></TopBar>
     <v-content>
         <v-container fluid>
 
@@ -17,7 +17,7 @@
               <v-card class="flex d-flex justify-space-around align-center flex-column" 
               :color="Menu[n - 1].color" tile link :to="Menu[n-1].link">
                 <v-card-title primary-title style="text-align: center;word-break:keep-all" class=" align-center orange--text pb-1 pt-3 px-2 flex">
-                  <h4 class="text-xs-center">{{Menu[n - 1].label}}</h4>
+                  <h4 class="white--text text-xs-center">{{Menu[n - 1].label}}</h4>
                 </v-card-title>
                 <v-icon color="white" x-large v-text="Menu[n - 1].icon"></v-icon>
               </v-card>

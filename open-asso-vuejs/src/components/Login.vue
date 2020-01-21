@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Open"></TopBar>
+    <TopBar title="Open" color="#1e35b4"></TopBar>
     <v-content>
       <v-container>
         <v-row align="center" justify="center">

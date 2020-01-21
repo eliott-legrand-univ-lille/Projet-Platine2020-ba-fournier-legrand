@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Actualités" back></TopBar>
+    <TopBar title="Actualités" color="#673ab7" back></TopBar>
 
     <v-content>
         <v-container fluid>

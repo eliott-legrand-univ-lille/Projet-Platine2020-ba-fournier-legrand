@@ -17,6 +17,9 @@ import Matchs from "@/components/sport/Matchs.vue";
 import Strategies from "@/components/sport/Strategies.vue";
 import ActualityList from "@/components/actualities/ActualityList.vue";
 import Stats from "@/components/sport/Stats.vue";
+import ComptaMenu from "@/components/admin/ComptaMenu";
+import BudgetMenu from "@/components/admin/BudgetMenu";
+import AdminMenu from "@/components/admin/AdminMenu";
 
 //Define the routes to the different pages
 const routes = [
@@ -109,7 +112,22 @@ const routes = [
       path: paths.stats.path,
       name: "Statistiques",
       component: Stats
-    }
+    },
+    {
+      path: paths.manage.path,
+      name: "Gestion",
+      component : AdminMenu
+    },
+    {
+      path: paths.accounting.path,
+      name: "Comptabilité",
+      component : ComptaMenu
+    },
+    {
+      path: paths.budget.path,
+      name: "Budget",
+      component : BudgetMenu
+    },
     
 ];
 

@@ -3,7 +3,7 @@
 <!--toscript-->
 <template>
   <div>
-    <TopBar title="Mon Profil" back></TopBar>
+    <TopBar title="Mon Profil" color="#1e35b4" back></TopBar>
     <v-content>
       <v-container fluid>
         

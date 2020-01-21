@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="Créer un événement" back></TopBar>
+    <TopBar title="Créer un événement" color="#1e35b4" back></TopBar>
     <v-content>
       <v-container>
         <v-form ref="form" v-model="valid" lazy-validation>

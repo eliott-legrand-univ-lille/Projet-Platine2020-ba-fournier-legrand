@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app color="#1e35b4" dark>
+    <v-app-bar app :color="color" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       
       <v-btn text icon v-if="back" @click="$router.go(-1)"><v-icon>mdi-arrow-left</v-icon></v-btn>
@@ -55,7 +55,8 @@ export default {
   name: "TopBar",
   props: {
     title: String,
-    back: Boolean
+    back: Boolean,
+    color: String,
   },
   data() {
     return {

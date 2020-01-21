@@ -3,7 +3,7 @@
     toscript (in case of admin type user)-->
 <template name="component-name">
   <div>
-    <TopBar title="Membres" back></TopBar>
+    <TopBar title="Membres" color="#1e35b4" back></TopBar>
     <v-content>
       <v-container fill-height fluid>
        <v-row>
@@ -70,7 +70,7 @@ export default {
 computed: {
   filteredMembers: function(){
     return this.Members.filter((member) => {
-      return member.nom.includes(this.search)
+      return member.nom.toLowerCase().includes(this.search.toLowerCase())
     }); 
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar title="OpenAsso"></TopBar>
+    <TopBar title="OpenAsso" color="#1e35b4"></TopBar>
     <v-content>
       <v-container>
         <v-form ref="form" v-model="valid" lazy-validation>
