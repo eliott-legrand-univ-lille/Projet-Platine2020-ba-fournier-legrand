@@ -23,112 +23,192 @@ import AdminMenu from "@/components/admin/AdminMenu";
 
 //Define the routes to the different pages
 const routes = [
-    {
-      path: paths.home.path,
-      name: "Home",
-      component: Home
+  {
+    path: paths.home.path,
+    name: "Accueil",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
-      path: paths.events.path,
-      name: "Events",
-      component: Events
-    }, 
-    {
-      path: paths.createevent.path,
-      name: "CreateEvent",
-      component: CreateEvent
-    }, 
-    {
-      path: paths.creatematch.path,
-      name: "CreateMatch",
-      component: CreateMatch
-    }, 
-    {
-      path: paths.test.path,
-      name: "Test",
-      component: TestingVue
+    component: Home
+  },
+  {
+    path: paths.events.path,
+    name: "Evénement",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
-      path: paths.userSubscribe.path,
-      name: "Form User",
-      component: FormSubscribeUser
+    component: Events
+  },
+  {
+    path: paths.createevent.path,
+    name: "Créer un événement",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
-      path: paths.assoSubscribe.path,
-      name: "Form Asso",
-      component: FormSubscribeAsso
+    component: CreateEvent
+  },
+  {
+    path: paths.creatematch.path,
+    name: "Créer un match",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
-      path: paths.profile.path,
-      name: "Profil user",
-      component: Profile
+    component: CreateMatch
+  },
+  {
+    path: paths.test.path,
+    name: "Test",
+    component: TestingVue
+  },
+  {
+    path: paths.userSubscribe.path,
+    name: "Form User",
+    component: FormSubscribeUser
+  },
+  {
+    path: paths.assoSubscribe.path,
+    name: "Form Asso",
+    component: FormSubscribeAsso
+  },
+  {
+    path: paths.profile.path,
+    name: "Profil",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
+    component: Profile
+  },
+  {
     path: paths.login.path,
     name: "login",
     component: Login
+  },
+  {
+    path: paths.agenda.path,
+    name: "Agenda",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
-      path: paths.agenda.path,
-      name: "Agenda",
-      component: Agenda
+    component: Agenda
+  },
+  {
+    path: paths.myDocuments.path,
+    name: "Mes Documents",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
-      path: paths.myDocuments.path,
-      name: "Mes Documents",
-      component: Documents
+    component: Documents
+  },
+  {
+    path: paths.sports.path,
+    name: "Sports",
+    meta: {
+      //other route meta...
+      color: "#673ab7",
+      back: true
     },
-    {
-      path: paths.sports.path,
-      name: "Menu Sports",
-      component: SportMenu
+    component: SportMenu
+  },
+  {
+    path: paths.eventsmenu.path,
+    name: "Évènements",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
-      path: paths.eventsmenu.path,
-      name: "Menu Évènements",
-      component: EventMenu
+    component: EventMenu
+  },
+  {
+    path: paths.members.path,
+    name: "Liste des membres",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
     },
-    {
-      path: paths.members.path,
-      name: "Liste des membres",
-      component: MemberList
+    component: MemberList
+  },
+  {
+    path: paths.matchs.path,
+    name: "Liste des matchs",
+    meta: {
+      //other route meta...
+      color: "#673ab7",
+      back: true
     },
-    {
-      path: paths.matchs.path,
-      name: "Liste des matchs",
-      component: Matchs
+    component: Matchs
+  },
+  {
+    path: paths.strats.path,
+    name: "Liste des strats",
+    meta: {
+      //other route meta...
+      color: "#673ab7",
+      back: true
     },
-    {
-      path: paths.strats.path,
-      name: "Liste des strats",
-      component: Strategies
+    component: Strategies
+  },
+  {
+    path: paths.actualities.path,
+    name: "Actualités",
+    meta: {
+      //other route meta...
+      color: "#673ab7",
+      back: true
     },
-    {
-      path: paths.actualities.path,
-      name: "Actualités",
-      component: ActualityList
+    component: ActualityList
+  },
+  {
+    path: paths.stats.path,
+    name: "Statistiques",
+    meta: {
+      //other route meta...
+      color: "#673ab7",
+      back: true
     },
-    {
-      path: paths.stats.path,
-      name: "Statistiques",
-      component: Stats
+    component: Stats
+  },
+  {
+    path: paths.manage.path,
+    name: "Gestion",
+    component: AdminMenu
+  },
+  {
+    path: paths.accounting.path,
+    name: "Comptabilité",
+    meta: {
+      //other route meta...
+      color: "#673ab7",
+      back: true
     },
-    {
-      path: paths.manage.path,
-      name: "Gestion",
-      component : AdminMenu
+    component: ComptaMenu
+  },
+  {
+    path: paths.budget.path,
+    name: "Budget",
+    meta: {
+      //other route meta...
+      color: "#673ab7",
+      back: true
     },
-    {
-      path: paths.accounting.path,
-      name: "Comptabilité",
-      component : ComptaMenu
-    },
-    {
-      path: paths.budget.path,
-      name: "Budget",
-      component : BudgetMenu
-    },
-    
+    component: BudgetMenu
+  },
+
 ];
 
 export default routes;

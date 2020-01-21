@@ -1,28 +1,33 @@
 <template>
-  <div>
-    <TopBar title="Open" color="#1e35b4"></TopBar>
-    <v-content>
-      <v-container>
-        <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
-            <v-form ref="form" v-model="valid" lazy-validation>
-              <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+  <v-container fill-height fluid>
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="8" md="4">
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <v-text-field
+            v-model="email"
+            prepend-icon="mdi-account"
+            :rules="emailRules"
+            label="E-mail"
+            required
+          ></v-text-field>
 
-              <v-text-field v-model="password" :counter="10" label="Password" required></v-text-field>
-
-              <v-btn :disabled="!valid" color="success" class="mr-4" @click="login">Validate</v-btn>
-
-              <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
-            </v-form>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-content>
-  </div>
+          <v-text-field
+            v-model="password"
+            prepend-icon="mdi-key"
+            :counter="10"
+            label="Password"
+            required
+          ></v-text-field>
+          <v-row justify="center">
+            <v-btn :disabled="!valid" color="success" @click="login">Login</v-btn>
+          </v-row>
+        </v-form>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import TopBar from "@/components/commons/TopBar.vue";
 import firebase from "firebase";
 export default {
   data: () => ({
@@ -58,9 +63,6 @@ export default {
           }
         );
     }
-  },
-  components: {
-    TopBar
   }
 };
 </script>

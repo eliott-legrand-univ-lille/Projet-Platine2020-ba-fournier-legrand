@@ -2,46 +2,40 @@
     tostyle
     toscript-->
 <template name="component-name">
-  <div>
-    <TopBar title="Mon Agenda" color="#1e35b4" back></TopBar>
-    <v-content>
-      <v-container fill-height fluid>
-        <v-row align="center" justify="center">
-          <v-col>
-            <v-list subheader three-line v-for="(date, index) in allevents" :key="index">
-              <v-subheader v-text="date.date"></v-subheader>
-              <v-list-item v-for="(event, i) in date.event" :key="i">
-                <v-list-item-avatar>
-                  <v-img  style="background-color:orange;"></v-img>
-                </v-list-item-avatar>
-                <v-list-item-content>
-                  <v-list-item-title v-text="event[0]"></v-list-item-title>
-                  <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event[2]"></v-list-item-subtitle>
-                </v-list-item-content>
-                <v-list-item-action>
-                  <v-list-item-action-text v-text="event[1]"></v-list-item-action-text>
-                </v-list-item-action>
-              </v-list-item>
-            </v-list>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-content>
-  </div>
+  <v-row justify="center">
+    <v-col>
+      <v-list subheader two-line v-for="(date, index) in allevents" :key="index">
+        <v-subheader v-text="date.date"></v-subheader>
+        <v-list-item v-for="(event, i) in date.event" :key="i">
+          <v-list-item-avatar>
+            <v-img style="background-color:orange;"></v-img>
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title v-text="event[0]"></v-list-item-title>
+            <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event[2]"></v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-action>
+            <v-list-item-action-text v-text="event[1]"></v-list-item-action-text>
+          </v-list-item-action>
+        </v-list-item>
+      </v-list>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
-import TopBar from "@/components/commons/TopBar.vue";
 export default {
-  components: {
-    TopBar
-  },
   data: () => ({
     allevents: [
       {
         date: "Aujourd'hui",
         event: [
-          ["Projection match", "19h-20", "Match de l'équipe de France", "img_link"],
+          [
+            "Projection match",
+            "19h-20",
+            "Match de l'équipe de France",
+            "img_link"
+          ],
           ["Barbecue", "18h", "Oulalah du viande", ""]
         ]
       },

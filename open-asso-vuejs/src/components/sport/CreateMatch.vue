@@ -1,7 +1,4 @@
 <template>
-  <div>
-    <TopBar title="Créer un match" color="#673ab7" back></TopBar>
-    <v-content>
       <v-container>
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field
@@ -27,16 +24,10 @@
 
         </v-form>
       </v-container>
-    </v-content>
-  </div>
 </template>
 
 <script>
-import TopBar from "@/components/commons/TopBar.vue";
 export default {
-  components: {
-    TopBar
-  },
   data: () => ({
     valid: true,
     name: "",

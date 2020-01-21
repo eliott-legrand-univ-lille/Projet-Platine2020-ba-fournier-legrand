@@ -1,59 +1,52 @@
 <template>
-  <div>
-    <TopBar title="Créer un événement" color="#1e35b4" back></TopBar>
-    <v-content>
-      <v-container>
-        <v-form ref="form" v-model="valid" lazy-validation>
-          <v-text-field
-            v-model="name"
-            :rules="nameRules"
-            :counter="30"
-            label="Nom de l'événement"
-            required
-          ></v-text-field>
+  <v-content>
+    <v-container>
+      <v-form ref="form" v-model="valid" lazy-validation>
+        <v-text-field
+          v-model="name"
+          :rules="nameRules"
+          :counter="30"
+          label="Nom de l'événement"
+          required
+        ></v-text-field>
 
-          <v-textarea
-            no-resize
-            :counter="148"
-            :rules="descriptionRules"
-            label="Entrer votre description"
-          ></v-textarea>
+        <v-textarea
+          no-resize
+          :counter="148"
+          :rules="descriptionRules"
+          label="Entrer votre description"
+        ></v-textarea>
 
-          <v-dialog ref="dialog" v-model="modal" :return-value.sync="date" persistent>
-            <template v-slot:activator="{ on }">
-              <v-text-field v-model="date" label="Date de l'événement" readonly v-on="on"></v-text-field>
-            </template>
-            <v-date-picker v-model="date" full-width scrollable>
-              <v-spacer></v-spacer>
-              <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
-              <v-btn text color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
-            </v-date-picker>
-          </v-dialog>
+        <v-dialog ref="dialog" v-model="modal" :return-value.sync="date" persistent>
+          <template v-slot:activator="{ on }">
+            <v-text-field v-model="date" label="Date de l'événement" readonly v-on="on"></v-text-field>
+          </template>
+          <v-date-picker v-model="date" full-width scrollable>
+            <v-spacer></v-spacer>
+            <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
+            <v-btn text color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+          </v-date-picker>
+        </v-dialog>
 
-          <v-text-field v-model="address" label="Rue" required></v-text-field>
+        <v-text-field v-model="address" label="Rue" required></v-text-field>
 
-          <v-row>
-            <v-col>
-              <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
-              <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
-            </v-col>
-            <v-col>
-              <v-text-field v-model="postal" :rules="postalRules" label="Code postal" required></v-text-field>
-              <v-btn min-width="150" color="success">Valider</v-btn>
-            </v-col>
-          </v-row>
-        </v-form>
-      </v-container>
-    </v-content>
-  </div>
+        <v-row>
+          <v-col>
+            <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
+            <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
+          </v-col>
+          <v-col>
+            <v-text-field v-model="postal" :rules="postalRules" label="Code postal" required></v-text-field>
+            <v-btn min-width="150" color="success">Valider</v-btn>
+          </v-col>
+        </v-row>
+      </v-form>
+    </v-container>
+  </v-content>
 </template>
 
 <script>
-import TopBar from "@/components/commons/TopBar.vue";
 export default {
-  components: {
-    TopBar
-  },
   data: () => ({
     valid: true,
     name: "",
@@ -78,7 +71,7 @@ export default {
     ],
 
     date: new Date().toISOString().substr(0, 10),
-    modal: false,
+    modal: false
   }),
 
   methods: {
