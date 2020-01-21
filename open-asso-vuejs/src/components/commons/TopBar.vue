@@ -8,7 +8,7 @@
 
         <router-link to="/">
           <v-btn icon>
-            <v-img :src="require('@/assets/logoseul.png')" link to="/" :elevation="hover ? 12 : 2" class="mx-auto" max-width="40" max-height="40"></v-img>
+            <v-img :src="require('@/assets/logoseul.png')" link to="/" max-width="40" max-height="40"></v-img>
           </v-btn>
         </router-link>
 
@@ -67,16 +67,12 @@ export default {
         { title: "Membres", icon: "mdi-account-group", link: paths.members.path },
         { title: "Évènements", icon: "mdi-calendar", link: paths.eventsmenu.path },
         { title: "Sports", icon: "mdi-basketball", link: paths.sports.path },
-<<<<<<< HEAD
+        { title: "Gestion", icon: "mdi-wallet-outline",link: paths.manage.path },
         { title: "Actualités", icon: "mdi-newspaper", link: paths.actualities.path },
         { title: "Login", icon: "mdi-login", link: paths.login.path },
         { title: "S'inscrire", icon: "mdi-login", link: paths.userSubscribe.path },
         { title: "Test", icon: "mdi-help-circle", link: paths.test.path },
         { title: "Créer une Asso", icon: "mdi-briefcase-plus", link: paths.assoSubscribe.path }
-=======
-        {title: "Gestion", icon: "mdi-wallet-outline",link: paths.manage.path },
-        { title: "Actualités", icon: "mdi-newspaper", link: paths.actualities.path }
->>>>>>> d617ad2e983e7c64b3713e6f4ce6d4be2e1817b0
       ]
     };
   }
