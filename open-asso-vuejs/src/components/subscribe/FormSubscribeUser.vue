@@ -1,6 +1,5 @@
 <template>
   <div>
-    <TopBar title="OpenAsso" color="#1e35b4"></TopBar>
     <v-content>
       <v-container>
         <v-form ref="form" v-model="valid" lazy-validation>
@@ -48,7 +47,6 @@
 </template>
 
 <script>
-import TopBar from "@/components/commons/TopBar.vue";
 import firebase from "firebase";
 export default {
   name: "FormSubscribeUser",
@@ -77,10 +75,6 @@ export default {
     items: ["Foot", "Volley", "Basket", "Hockey"],
     password: ""
   }),
-  components: {
-    TopBar
-  },
-
   methods: {
     validate() {
       if (this.$refs.form.validate()) {

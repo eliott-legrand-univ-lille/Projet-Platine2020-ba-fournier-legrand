@@ -1,6 +1,5 @@
 <template>
 <div>
-    <TopBar title="Test"></TopBar>
     <v-content>
         <!-- Provides the application the proper gutter -->
         <v-container fluid>
@@ -14,13 +13,12 @@
 
 <script>
 import FormSubscribeUser from "@/components/subscribe/FormSubscribeUser.vue";
-import TopBar from "@/components/commons/TopBar.vue";
+
 
 export default {
   name: 'TestingVue',
   components: {
       FormSubscribeUser,
-      TopBar
   }
 }
 </script>
