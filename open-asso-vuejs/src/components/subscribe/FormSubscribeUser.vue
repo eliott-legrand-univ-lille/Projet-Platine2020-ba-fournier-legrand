@@ -1,49 +1,45 @@
 <template>
-  <div>
-    <v-content>
-      <v-container>
-        <v-form ref="form" v-model="valid" lazy-validation>
-          <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Nom" required></v-text-field>
+  <v-container>
+    <v-form ref="form" v-model="valid" lazy-validation>
+      <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Nom" required></v-text-field>
 
-          <v-text-field v-model="firstname" label="Prénom"></v-text-field>
+      <v-text-field v-model="firstname" label="Prénom"></v-text-field>
 
-          <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+      <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
 
-          <v-select
-            v-model="select"
-            :items="items"
-            :rules="[v => !!v || 'Item is required']"
-            label="Sport"
-            required
-          ></v-select>
+      <v-select
+        v-model="select"
+        :items="items"
+        :rules="[v => !!v || 'Item is required']"
+        label="Sport"
+        required
+      ></v-select>
 
-          <v-text-field
-            :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="show2 ? 'text' : 'password'"
-            label="Mot de passe"
-            hint="At least 8 characters"
-            class="input-group--focused"
-            @click:append="show2 = !show2"
-          ></v-text-field>
+      <v-text-field
+        :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="show2 ? 'text' : 'password'"
+        label="Mot de passe"
+        hint="At least 8 characters"
+        class="input-group--focused"
+        @click:append="show2 = !show2"
+      ></v-text-field>
 
-          <v-text-field
-            :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
-            v-model="password"
-            :type="show2 ? 'text' : 'password'"
-            label="Confirmer le mot de passe"
-            hint="At least 8 characters"
-            @click:append="show2 = !show2"
-          ></v-text-field>
+      <v-text-field
+        :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+        v-model="password"
+        :type="show2 ? 'text' : 'password'"
+        label="Confirmer le mot de passe"
+        hint="At least 8 characters"
+        @click:append="show2 = !show2"
+      ></v-text-field>
 
-          <v-btn :disabled="!valid" color="success" class="mr-4" @click="signin">Validate</v-btn>
+      <v-btn :disabled="!valid" color="success" class="mr-4" @click="signin">Validate</v-btn>
 
-          <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+      <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
 
-          <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
-        </v-form>
-      </v-container>
-    </v-content>
-  </div>
+      <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
+    </v-form>
+  </v-container>
 </template>
 
 <script>
@@ -75,6 +71,10 @@ export default {
     items: ["Foot", "Volley", "Basket", "Hockey"],
     password: ""
   }),
+<<<<<<< HEAD
+=======
+
+>>>>>>> 84e9636317fa90bd00bf610a4250342219435291
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
@@ -103,7 +103,7 @@ export default {
             // Handle Errors here.
             alert(error);
           });
-          this.$router.push({ name: 'Home'});
+        this.$router.push({ name: "Home" });
       } else {
         this.snackbar = true;
       }

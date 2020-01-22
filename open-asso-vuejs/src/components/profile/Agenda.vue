@@ -2,7 +2,7 @@
     tostyle
     toscript-->
 <template name="component-name">
-  <v-container fluid>
+  <v-container>
     <v-row justify="center">
       <v-col>
         <v-list subheader two-line v-for="(date, index) in allevents" :key="index">

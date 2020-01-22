@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row align="center" justify="center">
+    <v-row justify="center">
       <v-col>
         <v-list subheader two-line v-for="(date, index) in allevents" :key="index">
           <v-subheader v-text="date.date"></v-subheader>
