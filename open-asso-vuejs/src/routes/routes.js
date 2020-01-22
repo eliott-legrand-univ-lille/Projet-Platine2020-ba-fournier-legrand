@@ -29,7 +29,7 @@ const routes = [
     meta: {
       //other route meta...
       color: "#1e35b4",
-      back: true
+      back: false
     },
     component: Home
   },
