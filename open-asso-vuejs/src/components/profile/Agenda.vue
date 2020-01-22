@@ -2,25 +2,27 @@
     tostyle
     toscript-->
 <template name="component-name">
-  <v-row justify="center">
-    <v-col>
-      <v-list subheader two-line v-for="(date, index) in allevents" :key="index">
-        <v-subheader v-text="date.date"></v-subheader>
-        <v-list-item v-for="(event, i) in date.event" :key="i">
-          <v-list-item-avatar>
-            <v-img style="background-color:orange;"></v-img>
-          </v-list-item-avatar>
-          <v-list-item-content>
-            <v-list-item-title v-text="event[0]"></v-list-item-title>
-            <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event[2]"></v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-list-item-action-text v-text="event[1]"></v-list-item-action-text>
-          </v-list-item-action>
-        </v-list-item>
-      </v-list>
-    </v-col>
-  </v-row>
+  <v-container fluid>
+    <v-row justify="center">
+      <v-col>
+        <v-list subheader two-line v-for="(date, index) in allevents" :key="index">
+          <v-subheader v-text="date.date"></v-subheader>
+          <v-list-item v-for="(event, i) in date.event" :key="i">
+            <v-list-item-avatar>
+              <v-img style="background-color:orange;"></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="event[0]"></v-list-item-title>
+              <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event[2]"></v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-list-item-action-text v-text="event[1]"></v-list-item-action-text>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

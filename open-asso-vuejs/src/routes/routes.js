@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: paths.events.path,
-    name: "Evénement",
+    name: "Evénements",
     meta: {
       //other route meta...
       color: "#1e35b4",
@@ -58,7 +58,7 @@ const routes = [
     name: "Créer un match",
     meta: {
       //other route meta...
-      color: "#1e35b4",
+      color: "#673ab7",
       back: true
     },
     component: CreateMatch
@@ -155,7 +155,7 @@ const routes = [
   },
   {
     path: paths.strats.path,
-    name: "Liste des strats",
+    name: "Liste des stratégies",
     meta: {
       //other route meta...
       color: "#673ab7",
@@ -186,6 +186,11 @@ const routes = [
   {
     path: paths.manage.path,
     name: "Gestion",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+      back: true
+    },
     component: AdminMenu
   },
   {
@@ -193,7 +198,7 @@ const routes = [
     name: "Comptabilité",
     meta: {
       //other route meta...
-      color: "#673ab7",
+      color: "#1e35b4",
       back: true
     },
     component: ComptaMenu
