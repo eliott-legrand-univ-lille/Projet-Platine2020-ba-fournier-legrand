@@ -71,7 +71,7 @@ const routes = [
   },
   {
     path: paths.userSubscribe.path,
-    name: "Form User",
+    name: "Inscription",
     component: FormSubscribeUser
   },
   {
@@ -91,7 +91,11 @@ const routes = [
   },
   {
     path: paths.login.path,
-    name: "login",
+    name: "Login",
+    meta: {
+      //other route meta...
+      color: "#1e35b4",
+    },
     component: Login
   },
   {
