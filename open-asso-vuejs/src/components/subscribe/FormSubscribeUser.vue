@@ -71,10 +71,6 @@ export default {
     items: ["Foot", "Volley", "Basket", "Hockey"],
     password: ""
   }),
-<<<<<<< HEAD
-=======
-
->>>>>>> 84e9636317fa90bd00bf610a4250342219435291
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
