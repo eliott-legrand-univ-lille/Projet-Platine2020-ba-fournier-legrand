@@ -8,7 +8,7 @@ toscript for size-->
           width="150px"
           height="150px"
           class="d-flex flex-column justify-center align-center"
-          color="#673ab7"
+          color="#1e35b4"
           link
           :to="Menu[n-1].link"
         >

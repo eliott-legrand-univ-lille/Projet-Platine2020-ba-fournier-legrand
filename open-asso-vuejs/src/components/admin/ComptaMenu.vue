@@ -10,7 +10,7 @@ et également ajouter une nouvelle carte-->
           width="150px"
           height="150px"
           class="d-flex flex-column justify-center align-center"
-          color="#673ab7"
+          color="#1e35b4"
         >
           <v-card-title
             v-text="Menu[n - 1].name"

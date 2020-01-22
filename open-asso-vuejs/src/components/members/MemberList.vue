@@ -27,7 +27,7 @@
         </v-list>
       </v-col>
     </v-row>
-    <v-btn color="orange" dark fixed bottom right fab>
+    <v-btn color="orange" dark fixed bottom right fab link :to="addNewMember">
       <v-icon>mdi-plus</v-icon>
     </v-btn>
   </v-container>
@@ -35,6 +35,7 @@
 
 
 <script>
+import paths from "@/routes/paths.js";
 export default {
   data: () => ({
     Members: [
@@ -49,7 +50,8 @@ export default {
       { nom: "Sean Claude Cheneville", role: "Membre" },
       { nom: "Ada Princius", role: "Membre" }
     ],
-    search: ""
+    search: "",
+    addNewMember: paths.newmember.path,
   }),
   computed: {
     filteredMembers: function() {
