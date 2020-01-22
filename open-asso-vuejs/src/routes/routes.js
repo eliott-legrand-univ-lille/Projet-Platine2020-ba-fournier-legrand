@@ -20,6 +20,7 @@ import Stats from "@/components/sport/Stats.vue";
 import ComptaMenu from "@/components/admin/ComptaMenu";
 import BudgetMenu from "@/components/admin/BudgetMenu";
 import AdminMenu from "@/components/admin/AdminMenu";
+import NewMember from "@/components/members/NewMember"
 
 //Define the routes to the different pages
 const routes = [
@@ -212,12 +213,20 @@ const routes = [
     name: "Budget",
     meta: {
       //other route meta...
-      color: "#673ab7",
+      color: "#1e35b4",
       back: true
     },
     component: BudgetMenu
   },
-
+  {
+    path: paths.newmember.path,
+    name: "Ajouter un membre",
+    meta: {
+      color: "#1e35b4",
+      back: true
+    },
+    component: NewMember
+  },
 ];
 
 export default routes;

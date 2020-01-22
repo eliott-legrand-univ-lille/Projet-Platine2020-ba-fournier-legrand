@@ -7,7 +7,6 @@
         <v-card
           class="flex d-flex justify-space-around align-center flex-column"
           :color="Menu[n - 1].color"
-          tile
           link
           :to="Menu[n-1].link"
         >

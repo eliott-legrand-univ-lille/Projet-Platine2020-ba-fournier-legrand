@@ -61,6 +61,9 @@ const paths = {
     },
     budget:{
         path: "/budget"
+    },
+    newmember:{
+        path:"/newmember"
     }
 }
 export default paths;
