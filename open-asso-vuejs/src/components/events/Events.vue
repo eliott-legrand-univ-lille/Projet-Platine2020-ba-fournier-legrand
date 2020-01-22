@@ -43,7 +43,13 @@
             <v-toolbar-title>Settings</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
-          <p>{{ currentDescription }}</p>
+          <v-list-item three-line>
+            <v-list-item-content>
+              <v-list-item-title class="headline mb-1">{{ currentTitle }}</v-list-item-title>
+              <v-list-item-subtitle>{{ currentDescription }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <p></p>
         </v-card>
       </v-dialog>
     </v-row>
@@ -123,7 +129,6 @@ export default {
               return this.allevents[dateIt].events[eventIt];
             }
           }
-
         }
       }
       return null;
@@ -133,8 +138,14 @@ export default {
           return this.currentEvent.content;
       }
       return null;
+    },
+    currentTitle() {
+        if (this.currentEvent !== null) {
+            return this.currentEvent.title;
+        }
+        return null;
+      }
     }
-  }
 
 };
 </script>
