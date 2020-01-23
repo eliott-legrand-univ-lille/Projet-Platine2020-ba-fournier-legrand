@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import { app } from "../db";
 export default {
   data: () => ({
     valid: true,
@@ -51,7 +51,7 @@ export default {
       this.$refs.form.reset();
     },
     login: function() {
-      firebase
+      app
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(

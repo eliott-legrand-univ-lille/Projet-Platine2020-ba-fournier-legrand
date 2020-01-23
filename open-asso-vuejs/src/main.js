@@ -17,7 +17,6 @@ const router = new VueRouter({
   linkExactActiveClass: "nav-item active"
 });
 
-
 Vue.config.productionTip = false;
 
 new Vue({
