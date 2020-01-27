@@ -30,7 +30,6 @@
 
       <v-text-field v-model="address" label="Rue" required></v-text-field>
 
-<<<<<<< HEAD
         <v-row>
           <v-col>
             <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
@@ -60,21 +59,6 @@
         </v-row>
       </v-dialog>
     </v-container>
-  </v-content>
-=======
-      <v-row>
-        <v-col>
-          <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
-          <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
-        </v-col>
-        <v-col>
-          <v-text-field v-model="postal" :rules="postalRules" label="Code postal" required></v-text-field>
-          <v-btn min-width="150" color="success" @click="validate">Valider</v-btn>
-        </v-col>
-      </v-row>
-    </v-form>
-  </v-container>
->>>>>>> 13b40b44731bf1f351576545fed09446b7e9badd
 </template>
 
 <script>
@@ -102,9 +86,10 @@ export default {
       v => !!v || "Code obligatoire",
       v => (v && v.length == 5) || "Non valide"
     ],
-
+    cotisation: 0,
     date: new Date().toISOString().substr(0, 10),
     modal: false,
+    selected: false,
 
   }),
 

@@ -14,12 +14,14 @@ const firebaseConfig = {
 };
 
 // Get a firebase instance
-export const app = firebase
-  .initializeApp( firebaseConfig );
+firebase.initializeApp( firebaseConfig );
 
 // Get a firestore instance
-export const db= app.firestore();
+export const db= firebase.firestore();
 
 //Get an auth instance
-export const auth = app.auth();
+export const auth = firebase.auth();
+
+export const currentUser = auth.currentUser;
+
 

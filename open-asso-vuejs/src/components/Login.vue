@@ -11,14 +11,10 @@
             required
           ></v-text-field>
 
-          <v-text-field
-            v-model="password"
-            prepend-icon="mdi-key"
-            label="Password"
-            required
-          ></v-text-field>
+          <v-text-field v-model="password" prepend-icon="mdi-key" label="Password" required></v-text-field>
           <v-row justify="center">
             <v-btn :disabled="!valid" color="success" @click="login">Login</v-btn>
+            <v-btn  color="error" @click="logout">logout</v-btn>
           </v-row>
         </v-form>
       </v-col>
@@ -49,18 +45,21 @@ export default {
     reset() {
       this.$refs.form.reset();
     },
-    login: function() {
+    logout(){
+      auth.signOut();
+    },
+    login() {
       auth
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          function() {
-           // eslint-disable-next-line no-console
-           console.log("logged");
-          },
-          function(err) {
-            alert(err);
-          }
-        );
+        .then(user => {
+          this.$store.commit("setCurrentUser", user.user);
+          this.$store.dispatch("fetchUserProfile");
+          this.$router.push("/");
+        })
+        .catch(err => {
+          // eslint-disable-next-line no-console
+          console.log(err);
+        });
     }
   }
 };

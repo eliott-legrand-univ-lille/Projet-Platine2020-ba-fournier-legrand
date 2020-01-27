@@ -81,25 +81,33 @@ export default {
     reset() {
       this.$refs.form.reset();
     },
-    signin: function() {
+    signin() {
       if (this.$refs.form.validate()) {
         auth
           .createUserWithEmailAndPassword(this.email, this.password)
-          .then(cred => {
+          .then(user => {
+            this.$store.commit("setCurrentUser", user);
+
+            // create user obj
             db.collection("users")
-              .doc(cred.user.uid)
+              .doc(user.uid)
               .set({
                 name: this.name,
-                firstname: this.firstname
+                title: this.firstname
+              })
+              .then(() => {
+                this.$store.dispatch("fetchUserProfile");
+                this.$router.push("/");
+              })
+              .catch(err => {
+                // eslint-disable-next-line no-console
+                console.log(err);
               });
           })
-          .catch(function(error) {
-            // Handle Errors here.
-            alert(error);
+          .catch(err => {
+            // eslint-disable-next-line no-console
+            console.log(err);
           });
-        this.$router.push({ name: "Accueil" });
-      } else {
-        this.snackbar = true;
       }
     }
   }
