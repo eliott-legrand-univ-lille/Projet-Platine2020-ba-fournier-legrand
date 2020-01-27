@@ -43,7 +43,8 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import { auth } from "../../db";
+import { db } from "../../db";
 export default {
   name: "FormSubscribeUser",
   data: () => ({
@@ -82,13 +83,10 @@ export default {
     },
     signin: function() {
       if (this.$refs.form.validate()) {
-        firebase
-          .auth()
+        auth
           .createUserWithEmailAndPassword(this.email, this.password)
           .then(cred => {
-            return firebase
-              .firestore()
-              .collection("users")
+            db.collection("users")
               .doc(cred.user.uid)
               .set({
                 name: this.name,
@@ -99,7 +97,7 @@ export default {
             // Handle Errors here.
             alert(error);
           });
-        this.$router.push({ name: "Home" });
+        this.$router.push({ name: "Accueil" });
       } else {
         this.snackbar = true;
       }

@@ -1,51 +1,51 @@
 <template>
-  <v-content>
-    <v-container>
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field
-          v-model="name"
-          :rules="nameRules"
-          :counter="30"
-          label="Nom de l'événement"
-          required
-        ></v-text-field>
+  <v-container>
+    <v-form ref="form" v-model="valid" lazy-validation>
+      <v-text-field
+        v-model="name"
+        :rules="nameRules"
+        :counter="30"
+        label="Nom de l'événement"
+        required
+      ></v-text-field>
 
-        <v-textarea
-          no-resize
-          :counter="148"
-          :rules="descriptionRules"
-          label="Entrer votre description"
-        ></v-textarea>
+      <v-textarea
+        v-model="description"
+        no-resize
+        :counter="148"
+        :rules="descriptionRules"
+        label="Entrer votre description"
+      ></v-textarea>
 
-        <v-dialog ref="dialog" v-model="modal" :return-value.sync="date" persistent>
-          <template v-slot:activator="{ on }">
-            <v-text-field v-model="date" label="Date de l'événement" readonly v-on="on"></v-text-field>
-          </template>
-          <v-date-picker v-model="date" full-width scrollable>
-            <v-spacer></v-spacer>
-            <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
-            <v-btn text color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
-          </v-date-picker>
-        </v-dialog>
+      <v-dialog ref="dialog" v-model="modal" :return-value.sync="date" persistent>
+        <template v-slot:activator="{ on }">
+          <v-text-field v-model="date" label="Date de l'événement" readonly v-on="on"></v-text-field>
+        </template>
+        <v-date-picker v-model="date" full-width scrollable>
+          <v-spacer></v-spacer>
+          <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
+          <v-btn text color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+        </v-date-picker>
+      </v-dialog>
 
-        <v-text-field v-model="address" label="Rue" required></v-text-field>
+      <v-text-field v-model="address" label="Rue" required></v-text-field>
 
-        <v-row>
-          <v-col>
-            <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
-            <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
-          </v-col>
-          <v-col>
-            <v-text-field v-model="postal" :rules="postalRules" label="Code postal" required></v-text-field>
-            <v-btn min-width="150" color="success">Valider</v-btn>
-          </v-col>
-        </v-row>
-      </v-form>
-    </v-container>
-  </v-content>
+      <v-row>
+        <v-col>
+          <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
+          <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
+        </v-col>
+        <v-col>
+          <v-text-field v-model="postal" :rules="postalRules" label="Code postal" required></v-text-field>
+          <v-btn min-width="150" color="success" @click="validate">Valider</v-btn>
+        </v-col>
+      </v-row>
+    </v-form>
+  </v-container>
 </template>
 
 <script>
+import { db } from "../../db";
 export default {
   data: () => ({
     valid: true,
@@ -77,10 +77,19 @@ export default {
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
-        true;
+        db.collection("events").add({
+          name: this.name,
+          description: this.description,
+          date: this.date,
+          address: this.address,
+          city: this.city,
+          postal: this.postal,
+          createdAt: new Date(),
+        });
       }
     },
     reset() {
+      // eslint-disable-next-line no-console
       this.$refs.form.reset();
     }
   }
