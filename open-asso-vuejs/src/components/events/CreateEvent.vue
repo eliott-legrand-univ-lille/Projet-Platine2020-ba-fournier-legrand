@@ -30,6 +30,38 @@
 
       <v-text-field v-model="address" label="Rue" required></v-text-field>
 
+<<<<<<< HEAD
+        <v-row>
+          <v-col>
+            <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
+            <v-btn min-width="150" color="#1e35b4" class="orange--text" >Tous membres</v-btn>
+          </v-col>
+          <v-col>
+            <v-text-field v-model="postal" :rules="postalRules" label="Code postal" required></v-text-field>
+            <v-btn min-width="150" color="#1e35b4" class="orange--text">Sélectionner des membres</v-btn>
+          </v-col>
+        </v-row>
+        Cotisation par membre (en euros)
+        <v-slider v-model="cotisation"  min="0" max="70" color="#FF9052" thumb-label></v-slider>
+        <v-row>
+          <v-col>
+            <v-btn min-width="150" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
+          </v-col>
+          <v-col>
+            <v-btn min-width="150" color="#FF9052" class="white--text">Valider</v-btn>
+          </v-col>
+        </v-row>
+      </v-form>
+
+      <v-dialog
+       v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+        <v-row>
+          <v-checkbox v-model="selected"></v-checkbox>    
+        </v-row>
+      </v-dialog>
+    </v-container>
+  </v-content>
+=======
       <v-row>
         <v-col>
           <v-text-field v-model="city" :rules="cityRules" label="Ville" required></v-text-field>
@@ -42,6 +74,7 @@
       </v-row>
     </v-form>
   </v-container>
+>>>>>>> 13b40b44731bf1f351576545fed09446b7e9badd
 </template>
 
 <script>
@@ -71,7 +104,8 @@ export default {
     ],
 
     date: new Date().toISOString().substr(0, 10),
-    modal: false
+    modal: false,
+
   }),
 
   methods: {
