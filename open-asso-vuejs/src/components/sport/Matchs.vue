@@ -2,15 +2,16 @@
   <v-container>
     <v-row justify="center">
       <v-col>
-        <v-list three-line v-for="n in Content.length" :key="n">
+        <v-list three-line v-for="todo in todos" :key="todo.id">
+            <v-subheader>Saison 2019-2020</v-subheader>
             <v-list-item-avatar>
               <v-img style="background-color:orange;"></v-img>
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title>{{Content[n].title}}</v-list-item-title>
-              <v-list-item-subtitle>Le {{Content[n].date}}</v-list-item-subtitle>
-              <v-list-item-subtitle>Lieu: {{Content[n].adress}}</v-list-item-subtitle>
-              <v-list-item-subtitle>Score: {{Content[n].result}}</v-list-item-subtitle>
+              <v-list-item-title>{{todo.title}}</v-list-item-title>
+              <v-list-item-subtitle>Le {{todo.date}}</v-list-item-subtitle>
+              <v-list-item-subtitle>Lieu: {{todo.address}}</v-list-item-subtitle>
+              <v-list-item-subtitle>Score: {{todo.result}}</v-list-item-subtitle>
             </v-list-item-content>
         </v-list>
       </v-col>
@@ -19,10 +20,10 @@
 </template>
 
 <script>
-import { db } from "../../db"
+import { db } from '../../db'
 export default {
   data: () => ({
-    poeut: [
+    Content: [
       {
         season: "Saison 2019-2020"
       },
@@ -39,10 +40,10 @@ export default {
         result: "5-3"
       }
     ],
-    Content: [],
+    todos: [],
   }),
    firestore: {
-    Content: db.collection('match'),
+    todos: db.collection('match'),
   },
 };
 </script>
