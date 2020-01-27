@@ -2,7 +2,9 @@
   <div>
     <v-content>
       <OkDialog title="Invitation envoyée" message="Invitation envoyée way !"
-       color="1e35b4" btn1="Envoyer une autre" btn2="Retour Accueil" :dial.sync="this.dia"></OkDialog>
+       color="#1e35b4" btn1="Envoyer une autre" btn2="Retour Accueil" :dial="this.dia"
+       :link1="again" :link2="done"
+       ></OkDialog>
       <v-container>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
@@ -30,6 +32,7 @@
 
 <script>
 import OkDialog from "@/components/dialogue/OkDialog.vue";
+import paths from "@/routes/paths.js";
 export default {
   data: () => ({
     valid: true,
@@ -42,6 +45,8 @@ export default {
     msgRules: [msg => !!msg || "Vous devez saisir un message d'invitation"],
     items:["Membre", "Secrétaire", "Vice-Président", "Président", "Trésorier"],
     dia : false,
+    again : paths.newmember.path,
+    done : paths.members.path,
   }),
   components: {
     OkDialog
