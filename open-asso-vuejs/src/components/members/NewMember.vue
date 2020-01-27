@@ -3,13 +3,13 @@
     <v-content>
       <OkDialog title="Invitation envoyée" message="Invitation envoyée way !"
        color="#1e35b4" btn1="Envoyer une autre" btn2="Retour Accueil" :dial="this.dia"
-       :link1="again" :link2="done"
+       :link1="again" :link2="done" @created="closedialogue"
        ></OkDialog>
       <v-container>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
             <v-form ref="form" v-model="valid" lazy-validation>
-              <v-select :items="items" filled label="Filled style" append-icon="mdi-plus" value="Membre"></v-select>
+              <v-select v-model="defaultVal" :items="items" filled label="Filled style" append-icon="mdi-plus"></v-select>
               <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
 
               <v-textarea
@@ -21,7 +21,7 @@
 
               <v-btn :disabled="!valid" color="#1e35b4" 
               class="mr-4 orange--text" @click.stop="dia=true">Envoyer</v-btn>
-              <v-btn @click="$router.go(-1)">Annuler</v-btn>
+              <v-btn color="#1e35b4" class="mr-4 orange--text" @click="$router.go(-1)">Annuler</v-btn>
             </v-form>
           </v-col>
         </v-row>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+//ici l'utilisateur pourra stocker son message d'invitation
 import OkDialog from "@/components/dialogue/OkDialog.vue";
 import paths from "@/routes/paths.js";
 export default {
@@ -47,9 +48,19 @@ export default {
     dia : false,
     again : paths.newmember.path,
     done : paths.members.path,
+    defaultVal : "Membre",
   }),
+  
   components: {
     OkDialog
   },
+  methods: {
+    closedialogue(){
+      this.dia=false;
+      this.email = "";
+      this.invitation = "";
+      this.defaultVal = "Membre";
+    }
+  }
 };
 </script>

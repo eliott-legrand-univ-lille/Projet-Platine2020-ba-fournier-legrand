@@ -6,8 +6,8 @@
         <v-card-text>{{message}}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn :color="color" text :to="link1">{{btn1}}</v-btn>
-          <v-btn :color="color" text :to="link2">{{btn2}}</v-btn>
+          <v-btn :color="color" text :to="link1" @click.stop="created">{{btn1}}</v-btn>
+          <v-btn :color="color" text :to="link2" @click="$router.go(-1)">{{btn2}}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -27,6 +27,11 @@ export default {
     link1: String,
     btn2: String,
     link2:String,
+  },
+  methods : {
+    created() {
+    this.$emit('created');
+  },
   },
   data(){
     return {
