@@ -14,7 +14,6 @@
           <v-text-field
             v-model="password"
             prepend-icon="mdi-key"
-            :counter="10"
             label="Password"
             required
           ></v-text-field>
@@ -28,7 +27,7 @@
 </template>
 
 <script>
-import { app } from "../db";
+import { auth } from "../db";
 export default {
   data: () => ({
     valid: true,
@@ -51,12 +50,12 @@ export default {
       this.$refs.form.reset();
     },
     login: function() {
-      app
-        .auth()
+      auth
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           function() {
-            alert("logged");
+           // eslint-disable-next-line no-console
+           console.log("logged");
           },
           function(err) {
             alert(err);
