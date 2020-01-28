@@ -12,11 +12,22 @@
         </v-card>
       </v-col>
     </v-row>
+
+    <!-- create an event -->
+    <v-fab-transition>
+      <v-btn color="orange" dark fixed bottom right fab link :to="createActuPath">
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </v-fab-transition>
   </v-container>
 </template>
+
 <script>
+import paths from "@/routes/paths.js";
+
 export default {
   data: () => ({
+    createActuPath: paths.newactu.path,
     Content: [
       {
         img: "",
@@ -26,8 +37,7 @@ export default {
       },
       {
         img: "",
-        title:
-          "Bonne année à tous Agaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiin !",
+        title: "Bonne année à tous Again !",
         author: "Allan, le 10/01/20",
         text: ""
       }

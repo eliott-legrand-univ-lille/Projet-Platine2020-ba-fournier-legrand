@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { db } from "../../db";
+import { db,currentUser } from "../../db";
 export default {
   data: () => ({
     valid: true,
@@ -48,6 +48,7 @@ export default {
       if (this.$refs.form.validate()) {
         db.collection("match")
           .add({
+            userID:currentUser.uid,
             title: this.name,
             date: this.date,
             address: this.place,

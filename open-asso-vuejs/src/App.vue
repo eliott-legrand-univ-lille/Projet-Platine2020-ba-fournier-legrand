@@ -23,6 +23,15 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item @click="logout">
+          <v-list-item-icon>
+            <v-icon> mdi-logout</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -52,6 +61,7 @@
 
 <script>
 import paths from "@/routes/paths.js";
+import { auth } from "./db";
 export default {
   name: "App",
   data() {
@@ -95,6 +105,20 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    logout() {
+      auth
+        .signOut()
+        .then(() => {
+          this.$store.dispatch("clearData");
+          this.$router.push("/login");
+        })
+        .catch(err => {
+          // eslint-disable-next-line no-console
+          console.log(err);
+        });
+    }
   }
 };
 </script>

@@ -5,7 +5,7 @@
         <v-list subheader two-line v-for="(date, index) in allevents" :key="index">
           <v-subheader v-text="date.date"></v-subheader>
           <v-list-item v-for="(event, i) in date.events" :key="i" 
-            @click="setCurrentEventId(event.id); dialog = true"
+            @click="setCurrentEventId(event.id)"
           >
             <v-list-item-avatar>
               <v-img style="background-color:orange;"></v-img>
@@ -31,38 +31,28 @@
       </v-btn>
     </v-fab-transition>
 
-    <!-- Show event details: solution from https://stackoverflow.com/a/53409893 -->
-    <v-row justify="center">
-      <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-        
-        <v-card>
-          <v-toolbar dark color="primary">
-            <v-btn icon dark @click="dialog = false">
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-            <v-toolbar-title>Settings</v-toolbar-title>
-            <v-spacer></v-spacer>
-          </v-toolbar>
-          <v-list-item three-line>
-            <v-list-item-content>
-              <v-list-item-title class="headline mb-1">{{ currentTitle }}</v-list-item-title>
-              <v-list-item-subtitle>{{ currentDescription }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <p></p>
-        </v-card>
-      </v-dialog>
-    </v-row>
+    
+
+    <ContentDialog 
+      :title=currentTitle 
+      :message=currentDescription
+      :dialog.sync="dialog"
+      :color="$route.meta.color"
+    ></ContentDialog>
 
   </v-container>
 </template>
 <script>
 import paths from "@/routes/paths.js";
-import { db } from "../../db";
+import { db } from "@/db.js";
+import ContentDialog from "@/components/dialogue/ContentDialog.vue";
 
 export default {
   firestore: {
     documents: db.collection("documents")
+  },
+  components: {
+    ContentDialog
   },
   data: () => ({
     dialog: false,
@@ -74,18 +64,10 @@ export default {
         date: "Aujourd'hui",
         events: [
           {
-            id: 1,
-            title: "Projection match",
-            hour: "19h-20",
-            content: "Event 1",
-            img: "img_link"  
+            id: 1, title: "Projection match", hour: "19h-20", content: "Event 1", img: "img_link"  
           },
           {
-            id: 2,
-            title: "Projection match",
-            hour: "19h-20",
-            content: "Event 2",
-            img: "img_link"          
+            id: 2, title: "Projection match", hour: "19h-20", content: "Event 2", img: "img_link"          
           }
         ]
       },
@@ -93,34 +75,20 @@ export default {
         date: "Demain",
         events: [
             { 
-              id: 3,
-              title: "Projection match",
-              hour: "19h-20",
-              content: "Event 3",
-              img: "img_link"
+              id: 3, title: "Projection match", hour: "19h-20", content: "Event 3", img: "img_link"
             }
           ]
-      },
-      {
-        date: "15/02/2020",
-        events: [
-            {
-              id: 4,
-              title: "Projection match",
-              hour: "19h-20",
-              content: "Event 4",
-              img: "img_link"
-            }
-        ]
       }
     ]
   }),
   methods: {
       setCurrentEventId(id) {
           this.currentEventId = id;
+          this.dialog = true
       }
   },
   computed: {
+    // trigger when an event is clicked and return the content of the event clicked 
     currentEvent() {
       if (this.currentEventId !== null) {
         for(var dateIt=0;dateIt<this.allevents.length;dateIt++){

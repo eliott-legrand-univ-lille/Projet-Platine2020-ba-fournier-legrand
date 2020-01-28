@@ -1,8 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-const fb = require('./db')
+const fb = require('./db.js')
 
 Vue.use(Vuex)
+
+fb.auth.onAuthStateChanged(user => {
+    if (user) {
+        store.commit('setCurrentUser', user)
+        store.dispatch('fetchUserProfile')
+    }
+})
 
 export const store = new Vuex.Store({
     state: {
@@ -10,6 +17,10 @@ export const store = new Vuex.Store({
         userProfile: {}
     },
     actions: {
+        clearData({ commit }){
+            commit('setCurrentUser',null)
+            commit('setUserProfile',{})
+        },
         fetchUserProfile({ commit, state }) {
             fb.db.collection("users").doc(state.currentUser.uid).get().then(res => {
                 commit('setUserProfile', res.data())

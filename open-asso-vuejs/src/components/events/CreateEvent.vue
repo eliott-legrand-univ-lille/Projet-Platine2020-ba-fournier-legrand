@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { db } from "../../db";
+import { db } from "@/db";
 import OkDialog from "@/components/dialogue/OkDialog.vue";
 import paths   from "@/routes/paths.js";
 

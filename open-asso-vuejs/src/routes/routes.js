@@ -25,6 +25,7 @@ import ComptaMenu from "@/components/admin/ComptaMenu";
 import BudgetMenu from "@/components/admin/BudgetMenu";
 import AdminMenu from "@/components/admin/AdminMenu";
 import NewMember from "@/components/members/NewMember"
+import CreateActuality from "@/components/actualities/CreateActuality.vue";
 
 Vue.use(Router)
 
@@ -246,6 +247,15 @@ const router = new Router({
         back: true
       },
       component: NewMember
+    },
+    {
+      path: paths.newactu.path,
+      name: "Ajouter une actualité",
+      meta: {
+        color: "#673ab7",
+        back: true
+      },
+      component: CreateActuality
     },
   ]
 });
