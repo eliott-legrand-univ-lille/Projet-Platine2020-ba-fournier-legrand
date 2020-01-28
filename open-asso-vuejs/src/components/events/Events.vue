@@ -37,8 +37,8 @@
       :title=currentTitle 
       :message=currentDescription
       :dialog.sync="dialog"
-    >
-    </ContentDialog>
+      :color="$route.meta.color"
+    ></ContentDialog>
 
   </v-container>
 </template>
@@ -64,18 +64,10 @@ export default {
         date: "Aujourd'hui",
         events: [
           {
-            id: 1,
-            title: "Projection match",
-            hour: "19h-20",
-            content: "Event 1",
-            img: "img_link"  
+            id: 1, title: "Projection match", hour: "19h-20", content: "Event 1", img: "img_link"  
           },
           {
-            id: 2,
-            title: "Projection match",
-            hour: "19h-20",
-            content: "Event 2",
-            img: "img_link"          
+            id: 2, title: "Projection match", hour: "19h-20", content: "Event 2", img: "img_link"          
           }
         ]
       },
@@ -83,25 +75,9 @@ export default {
         date: "Demain",
         events: [
             { 
-              id: 3,
-              title: "Projection match",
-              hour: "19h-20",
-              content: "Event 3",
-              img: "img_link"
+              id: 3, title: "Projection match", hour: "19h-20", content: "Event 3", img: "img_link"
             }
           ]
-      },
-      {
-        date: "15/02/2020",
-        events: [
-            {
-              id: 4,
-              title: "Projection match",
-              hour: "19h-20",
-              content: "Event 4",
-              img: "img_link"
-            }
-        ]
       }
     ]
   }),
@@ -112,6 +88,7 @@ export default {
       }
   },
   computed: {
+    // trigger when an event is clicked and return the content of the event clicked 
     currentEvent() {
       if (this.currentEventId !== null) {
         for(var dateIt=0;dateIt<this.allevents.length;dateIt++){
@@ -136,12 +113,6 @@ export default {
         }
         return null;
       }
-    },
-    currentDialog(){
-      if(this.dialog !== null){
-              return this.dialog;
-      }
-      return null;
     }
 
 };
