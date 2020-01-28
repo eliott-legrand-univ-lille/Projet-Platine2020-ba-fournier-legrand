@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-form ref="form" lazy-validation>
+        <v-form ref="form" v-model="valid" lazy-validation>
 
             <v-text-field
                 v-model="title"
@@ -20,7 +20,7 @@
                     <v-btn min-width="150" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
                 </v-col>
                 <v-col>
-                    <v-btn min-width="150" color="#FF9052" class="white--text">Valider</v-btn>
+                    <v-btn min-width="150" color="#FF9052" @click="validate" class="white--text">Valider</v-btn>
                 </v-col>
             </v-row>
         </v-form>
@@ -34,8 +34,12 @@ export default {
       valid: true
   }),
   methods: {
+    validate() {
+        if (this.$refs.form.validate()) { 
+            alert('OuchOuch')
+        }
+    },
     reset() {
-        // eslint-disable-next-line no-console
         this.$refs.form.reset();
     }
   }
