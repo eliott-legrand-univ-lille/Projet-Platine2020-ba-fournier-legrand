@@ -11,10 +11,19 @@
             required
           ></v-text-field>
 
-          <v-text-field v-model="password" prepend-icon="mdi-key" label="Password" required></v-text-field>
+          <v-text-field
+            v-model="password"
+            :type="showPass ? 'text' : 'password'"
+            :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append="showPass = !showPass"
+            prepend-icon="mdi-key"
+            label="Password"
+            required
+          ></v-text-field>
+          
           <v-row justify="center">
             <v-btn :disabled="!valid" color="success" @click="login">Login</v-btn>
-            <v-btn  color="error" @click="logout">logout</v-btn>
+            <v-btn color="error" @click="logout">logout</v-btn>
           </v-row>
         </v-form>
       </v-col>
@@ -29,6 +38,7 @@ export default {
     valid: true,
     email: "",
     password: "",
+    showPass: false,
     emailRules: [
       v => !!v || "E-mail is required",
       v => /.+@.+\..+/.test(v) || "E-mail must be valid"
@@ -45,7 +55,7 @@ export default {
     reset() {
       this.$refs.form.reset();
     },
-    logout(){
+    logout() {
       auth.signOut();
     },
     login() {

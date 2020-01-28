@@ -7,14 +7,6 @@
 
       <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
 
-      <v-select
-        v-model="select"
-        :items="items"
-        :rules="[v => !!v || 'Item is required']"
-        label="Sport"
-        required
-      ></v-select>
-
       <v-text-field
         :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
         :type="show2 ? 'text' : 'password'"
@@ -68,8 +60,6 @@ export default {
       v => !!v || "E-mail is required",
       v => /.+@.+\..+/.test(v) || "E-mail must be valid"
     ],
-    select: null,
-    items: ["Foot", "Volley", "Basket", "Hockey"],
     password: ""
   }),
   methods: {
