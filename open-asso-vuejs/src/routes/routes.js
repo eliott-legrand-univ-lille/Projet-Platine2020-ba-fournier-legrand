@@ -32,6 +32,9 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
+    { path: paths.all.path,
+     redirect: paths.home.path 
+    },
     {
       path: paths.home.path,
       name: "Accueil",
@@ -39,7 +42,7 @@ const router = new Router({
         //other route meta...
         color: "#1e35b4",
         back: false,
-        requiresAuth: true
+        requiresAuth: false
       },
       component: Home
     },
@@ -50,7 +53,7 @@ const router = new Router({
         //other route meta...
         color: "#1e35b4",
         back: true,
-        requiresAuth: true,
+        requiresAuth: false,
       },
       component: Events
     },
@@ -78,6 +81,12 @@ const router = new Router({
     {
       path: paths.test.path,
       name: "Test",
+      meta: {
+        //other route meta...
+        color: "#673ab7",
+        back: true,
+        requiresAuth: true
+      },
       component: TestingVue
     },
     {

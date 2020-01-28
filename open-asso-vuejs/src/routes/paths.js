@@ -1,4 +1,7 @@
 const paths = {
+    all: {
+        path: "*"
+    },
     home: {
         path: "/"
     },
