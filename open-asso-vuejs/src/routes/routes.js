@@ -64,7 +64,7 @@ const router = new Router({
         //other route meta...
         color: "#1e35b4",
         back: true,
-        requiresAuth: true
+        requiresAuth: false
       },
       component: CreateEvent
     },
