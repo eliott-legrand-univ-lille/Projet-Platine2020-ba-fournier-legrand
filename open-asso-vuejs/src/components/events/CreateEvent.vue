@@ -62,9 +62,10 @@
 </template>
 
 <script>
-import { db } from "../../db";
+import { db } from "@/db";
 export default {
   data: () => ({
+    dialog: false,
     valid: true,
     name: "",
     nameRules: [

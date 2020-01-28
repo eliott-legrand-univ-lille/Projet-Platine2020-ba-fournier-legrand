@@ -67,6 +67,9 @@ const paths = {
     },
     newmember:{
         path:"/newmember"
+    },
+    newactu:{
+        path:"/newactu"
     }
 }
 export default paths;
