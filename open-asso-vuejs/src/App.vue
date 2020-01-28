@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" app temporary>
+    <v-navigation-drawer  v-if="currentUser" v-model="drawer" app temporary>
       <v-list-item>
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title>John Leider</v-list-item-title>
+          <v-list-item-title v-text="!currentUser ? 'John Leider ' : userProfile.name">Jr</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -36,7 +36,7 @@
     </v-navigation-drawer>
 
     <v-app-bar app :color="$route.meta.color" dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon v-if="currentUser" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <router-link to="/">
         <v-btn icon>
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { mapState }  from 'vuex';
 import paths from "@/routes/paths.js";
 import { auth } from "./db";
 export default {
@@ -105,6 +106,9 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    ...mapState(['currentUser','userProfile'])
   },
   methods: {
     logout() {

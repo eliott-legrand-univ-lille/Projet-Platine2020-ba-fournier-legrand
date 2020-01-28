@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import { db,currentUser } from "../../db";
+import { mapState } from "vuex";
+import { db } from "../../db";
 export default {
   data: () => ({
     valid: true,
@@ -42,17 +43,20 @@ export default {
     date: new Date().toISOString().substr(0, 10),
     modal: false
   }),
-
+  computed: {
+    ...mapState(['userProfile','currentUser'])
+  },
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
         db.collection("match")
           .add({
-            userID:currentUser.uid,
+            userID: this.currentUser.uid,
+            userName: this.userProfile.name,
             title: this.name,
             date: this.date,
-            address: this.place,
-            result: "",
+            address: this.address,
+            result: "Inconnu",
             createdAt: new Date()
           })
           .then(function(docRef) {
