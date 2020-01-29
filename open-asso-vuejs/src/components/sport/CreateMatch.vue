@@ -21,7 +21,7 @@
           <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
         </v-col>
         <v-col>
-          <v-btn min-width="150" color="success" @click="validate">Valider</v-btn>
+          <v-btn :disabled="!valid" min-width="150" color="success" @click="validate">Valider</v-btn>
         </v-col>
       </v-row>
     </v-form>

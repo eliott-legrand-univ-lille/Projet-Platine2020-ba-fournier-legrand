@@ -14,8 +14,8 @@
         <div class="my-2">membre depuis le 29/08/2018</div>
 
         <div class="my-2">
-          <v-btn color="#1e35b4" min-width="200">
-            <span class="white--text">Modifier la photo</span>
+          <v-btn color="#1e35b4" min-width="200" ink :to="updateProfilPath">
+            <span class="white--text">Modifier le profil</span>
           </v-btn>
         </div>
         <div class="my-2">
@@ -42,8 +42,10 @@
 import paths from "@/routes/paths.js";
 export default {
   name: "Profile",
+  
   data() {
     return {
+      updateProfilPath:  paths.updateProfil.path,
       docPath: paths.myDocuments.path,
       agendaPath: paths.agenda.path
     };

@@ -9,6 +9,7 @@ import TestingVue from "@/components/TestingVue.vue";
 import FormSubscribeAsso from "@/components/subscribe/FormSubscribeAsso.vue";
 import paths from "@/routes/paths.js";
 import Profile from "@/components/profile/Profile";
+import UpdateProfile from "@/components/profile/UpdateProfile.vue";
 import Login from "@/components/Login";
 import Agenda from "@/components/profile/Agenda";
 import Documents from "@/components/profile/Documents";
@@ -109,6 +110,16 @@ const router = new Router({
         back: true
       },
       component: Profile
+    },
+    {
+      path: paths.updateProfil.path,
+      name: "Modifier le profil",
+      meta: {
+        //other route meta...
+        color: "#1e35b4",
+        back: true
+      },
+      component: UpdateProfile
     },
     {
       path: paths.login.path,

@@ -26,6 +26,9 @@ const paths = {
     login:{
         path: "/login"
     },
+    updateProfil: {
+        path: "/profile/update-profil"
+    },
     agenda: {
         path: "/profile/agenda"
     },
