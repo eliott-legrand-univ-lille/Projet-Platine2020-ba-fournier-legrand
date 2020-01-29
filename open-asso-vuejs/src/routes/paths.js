@@ -59,14 +59,8 @@ const paths = {
     stats:{
         path: "/stats"
     },
-    manage:{
-        path:"/manage-menu"
-    },
     accounting:{
         path: "/accounting"
-    },
-    budget:{
-        path: "/budget"
     },
     newmember:{
         path:"/newmember"

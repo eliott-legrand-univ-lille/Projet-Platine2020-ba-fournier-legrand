@@ -57,11 +57,11 @@ export default {
         link: paths.actualities.path
       },
       {
-        label: "Gestion",
+        label: "Comptabilité",
         icon: "mdi-wallet-outline",
         textcolor: "#FF9052",
         color: "#1e35b4",
-        link: paths.manage.path
+        link: paths.accounting.path
       },
       {
         label: "Divers",
