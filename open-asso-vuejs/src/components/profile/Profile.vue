@@ -9,7 +9,7 @@
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
         </v-avatar>
 
-        <div class="my-2">Jonathan Lee</div>
+        <div class="my-2" v-text="!currentUser ? 'John Leider ' : userProfile.name"></div>
 
         <div class="my-2">membre depuis le 29/08/2018</div>
 
@@ -39,16 +39,19 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import paths from "@/routes/paths.js";
 export default {
   name: "Profile",
   
-  data() {
-    return {
+  data:() => ({
+     
       updateProfilPath:  paths.updateProfil.path,
       docPath: paths.myDocuments.path,
       agendaPath: paths.agenda.path
-    };
-  }
+  }),
+   computed: {
+    ...mapState(['currentUser','userProfile'])
+  },
 };
 </script>
