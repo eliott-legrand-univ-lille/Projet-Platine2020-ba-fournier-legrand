@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <v-navigation-drawer  v-if="currentUser" v-model="drawer" app temporary>
+    <!-- v-if="currentUser" -->
+    <v-navigation-drawer   v-model="drawer" app temporary>
       <v-list-item>
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
@@ -36,7 +37,8 @@
     </v-navigation-drawer>
 
     <v-app-bar app :color="$route.meta.color" dark>
-      <v-app-bar-nav-icon v-if="currentUser" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <!--v-if="currentUser"-->
+      <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <router-link to="/">
         <v-btn icon>

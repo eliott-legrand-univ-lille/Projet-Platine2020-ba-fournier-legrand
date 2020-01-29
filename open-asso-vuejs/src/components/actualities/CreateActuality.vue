@@ -5,12 +5,13 @@
             <v-text-field
                 v-model="title"
                 :counter="100"
+                :rules="titleRules"
                 label="Titre de l'article"
                 required
             ></v-text-field>
 
             <v-textarea
-                v-model="description"
+                v-model="content"
                 :counter="1000"
                 label="Entrer votre description"
             ></v-textarea>
@@ -27,18 +28,43 @@
     </v-container>
 </template>
 <script>
+import { mapState } from "vuex";
+import { db } from "@/db";
+
 export default {
-  data: () => ({
-      title: "",
-      description: "",
-      valid: true
-  }),
-  methods: {
-    validate() {
-        if (this.$refs.form.validate()) { 
-            alert('OuchOuch')
-        }
+    data: () => ({
+        title: "",
+        titleRules: [
+            v => !!v || "Le titre est obligatoire",
+            v => (v && v.length <= 100) || "Le titre doit faire moins de 100 caractères"
+        ],
+        content: "",
+        valid: true
+    }),
+    computed: {
+        ...mapState(['userProfile','currentUser'])
     },
+    methods: {
+        validate() {
+            if (this.$refs.form.validate()) { 
+                db.collection("articles")
+                    .add({
+                        userID: this.currentUser.uid,
+                        userName: this.userProfile.name,
+                        title: this.title,
+                        content: this.content,
+                        createdAt: new Date()
+                    })
+                    .then(function(docRef) {
+                        // eslint-disable-next-line no-console
+                        console.log("Document written with ID: ", docRef);
+                    })
+                    .catch(function(error) {
+                        // eslint-disable-next-line no-console
+                        console.error("Error adding document: ", error);
+                    });              
+            }
+        },
     reset() {
         this.$refs.form.reset();
     }

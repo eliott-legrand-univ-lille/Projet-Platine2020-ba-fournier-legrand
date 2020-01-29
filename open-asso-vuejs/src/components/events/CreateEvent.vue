@@ -52,7 +52,7 @@
           <v-btn min-width="150" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
         </v-col>
         <v-col>
-          <v-btn min-width="150" color="#FF9052" class="white--text" @click.stop="confirm = true">Valider</v-btn>
+          <v-btn min-width="150" color="#FF9052" class="white--text" @click.stop="validate" @click="confirm=true">Valider</v-btn>
         </v-col>
       </v-row>
     </v-form>
@@ -63,7 +63,7 @@
       <v-row v-for="(member, i) in allmembers" :key="i" style="width: 85%; margin-left: 5%">
         <v-checkbox v-model="selected" :label="member.nom" :value="member.id"></v-checkbox>
       </v-row>
-      <v-btn @click="dialog = false" >{{selected.length}} membres sélectionné</v-btn>
+      <v-btn @click="dialog = false" >{{selected.length}} membres sélectionnés</v-btn>
       </v-card>
       </v-container>
     </v-dialog>
@@ -79,11 +79,12 @@
 import { db } from "@/db";
 import OkDialog from "@/components/dialogue/OkDialog.vue";
 import paths   from "@/routes/paths.js";
+import { mapState }  from 'vuex';
 
 export default {
   data: () => ({
-    again : paths.newmember.path,
-    done : paths.members.path,
+    again : paths.eventsmenu.path,
+    done : paths.home.path,
     confirm : false,
     valid: true,
     name: "",
@@ -112,13 +113,17 @@ export default {
     selected: [],
     allmembers : [],
     dialog : false,
+    //currentUser : {},
   }),
+  computed: {
+    ...mapState(['currentUser','userProfile'])
+  },
 
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
         //récupérer l'ID de l'évènement
-        db.collection("events").add({
+        let event = db.collection("events").add({
           name: this.name,
           description: this.description,
           date: this.date,
@@ -127,10 +132,16 @@ export default {
           postal: this.postal,
           createdAt: new Date(),
           toInvite : this.selected,
-          //ajouter les membres à qui il faut envoyer une invitation (leurs ID)
-          //les participants à l'évènement par défaut l'utilisateur qui organise est dans la liste, on fera un update à chaque fois qu'un participant accepte
+          fees : this.cotisation,
+          createdBy : this.currentUser.uid,
+          participant : [this.currentUser.uid],
         });
-
+        
+       /* eslint-disable no-console */
+        let mam;
+        console.log(event.then(data => mam = data.id));
+        console.log(mam);
+       /* eslint-enable no-console */
         if(this.selected.length > 0){
           //ajout des nouvelles notifications
           this.selected.forEach(element => {
@@ -138,7 +149,7 @@ export default {
               date: Date.now(),
               titre: "Vous avez reçu une invitation à un évènement",
               user : element,
-              //on initialise le créateur 
+              source : this.userProfile,
               //on le lie a l'évènement nouvellement créé
               type: "event",
 

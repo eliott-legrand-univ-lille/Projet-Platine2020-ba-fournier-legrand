@@ -30,7 +30,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { db } from "../../db";
+import { db } from "@/db";
 export default {
   data: () => ({
     valid: true,
