@@ -26,6 +26,9 @@ const paths = {
     login:{
         path: "/login"
     },
+    updateProfil: {
+        path: "/profile/update-profil"
+    },
     agenda: {
         path: "/profile/agenda"
     },
@@ -56,14 +59,8 @@ const paths = {
     stats:{
         path: "/stats"
     },
-    manage:{
-        path:"/manage-menu"
-    },
     accounting:{
         path: "/accounting"
-    },
-    budget:{
-        path: "/budget"
     },
     newmember:{
         path:"/newmember"

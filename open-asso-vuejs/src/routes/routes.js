@@ -9,6 +9,7 @@ import TestingVue from "@/components/TestingVue.vue";
 import FormSubscribeAsso from "@/components/subscribe/FormSubscribeAsso.vue";
 import paths from "@/routes/paths.js";
 import Profile from "@/components/profile/Profile";
+import UpdateProfile from "@/components/profile/UpdateProfile.vue";
 import Login from "@/components/Login";
 import Agenda from "@/components/profile/Agenda";
 import Documents from "@/components/profile/Documents";
@@ -21,9 +22,7 @@ import Matchs from "@/components/sport/Matchs.vue";
 import Strategies from "@/components/sport/Strategies.vue";
 import ActualityList from "@/components/actualities/ActualityList.vue";
 import Stats from "@/components/sport/Stats.vue";
-import ComptaMenu from "@/components/admin/ComptaMenu";
-import BudgetMenu from "@/components/admin/BudgetMenu";
-import AdminMenu from "@/components/admin/AdminMenu";
+import Accounting from "@/components/admin/Accounting.vue";
 import NewMember from "@/components/members/NewMember"
 import CreateActuality from "@/components/actualities/CreateActuality.vue";
 
@@ -109,6 +108,16 @@ const router = new Router({
         back: true
       },
       component: Profile
+    },
+    {
+      path: paths.updateProfil.path,
+      name: "Modifier le profil",
+      meta: {
+        //other route meta...
+        color: "#1e35b4",
+        back: true
+      },
+      component: UpdateProfile
     },
     {
       path: paths.login.path,
@@ -210,16 +219,6 @@ const router = new Router({
       component: Stats
     },
     {
-      path: paths.manage.path,
-      name: "Gestion",
-      meta: {
-        //other route meta...
-        color: "#1e35b4",
-        back: true
-      },
-      component: AdminMenu
-    },
-    {
       path: paths.accounting.path,
       name: "Comptabilité",
       meta: {
@@ -227,17 +226,7 @@ const router = new Router({
         color: "#1e35b4",
         back: true
       },
-      component: ComptaMenu
-    },
-    {
-      path: paths.budget.path,
-      name: "Budget",
-      meta: {
-        //other route meta...
-        color: "#1e35b4",
-        back: true
-      },
-      component: BudgetMenu
+      component: Accounting
     },
     {
       path: paths.newmember.path,

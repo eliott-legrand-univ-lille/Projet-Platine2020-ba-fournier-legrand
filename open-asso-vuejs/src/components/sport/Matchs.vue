@@ -47,7 +47,7 @@ export default {
     todos: []
   }),
   firestore: {
-    todos: db.collection("match")
+    todos: db.collection("match").where("createdAt", "<", new Date())
   }
 };
 </script>
