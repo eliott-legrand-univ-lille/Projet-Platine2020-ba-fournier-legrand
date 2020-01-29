@@ -10,7 +10,7 @@
               <v-btn icon @click.stop="downloadDocument(document)">
                 <v-icon>mdi-download</v-icon>
               </v-btn>
-              <v-btn icon>
+              <v-btn icon @click.stop="deleteFileFromStorage(document)">
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
             </v-list-item-icon>
@@ -82,7 +82,7 @@ export default {
       db.collection("documents").where("user", "==", this.currentUser.uid).get().then(querySnapshot => {
         let bilbo = [];
         querySnapshot.forEach(element => {
-          bilbo.push({name : element.data().label, url : element.data().downloadUrl, path : element.data().storageUri})
+          bilbo.push({id : element.id, name : element.data().label, url : element.data().downloadUrl, path : element.data().storageUri})
         });
 
 
@@ -97,6 +97,11 @@ export default {
   xhr.open('GET', document.url);
   xhr.send();
 
+    },
+    deleteFileFromStorage(document){
+      storage.ref().child(document.path).delete();
+      db.collection("documents").doc(document.id).delete();
+      this.fetchAllDocument();
     }
   },
   computed: {
