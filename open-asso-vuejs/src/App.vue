@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- v-if="currentUser" -->
-    <v-navigation-drawer   v-model="drawer" app temporary>
+    <v-navigation-drawer v-model="drawer" app temporary>
       <v-list-item>
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
@@ -87,7 +87,7 @@ export default {
         {
           title: "Gestion",
           icon: "mdi-wallet-outline",
-          link: paths.manage.path
+          link: paths.accounting.path
         },
         {
           title: "Actualités",
