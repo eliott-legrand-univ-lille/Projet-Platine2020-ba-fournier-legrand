@@ -17,6 +17,7 @@ const firebaseConfig = {
 // Get a firebase instance
 firebase.initializeApp( firebaseConfig );
 
+export const fb = firebase;
 // Get a firestore instance
 export const db= firebase.firestore();
 

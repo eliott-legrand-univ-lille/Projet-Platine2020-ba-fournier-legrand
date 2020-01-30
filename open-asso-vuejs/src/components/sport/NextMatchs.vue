@@ -28,12 +28,13 @@
 </template>
 
 <script>
-import moment from "moment";
-import "moment/locale/fr.js";
-import { db } from "../../db";
+import moment from 'moment'
+import 'moment/locale/fr.js';
+import { db } from "@/db";
+moment.locale('fr');
 export default {
   data: () => ({
-    selected: 0,
+    selected: 1,
     matchs: []
   }),
   filters: {
@@ -42,11 +43,11 @@ export default {
         return "-";
       }
       let date = val.toDate();
-      return moment(date).format("LL");
+      return moment(date).format('L');
     }
   },
   firestore: {
-    matchs: db.collection("match").where("date", "<", new Date())
+    matchs: db.collection("match").where("date", ">", new Date())
   }
 };
 </script>

@@ -30,7 +30,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { db } from "@/db";
+import { db,fb } from "@/db";
 export default {
   data: () => ({
     valid: true,
@@ -54,10 +54,10 @@ export default {
             userID: this.currentUser.uid,
             userName: this.userProfile.name,
             title: this.name,
-            date: this.date,
+            date: new Date(this.date),
             address: this.address,
             result: "Inconnu",
-            createdAt: new Date()
+            createdAt: fb.firestore.FieldValue.serverTimestamp()
           })
           .then(function(docRef) {
             // eslint-disable-next-line no-console
@@ -68,6 +68,8 @@ export default {
             console.error("Error adding document: ", error);
           });
       }
+      this.name = '';
+      this.address = '';
     },
     reset() {
       this.$refs.form.reset();

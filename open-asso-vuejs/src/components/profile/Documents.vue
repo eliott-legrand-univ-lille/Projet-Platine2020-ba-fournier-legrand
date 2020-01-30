@@ -23,26 +23,24 @@
         <span class="white--text">Ajouter un document</span>
       </v-btn>
     </v-row>
-      <v-dialog v-model="newDoc">
-        <v-card>
+    <v-dialog v-model="newDoc">
+      <v-card>
         <v-card-title>Selectionnez le nouveau document à ajouter</v-card-title>
         <v-card-text>
-        <v-text-field v-model="fileLabel" placeholder="Le nom du fichier"></v-text-field>
-        <v-file-input v-model="newFile" accept=".pdf,.jpeg,.png,.rtf,.jpg" label="File input"></v-file-input>
-       <v-btn @click="saveNewDocument">Ajouter</v-btn>
-        <v-btn @click="newDoc=false">Annuler</v-btn>
+          <v-text-field v-model="fileLabel" placeholder="Le nom du fichier"></v-text-field>
+          <v-file-input v-model="newFile" accept=".pdf, .jpeg, .png, .rtf, .jpg" label="File input"></v-file-input>
+          <v-btn @click="saveNewDocument">Ajouter</v-btn>
+          <v-btn @click="newDoc=false">Annuler</v-btn>
         </v-card-text>
-        </v-card>
-      </v-dialog>
+      </v-card>
+    </v-dialog>
   </v-container>
-
-
 </template>
 
 <script>
 import { db } from "@/db";
-import {storage } from "@/db";
-import { mapState }  from 'vuex';
+import { storage } from "@/db";
+import { mapState } from "vuex";
 export default {
   name: "Documents",
   data: () => ({
@@ -50,69 +48,94 @@ export default {
       "Factures",
       "Carte d'identité",
       "Fiche d'inscription",
-      "Certificat médical",
+      "Certificat médical"
     ],
     documentsFromBase: [],
-    newDoc : false,
-    newFile : null,
-    fileLabel : null,
-
+    newDoc: false,
+    newFile: null,
+    fileLabel: null
   }),
+  computed: {
+    ...mapState(["currentUser", "userProfile"])
+  },
   methods: {
-    saveNewDocument(){
-      if(this.newFile != null){
-        db.collection("documents").add({
-          label : this.fileLabel,
-          user : this.currentUser.uid,
-        }).then(documentsRef => {
-          var filePath = this.currentUser.uid.concat("/", documentsRef.id, "/", this.newFile.name);
-          storage.ref(filePath).put(this.newFile).then(fileSnapshot => {
-            return fileSnapshot.ref.getDownloadURL().then((url) => {
-              return documentsRef.update({
-              downloadUrl: url,
-              storageUri: fileSnapshot.metadata.fullPath
-            })
-            })
+    saveNewDocument() {
+      if (this.newFile != null) {
+        db.collection("documents")
+          .add({
+            label: this.fileLabel,
+            user: this.currentUser.uid
           })
-        }).then(() => this.fetchAllDocument());
+          .then(documentsRef => {
+            var filePath = this.currentUser.uid.concat(
+              "/",
+              documentsRef.id,
+              "/",
+              this.newFile.name
+            );
+            storage
+              .ref(filePath)
+              .put(this.newFile)
+              .then(fileSnapshot => {
+                return fileSnapshot.ref.getDownloadURL().then(url => {
+                  return documentsRef.update({
+                    downloadUrl: url,
+                    storageUri: fileSnapshot.metadata.fullPath
+                  });
+                });
+              });
+          })
+          .then(() => this.fetchAllDocument());
       }
       this.newDoc = false;
     },
-    fetchAllDocument(){
-      db.collection("documents").where("user", "==", this.currentUser.uid).get().then(querySnapshot => {
-        let bilbo = [];
-        querySnapshot.forEach(element => {
-          bilbo.push({id : element.id, name : element.data().label, url : element.data().downloadUrl, path : element.data().storageUri})
+    fetchAllDocument() {
+      db.collection("documents")
+        .where("user", "==", this.currentUser.uid)
+        .get()
+        .then(querySnapshot => {
+          let bilbo = [];
+          querySnapshot.forEach(element => {
+            bilbo.push({
+              id: element.id,
+              name: element.data().label,
+              url: element.data().downloadUrl,
+              path: element.data().storageUri
+            });
+          });
+
+          return bilbo;
+        })
+        .then(data => {
+          this.documentsFromBase = data;
         });
-
-
-        return bilbo;
-      }).then(data => {
-        this.documentsFromBase = data;
-      })
     },
-    downloadDocument(document){
+    downloadDocument(document) {
       var xhr = new XMLHttpRequest();
-  xhr.responseType = 'blob';
-  xhr.open('GET', document.url);
-  xhr.send();
-
+      xhr.responseType = "blob";
+      xhr.open("GET", document.url);
+      xhr.send();
     },
-    deleteFileFromStorage(document){
-      storage.ref().child(document.path).delete();
-      db.collection("documents").doc(document.id).delete();
+    deleteFileFromStorage(document) {
+      // eslint-disable-next-line no-console
+      console.log(document);
+      storage
+        .ref()
+        .child(document.path)
+        .delete();
+      db.collection("documents")
+        .doc(document.id)
+        .delete();
       this.fetchAllDocument();
     }
   },
-  computed: {
-    ...mapState(['currentUser','userProfile'])
-  },
-  mounted(){
+  
+  mounted() {
     this.fetchAllDocument();
     /* eslint-disable no-console */
-        //console.log("helloe theerro");
-        //console.log(this.documentsFromBase);
-       /* eslint-enable no-console */
-  },
+    //console.log("helloe theerro");
+    //console.log(this.documentsFromBase);
+    /* eslint-enable no-console */
+  }
 };
 </script>

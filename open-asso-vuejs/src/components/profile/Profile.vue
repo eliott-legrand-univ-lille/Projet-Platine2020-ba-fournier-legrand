@@ -1,43 +1,83 @@
-<!--toroute-->
-<!--tostyle-->
-<!--toscript-->
 <template>
-  <v-container fluid>
-    <v-row align="center" justify="center">
-      <v-col class="text-center" style="width: 100%" cols="12" sm="4">
-        <v-avatar>
-          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-        </v-avatar>
+  <v-card
+    max-width="375"
+    class="mx-auto"
+  >
+    <v-img
+      src="https://cdn.vuetifyjs.com/images/lists/ali.png"
+      height="300px"
+      dark
+    >
+      <v-row class="fill-height">
+        <v-card-title>
+          <v-btn dark icon>
+            <v-icon>mdi-chevron-left</v-icon>
+          </v-btn>
 
-        <div class="my-2" v-text="!currentUser ? 'John Leider ' : userProfile.name"></div>
+          <v-spacer></v-spacer>
 
-        <div class="my-2">membre depuis le 29/08/2018</div>
+          <v-btn dark icon class="mr-4">
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
 
-        <div class="my-2">
-          <v-btn color="#1e35b4" min-width="200" ink :to="updateProfilPath">
-            <span class="white--text">Modifier le profil</span>
+          <v-btn dark icon>
+            <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
-        </div>
-        <div class="my-2">
-          <v-btn color="#1e35b4" min-width="200" link :to="docPath">
-            <span class="white--text">Mes documents</span>
-          </v-btn>
-        </div>
-        <div class="my-2">
-          <v-btn color="#1e35b4" min-width="200">
-            <span class="white--text">Mes statistiques</span>
-          </v-btn>
-        </div>
-        <div class="my-2">
-          <v-btn color="#1e35b4" min-width="200" link :to="agendaPath">
-            <span class="white--text">Mon agenda</span>
-          </v-btn>
-        </div>
-      </v-col>
-    </v-row>
-  </v-container>
+        </v-card-title>
+
+        <v-spacer></v-spacer>
+
+        <v-card-title class="white--text pl-12 pt-12">
+          <div class="display-1 pl-12 pt-12">Ali Conners</div>
+        </v-card-title>
+      </v-row>
+    </v-img>
+
+    <v-list two-line>
+     
+      <v-list-item >
+        <v-list-item-icon>
+          <v-icon color="indigo">mdi-phone</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>(650) 555-1234</v-list-item-title>
+          <v-list-item-subtitle>Mobile</v-list-item-subtitle>
+        </v-list-item-content>
+
+        <v-list-item-icon>
+          <v-icon>mdi-message-text</v-icon>
+        </v-list-item-icon>
+      </v-list-item>
+
+      <v-divider inset></v-divider>
+
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon color="indigo">mdi-email</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>aliconnors@example.com</v-list-item-title>
+          <v-list-item-subtitle>Personal</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider inset></v-divider>
+
+      <v-list-item >
+        <v-list-item-icon>
+          <v-icon color="indigo">mdi-map-marker</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>1400 Main Street</v-list-item-title>
+          <v-list-item-subtitle>Orlando, FL 79938</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-card>
 </template>
-
 <script>
 import { mapState } from "vuex";
 import paths from "@/routes/paths.js";

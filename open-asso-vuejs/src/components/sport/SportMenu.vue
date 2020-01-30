@@ -1,24 +1,23 @@
 <!--toroute
     tostyle-->
 <template>
-  <v-container fluid>
+  <v-container>
     <v-row>
-      <v-col class="pa3 d-flex flex-column" v-for="n in Menu.length" :key="n" cols="6" sm="4">
-        <v-card
-          class="flex d-flex justify-space-around align-center flex-column"
-          :color="Menu[n - 1].color"
-          link
-          :to="Menu[n-1].link"
-        >
-          <v-card-title
-            primary-title
-            style="text-align: center;word-break:keep-all"
-            class="align-center orange--text pb-1 pt-3 px-2 flex"
+      <v-col v-for="(item,i) in Menu" :key="i">
+        <v-row align="center" justify="center" class="grey lighten-5">
+          <v-card
+            class="d-flex justify-space-around align-center flex-column"
+            width="150px"
+            height="150px"
+            color="#673ab7"
+            link
+            :to="item.link"
           >
-            <h4 class="white--text text-xs-center">{{Menu[n - 1].label}}</h4>
-          </v-card-title>
-          <v-icon color="white" x-large v-text="Menu[n - 1].icon"></v-icon>
-        </v-card>
+            <v-card-title style="color:#FF9052;word-break:normal; text-align:center" v-text="item.label">
+            </v-card-title>
+            <v-icon color="white" x-large v-text="item.icon"></v-icon>
+          </v-card>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -36,16 +35,16 @@ export default {
         link: paths.matchs.path
       },
       {
-        label: "Statistiques",
+        label: "Voir les statistiques",
         icon: "mdi-medal",
         color: "#673ab7",
         link: paths.stats.path
       },
       {
-        label: "Matchs futur",
+        label: "Matchs à venir",
         icon: "mdi-target",
         color: "#673ab7",
-        link: paths.strats.path
+        link: paths.nextmatchs.path
       },
       {
         label: "Créer un match",

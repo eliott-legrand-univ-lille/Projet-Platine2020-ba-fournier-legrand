@@ -19,7 +19,7 @@ import CreateEvent from "@/components/events/CreateEvent";
 import CreateMatch from "@/components/sport/CreateMatch";
 import MemberList from "@/components/members/MemberList.vue";
 import Matchs from "@/components/sport/Matchs.vue";
-import Strategies from "@/components/sport/Strategies.vue";
+import NextMatchs from "@/components/sport/NextMatchs.vue";
 import ActualityList from "@/components/actualities/ActualityList.vue";
 import Stats from "@/components/sport/Stats.vue";
 import Accounting from "@/components/admin/Accounting.vue";
@@ -189,14 +189,14 @@ const router = new Router({
       component: Matchs
     },
     {
-      path: paths.strats.path,
-      name: "Liste des stratégies",
+      path: paths.nextmatchs.path,
+      name: "Prochains matchs",
       meta: {
         //other route meta...
         color: "#673ab7",
         back: true
       },
-      component: Strategies
+      component: NextMatchs
     },
     {
       path: paths.actualities.path,

@@ -50,8 +50,8 @@ const paths = {
     matchs: {
         path: "/matchs"
     },
-    strats: {
-        path: "/strats"
+    nextmatchs: {
+        path: "/nextmatchs"
     },
     actualities:{
         path: "/actualities"
