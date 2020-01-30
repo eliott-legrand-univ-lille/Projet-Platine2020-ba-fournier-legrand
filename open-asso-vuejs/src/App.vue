@@ -8,7 +8,7 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title v-text="!currentUser ? 'John Leider ' : 'toto'">Jr</v-list-item-title>
+          <v-list-item-title v-text="!currentUser ? 'John Leider ' : userProfile.name">Jr</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 

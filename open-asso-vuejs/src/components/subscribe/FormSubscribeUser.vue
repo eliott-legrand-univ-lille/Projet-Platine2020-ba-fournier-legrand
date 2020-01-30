@@ -7,6 +7,8 @@
 
       <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
 
+       <v-text-field v-model="phone" :rules="phoneRules" label="Phone" required></v-text-field>
+
       <v-text-field
         :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
         :type="show2 ? 'text' : 'password'"
@@ -60,6 +62,11 @@ export default {
       v => !!v || "E-mail is required",
       v => /.+@.+\..+/.test(v) || "E-mail must be valid"
     ],
+    phone: "",
+    phoneRules: [
+      v => !!v || "Phone is required",
+      v => /(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/.test(v) || "Phone must be valid"
+    ],
     password: ""
   }),
   methods: {
@@ -73,17 +80,22 @@ export default {
     },
     signin() {
       if (this.$refs.form.validate()) {
+        // eslint-disable-next-line no-console
+        console.log(this.email,this.password);
         auth
           .createUserWithEmailAndPassword(this.email, this.password)
-          .then(user => {
-            this.$store.commit("setCurrentUser", user);
+          .then(cred => {
+             // eslint-disable-next-line no-console
+            console.log(cred.user);
+            this.$store.commit("setCurrentUser", cred.user);
 
             // create user obj
             db.collection("users")
-              .doc(user.uid)
+              .doc(cred.user.uid)
               .set({
                 name: this.name,
-                title: this.firstname
+                title: this.firstname,
+                phone: this.phone
               })
               .then(() => {
                 this.$store.dispatch("fetchUserProfile");
@@ -92,7 +104,7 @@ export default {
               .catch(err => {
                 // eslint-disable-next-line no-console
                 console.log(err);
-              });
+              })
           })
           .catch(err => {
             // eslint-disable-next-line no-console

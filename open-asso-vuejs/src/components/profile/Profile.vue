@@ -1,11 +1,14 @@
 <template>
-  <v-card
-    max-width="375"
+<v-container ma-0 pa-0 fluid>
+  <v-card tile
+    max-width="450"
     class="mx-auto"
   >
     <v-img
       src="https://cdn.vuetifyjs.com/images/lists/ali.png"
-      height="300px"
+      lazy-src="https://cdn.vuetifyjs.com/images/lists/ali.png"
+      min-height="250px"
+      max-height="400px"
       dark
     >
       <v-row class="fill-height">
@@ -16,7 +19,7 @@
 
           <v-spacer></v-spacer>
 
-          <v-btn dark icon class="mr-4">
+          <v-btn dark icon class="mr-4" link :to="updateProfilPath">
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
 
@@ -28,7 +31,9 @@
         <v-spacer></v-spacer>
 
         <v-card-title class="white--text pl-12 pt-12">
-          <div class="display-1 pl-12 pt-12">Ali Conners</div>
+          <div class="display-1 pl-12 pt-12">
+           Ali conner
+          </div>
         </v-card-title>
       </v-row>
     </v-img>
@@ -50,7 +55,7 @@
         </v-list-item-icon>
       </v-list-item>
 
-      <v-divider inset></v-divider>
+      <v-divider></v-divider>
 
       <v-list-item>
         <v-list-item-icon>
@@ -62,21 +67,32 @@
           <v-list-item-subtitle>Personal</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+      <v-divider></v-divider>
 
-      <v-divider inset></v-divider>
-
-      <v-list-item >
+      <v-list-item link :to="agendaPath">
         <v-list-item-icon>
-          <v-icon color="indigo">mdi-map-marker</v-icon>
+          <v-icon color="indigo">mdi-calendar</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>1400 Main Street</v-list-item-title>
-          <v-list-item-subtitle>Orlando, FL 79938</v-list-item-subtitle>
+          <v-list-item-title>Mon agenda</v-list-item-title>
+          <v-list-item-subtitle>Voir vos évènements</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item link :to="docPath">
+        <v-list-item-icon>
+          <v-icon color="indigo">mdi-file-document-box-multiple</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>Mes documents</v-list-item-title>
+          <v-list-item-subtitle>Gérer vos documents</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>
   </v-card>
+</v-container>
 </template>
 <script>
 import { mapState } from "vuex";
@@ -85,7 +101,6 @@ export default {
   name: "Profile",
   
   data:() => ({
-     
       updateProfilPath:  paths.updateProfil.path,
       docPath: paths.myDocuments.path,
       agendaPath: paths.agenda.path
