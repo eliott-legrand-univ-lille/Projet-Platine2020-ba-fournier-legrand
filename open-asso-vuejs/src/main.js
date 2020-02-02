@@ -10,6 +10,7 @@ import { firestorePlugin } from 'vuefire'
 const fb = require('./db')
 
 Vue.use(firestorePlugin);
+Vue.use(require('vue-moment'));
 
 Vue.config.productionTip = false;
 

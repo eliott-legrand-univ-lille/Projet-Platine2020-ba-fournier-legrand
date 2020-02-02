@@ -34,7 +34,7 @@
                     <v-list-item-content>
                         <v-list-item-title class="headline mb-1">{{ currentTitle }}</v-list-item-title>
                         <p>{{ currentContent }}</p>
-                        <v-list-item-subtitle>Par {{ currentAuthor }}, le {{currentCreationDate}}</v-list-item-subtitle>
+                        <v-list-item-subtitle>Par {{ currentAuthor }}, le {{ currentCreationDate }}</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-card>
@@ -99,7 +99,7 @@ export default {
     },
     currentCreationDate() {
         if (this.currentArticle !== null) {
-            return this.currentArticle.createdAt;
+            return this.$moment(this.currentArticle.createdAt.toMillis()).format("DD/MM/YYYY");
         }
         return null;
     }
