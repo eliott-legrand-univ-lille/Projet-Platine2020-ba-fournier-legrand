@@ -57,11 +57,11 @@ export default {
                     })
                     .then(function(docRef) {
                         // eslint-disable-next-line no-console
-                        console.log("Document written with ID: ", docRef);
+                        console.log("Actuality written with ID: ", docRef.id);
                     })
                     .catch(function(error) {
                         // eslint-disable-next-line no-console
-                        console.error("Error adding document: ", error);
+                        console.error("Error adding actuality: ", error);
                     });              
             }
         },

@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col v-for="article in articles " :key="article.id">
-        <v-card max-width="400">
+      <v-col v-for="article in articles" :key="article.id">
+        <v-card max-width="400" @click="setCurrentArticleId(article.id)">
           <v-img src="@/assets/logoasso2.png" lazy-src="@/assets/logoasso2.png" max-height="125px" class="grey darken-4"></v-img>
           <v-card-subtitle class="pb-0">{{article.title}}</v-card-subtitle>
 
@@ -14,12 +14,34 @@
       </v-col>
     </v-row>
 
-    <!-- create an event -->
+    <!-- create an actuality -->
     <v-fab-transition>
       <v-btn color="#FF9052" dark fixed bottom right fab link :to="createActuPath">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </v-fab-transition>
+
+    <v-row justify="center">
+        <v-dialog v-model="dialog">
+            <v-card>
+                <v-toolbar dark :color="$route.meta.color">
+                <v-spacer></v-spacer>
+                <v-btn icon dark @click="closeDialog()">
+                    <v-icon>mdi-close</v-icon>
+                </v-btn>
+                </v-toolbar>
+                <v-list-item three-line>
+                    <v-list-item-content>
+                        <v-list-item-title class="headline mb-1">{{ currentTitle }}</v-list-item-title>
+                        <p>{{ currentContent }}</p>
+                        <v-list-item-subtitle>Par {{ currentAuthor }}, le {{currentCreationDate}}</v-list-item-subtitle>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-card>
+        </v-dialog>
+    </v-row>  
+
+
   </v-container>
 </template>
 
@@ -29,10 +51,58 @@ import { db } from "@/db";
 export default {
   data: () => ({
     createActuPath: paths.newactu.path,
-    articles: []
+    articles: [],
+    dialog: false,
+    currentActualityId: null,
+
   }),
   firestore: {
     articles: db.collection("articles")
+  },
+  methods: {
+      setCurrentArticleId(id) {
+          this.currentActualityId = id;
+          this.dialog = true
+      },
+      closeDialog () {
+          this.dialog=false;
+      }
+  },
+  computed: {
+    currentArticle() {
+      if (this.currentActualityId !== null) {
+        for(var articleIt=0; articleIt<this.articles.length; articleIt++){       
+          if(this.articles[articleIt].id === this.currentActualityId){
+            return this.articles[articleIt];
+          } 
+        }
+      }
+      return null;
+    },
+    currentContent() {
+      if (this.currentArticle !== null) {
+          return this.currentArticle.content;
+      }
+      return null;
+    },
+    currentTitle() {
+        if (this.currentArticle !== null) {
+            return this.currentArticle.title;
+        }
+        return null;
+    },
+    currentAuthor() {
+        if (this.currentArticle !== null) {
+            return this.currentArticle.userName;
+        }
+        return null;
+    },
+    currentCreationDate() {
+        if (this.currentArticle !== null) {
+            return this.currentArticle.createdAt;
+        }
+        return null;
+    }
   }
 };
 </script>
