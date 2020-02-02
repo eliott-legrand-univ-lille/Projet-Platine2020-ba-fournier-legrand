@@ -67,7 +67,7 @@
       </v-card>
       </v-container>
     </v-dialog>
-    <Ok-Dialog title="Évènement crée avec succès"
+    <Ok-Dialog title="Évènement créé avec succès"
      message="L'ensemble des participants vont prochainement être notifiés
       et pourront ainsi accepter ou décliner votre invitation" color="#1e35b4" 
     btn1="Créer un nouvel évènement" btn2="Retour Accueil" :dial="confirm" :link1="again"

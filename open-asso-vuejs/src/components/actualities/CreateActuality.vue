@@ -30,6 +30,7 @@
 <script>
 import { mapState } from "vuex";
 import { db } from "@/db";
+//import OkDialog from "@/components/dialogue/OkDialog.vue";
 
 export default {
     data: () => ({
@@ -39,7 +40,7 @@ export default {
             v => (v && v.length <= 100) || "Le titre doit faire moins de 100 caractères"
         ],
         content: "",
-        valid: true
+        valid: true,
     }),
     computed: {
         ...mapState(['userProfile','currentUser'])
