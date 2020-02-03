@@ -65,7 +65,7 @@ export default {
 
   }),
   firestore: {
-    articles: db.collection("articles")
+    articles: db.collection("articles").orderBy("createdAt", "desc")
   },
   methods: {
       setCurrentArticleId(id) {
