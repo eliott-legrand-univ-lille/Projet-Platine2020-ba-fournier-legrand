@@ -176,7 +176,7 @@ export default {
       }).then(() => this.dialog = true);
     },
     closedialogue(){
-      this.dia=false;
+      this.dialog=false;
       this.email = "";
       this.invitation = "";
       this.defaultVal = "Membre";
