@@ -8,7 +8,7 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title v-text="!currentUser ? 'John Leider ' : userProfile.name">Jr</v-list-item-title>
+          <v-list-item-title v-text="!currentUser ? 'John Leider ' : userProfile.name"></v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -100,7 +100,6 @@ export default {
           icon: "mdi-login",
           link: paths.userSubscribe.path
         },
-        { title: "Test", icon: "mdi-help-circle", link: paths.test.path },
         {
           title: "Créer une Asso",
           icon: "mdi-briefcase-plus",

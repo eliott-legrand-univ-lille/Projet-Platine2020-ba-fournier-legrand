@@ -1,15 +1,28 @@
 <template>
   <div>
     <v-content>
-      <OkDialog title="Invitation envoyée" message="Invitation envoyée way !"
-       color="#1e35b4" btn1="Envoyer une autre" btn2="Retour Accueil" :dial="this.dia"
-       :link1="again" :link2="done" @created="closedialogue"
-       ></OkDialog>
+      <OkDialog
+        title="Invitation envoyée"
+        message="Invitation envoyée way !"
+        color="#1e35b4"
+        btn1="Envoyer une autre"
+        btn2="Retour Accueil"
+        :dial="this.dia"
+        :link1="again"
+        :link2="done"
+        @created="closedialogue"
+      ></OkDialog>
       <v-container>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
             <v-form ref="form" v-model="valid" lazy-validation>
-              <v-select v-model="defaultVal" :items="items" filled label="Filled style" append-icon="mdi-plus"></v-select>
+              <v-select
+                v-model="defaultVal"
+                :items="items"
+                filled
+                label="Filled style"
+                append-icon="mdi-plus"
+              ></v-select>
               <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
 
               <v-textarea
@@ -18,11 +31,16 @@
                 v-model="invitation"
                 :rules="msgRules"
               ></v-textarea>
-
-              <v-btn :disabled="!valid" color="#1e35b4" 
-              class="mr-4 orange--text" @click.stop="dia=true">Envoyer</v-btn>
-              <v-btn color="#1e35b4" class="mr-4 orange--text" @click="$router.go(-1)">Annuler</v-btn>
+              
             </v-form>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-btn width="100%" color="#FF9052" @click="$router.go(-1)" class="white--text">Annuler</v-btn>
+          </v-col>
+          <v-col>
+            <v-btn :disabled="!valid" width="100%" color="#FF9052" class="white--text"  @click.stop="dia=true">Valider</v-btn>
           </v-col>
         </v-row>
       </v-container>
@@ -44,19 +62,19 @@ export default {
     ],
     invitation: "",
     msgRules: [msg => !!msg || "Vous devez saisir un message d'invitation"],
-    items:["Membre", "Secrétaire", "Vice-Président", "Président", "Trésorier"],
-    dia : false,
-    again : paths.newmember.path,
-    done : paths.members.path,
-    defaultVal : "Membre",
+    items: ["Membre", "Secrétaire", "Vice-Président", "Président", "Trésorier"],
+    dia: false,
+    again: paths.newmember.path,
+    done: paths.members.path,
+    defaultVal: "Membre"
   }),
-  
+
   components: {
     OkDialog
   },
   methods: {
-    closedialogue(){
-      this.dia=false;
+    closedialogue() {
+      this.dia = false;
       this.email = "";
       this.invitation = "";
       this.defaultVal = "Membre";

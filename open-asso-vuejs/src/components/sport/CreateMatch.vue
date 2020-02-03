@@ -18,10 +18,10 @@
 
       <v-row>
         <v-col>
-          <v-btn min-width="150" color="error" @click="reset">Recommencer</v-btn>
+          <v-btn width="100%" color="#FF9052" class="white--text" @click="reset">Recommencer</v-btn>
         </v-col>
         <v-col>
-          <v-btn :disabled="!valid" min-width="150" color="success" @click="validate">Valider</v-btn>
+          <v-btn :disabled="!valid" width="100%" color="#FF9052"  class="white--text" @click="validate">Valider</v-btn>
         </v-col>
       </v-row>
     </v-form>

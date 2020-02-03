@@ -248,7 +248,8 @@ const router = new Router({
     },
   ]
 });
-
+// Navigation guard, if you are not loggged in the router will
+// send you the login page
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
   const currentUser = firebase.auth().currentUser

@@ -19,10 +19,10 @@
 
             <v-row>
                 <v-col>
-                    <v-btn min-width="150" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
+                    <v-btn width="100%" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
                 </v-col>
                 <v-col>
-                    <v-btn min-width="150" color="#FF9052" @click="validate" class="white--text">Valider</v-btn>
+                    <v-btn width="100%" color="#FF9052" @click="validate" class="white--text">Valider</v-btn>
                 </v-col>
             </v-row>
         </v-form>

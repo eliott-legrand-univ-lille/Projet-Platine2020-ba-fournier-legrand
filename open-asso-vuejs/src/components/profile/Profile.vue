@@ -6,14 +6,11 @@
   >
     <v-img
       src="https://cdn.vuetifyjs.com/images/lists/ali.png"
-      lazy-src="https://cdn.vuetifyjs.com/images/lists/ali.png"
       min-height="250px"
       max-height="350px"
       dark
     >
       <v-row class="fill-height">
-        <v-spacer></v-spacer>
-
         <v-card-title class="white--text pl-12 pt-12">
           <div class="display-1 pl-12 pt-12">
             Thomas
@@ -56,6 +53,18 @@
           <v-list-item-subtitle>Gérer vos documents</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon color="indigo">mdi-phone</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>(650) 555-1234</v-list-item-title>
+          <v-list-item-subtitle>Mobile</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
     </v-list>
   </v-card>
 </v-container>

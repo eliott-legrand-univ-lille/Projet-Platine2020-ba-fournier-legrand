@@ -49,10 +49,10 @@
       <v-slider v-model="cotisation" min="0" max="70" color="#FF9052" thumb-label></v-slider>
       <v-row>
         <v-col>
-          <v-btn min-width="150" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
+          <v-btn width="100%" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
         </v-col>
         <v-col>
-          <v-btn min-width="150" color="#FF9052" class="white--text" @click="validate">Valider</v-btn>
+          <v-btn width="100%" color="#FF9052" class="white--text" @click="validate">Valider</v-btn>
         </v-col>
       </v-row>
     </v-form>
