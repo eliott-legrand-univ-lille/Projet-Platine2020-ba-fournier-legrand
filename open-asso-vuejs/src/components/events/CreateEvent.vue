@@ -40,7 +40,7 @@
       </v-row>
       <v-row>
         <v-col>
-          <v-btn min-width="150" color="#1e35b4" class="orange--text">Tous membres</v-btn>
+          <v-btn min-width="150" color="#1e35b4" class="orange--text" @click="fetchMembers; selected = allmembers">Tous membres</v-btn>
         </v-col>
         <v-col>
           <v-btn min-width="150" color="#1e35b4" class="orange--text" @click.stop="fetchMembers">Sélectionner des membres</v-btn>
@@ -69,7 +69,7 @@
     </v-dialog>
     <Ok-Dialog title="Évènement créé avec succès"
      message="L'ensemble des participants vont prochainement être notifiés
-      et pourront ainsi accepter ou décliner votre invitation" color="#1e35b4" 
+      et pourront ainsi accepter ou décliner votre invitation avec" color="#1e35b4" 
     btn1="Créer un nouvel évènement" btn2="Retour Accueil" :dial="confirm" :link1="again"
      :link2="done" @created="closedialogue"></Ok-Dialog>
   </v-container>
@@ -152,6 +152,8 @@ export default {
               source : this.userProfile,
               //on le lie a l'évènement nouvellement créé
               type: "event",
+              read : false,
+
 
             })
           });
@@ -165,7 +167,9 @@ export default {
     db.collection("users").get().then(function(querySnapshot) {
     let bilbo = [];
     querySnapshot.forEach(function(doc) {
-        bilbo.push({id : doc.id, nom : doc.data().firstname.concat(" ", doc.data().name)});
+      let name = (doc.data().name ? doc.data().name : "");
+      let firstname =  (doc.data().firstname ? doc.data().firstname : "");
+        bilbo.push({id : doc.id, nom : firstname.concat(" ", name)});
     });
 
      return bilbo;

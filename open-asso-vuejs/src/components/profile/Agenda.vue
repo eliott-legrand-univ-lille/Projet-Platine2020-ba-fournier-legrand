@@ -6,7 +6,7 @@
     <v-row justify="center">
       <v-col>
         <v-list subheader two-line v-for="(date, index) in allevents" :key="index">
-          <v-subheader v-text="date.date"></v-subheader>
+          <v-subheader v-text="getDate"></v-subheader>
           <v-list-item v-for="(event, i) in date.event" :key="i">
             <v-list-item-avatar>
               <v-img style="background-color:orange;"></v-img>
@@ -50,6 +50,14 @@ export default {
         event: [["Match contre Lens", "14h-16h", "Membres :", ""]]
       }
     ]
-  })
+  }),
+
+  computed: {
+    getDate: function() {
+      return (
+        "Aujourd'hui" + (this.$moment(Date.now()).format("DD/MM/YYYY") + 1)
+      );
+    }
+  }
 };
 </script>
