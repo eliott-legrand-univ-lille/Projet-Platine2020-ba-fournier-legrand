@@ -13,6 +13,7 @@
             <v-textarea
                 v-model="content"
                 :counter="1000"
+                :rules="contentRules"
                 label="Entrer votre description"
             ></v-textarea>
 
@@ -25,12 +26,20 @@
                 </v-col>
             </v-row>
         </v-form>
+
+        <Ok-Dialog title="Actualité créée avec succès"
+            btn1="Nouvelle actualité" btn2="Retour à l'accueil"
+            :dial="confirm" :link1="again"
+            :link2="done"
+        />
+
     </v-container>
 </template>
 <script>
 import { mapState } from "vuex";
 import { db } from "@/db";
-//import OkDialog from "@/components/dialogue/OkDialog.vue";
+import OkDialog from "@/components/dialogue/OkDialog.vue";
+import paths from "@/routes/paths.js";
 
 export default {
     data: () => ({
@@ -40,8 +49,18 @@ export default {
             v => (v && v.length <= 100) || "Le titre doit faire moins de 100 caractères"
         ],
         content: "",
+        contentRules: [
+            v => !!v || "Le contenu est obligatoire",
+            v => (v && v.length <= 1000) || "Le contenu doit faire moins de 1000 caractères"
+        ],
         valid: true,
+        again : paths.actualities.path,
+        done : paths.home.path,
+        confirm : false,
     }),
+    components: {
+        OkDialog
+    },
     computed: {
         ...mapState(['userProfile','currentUser'])
     },
@@ -63,12 +82,14 @@ export default {
                     .catch(function(error) {
                         // eslint-disable-next-line no-console
                         console.error("Error adding actuality: ", error);
-                    });              
+                    });
+                this.confirm=true;              
             }
         },
-    reset() {
-        this.$refs.form.reset();
-    }
-  }
+        reset() {
+            this.$refs.form.reset();
+        }
+    },
+    
 }
 </script>

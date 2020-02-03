@@ -52,7 +52,7 @@
           <v-btn min-width="150" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
         </v-col>
         <v-col>
-          <v-btn min-width="150" color="#FF9052" class="white--text" @click.stop="validate" @click="confirm=true">Valider</v-btn>
+          <v-btn min-width="150" color="#FF9052" class="white--text" @click="validate">Valider</v-btn>
         </v-col>
       </v-row>
     </v-form>
@@ -136,12 +136,14 @@ export default {
           createdBy : this.currentUser.uid,
           participant : [this.currentUser.uid],
         });
-        
-       /* eslint-disable no-console */
+
+        this.confirm=true;
+
+        /* eslint-disable no-console */
         let mam;
         console.log(event.then(data => mam = data.id));
         console.log(mam);
-       /* eslint-enable no-console */
+        /* eslint-enable no-console */
         if(this.selected.length > 0){
           //ajout des nouvelles notifications
           this.selected.forEach(element => {
@@ -178,7 +180,7 @@ export default {
       }).then(() => this.dialog = true);
     },
     closedialogue(){
-      this.dia=false;
+      this.dialog=false;
       this.email = "";
       this.invitation = "";
       this.defaultVal = "Membre";

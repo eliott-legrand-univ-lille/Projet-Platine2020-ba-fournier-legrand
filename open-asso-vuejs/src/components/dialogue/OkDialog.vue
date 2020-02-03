@@ -2,7 +2,7 @@
   <v-row justify="center">
     <v-dialog v-model="dial" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card>
-        <v-card-title class="headline">{{title}}</v-card-title>
+        <v-card-title style="word-break:normal" class="headline">{{title}}</v-card-title>
         <v-card-text>{{message}}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
