@@ -2,9 +2,10 @@
   <v-container>
     <v-row justify="center">
       <v-col>
-        <v-list subheader two-line v-for="event in events" :key="event.id">
-          <!--<v-subheader v-text="date.date"></v-subheader>-->
-          <v-list-item @click="setCurrentEventId(event.id)">
+        <!-- to clean -->
+        <v-subheader>Évènements à venir</v-subheader>
+        <v-list subheader two-line v-for="(event, it) in events" :key="it">
+          <v-list-item v-if="$moment(event.date) > $moment(new Date())" @click="setCurrentEventId(event.id)">
             <v-list-item-avatar>
               <v-img style="background-color:orange;"></v-img>
             </v-list-item-avatar>
@@ -15,10 +16,24 @@
             <v-list-item-action>
               <v-list-item-action-text v-text="$moment(event.date).format('DD-MM-YY')"></v-list-item-action-text>
             </v-list-item-action>
-
-
           </v-list-item>
         </v-list>
+        <v-subheader>Évènements passés</v-subheader>
+        <v-list subheader two-line v-for="event in events" :key="event.id">
+          <v-list-item v-if="$moment(event.date) <= $moment(new Date())" @click="setCurrentEventId(event.id)">
+            <v-list-item-avatar>
+              <v-img style="background-color:orange;"></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="event.name"></v-list-item-title>
+              <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event.description"></v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-list-item-action-text v-text="$moment(event.date).format('DD-MM-YY')"></v-list-item-action-text>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list>
+        
       </v-col>
     </v-row>
 
