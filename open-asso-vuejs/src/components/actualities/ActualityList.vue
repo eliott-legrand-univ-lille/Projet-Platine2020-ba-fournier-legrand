@@ -1,7 +1,12 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <!-- this list use breakpoints(https://vuetifyjs.com/en/customization/breakpoints) to be responsive, do not touch before you know what you are doing thx, by Eliott-->
+      <!-- 
+        this list use breakpoints(https://vuetifyjs.com/en/customization/breakpoints
+        and https://stackoverflow.com/questions/57941447/how-to-make-all-v-card-equal-height-with-vuetify2) 
+        to be responsive, please do not touch before you know what you are doing thx.
+        Eliott
+      -->
       <v-col v-for="article in articles" :key="article.id" class="d-flex flex-column" md="3" cols="6">
         <v-card max-width="400" @click="setCurrentArticleId(article.id)" 
           class="elevation-5 flex d-flex flex-column">
