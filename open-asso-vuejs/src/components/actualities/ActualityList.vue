@@ -1,12 +1,15 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col v-for="article in articles" :key="article.id">
-        <v-card max-width="400" @click="setCurrentArticleId(article.id)">
-          <v-img src="@/assets/logoasso2.png" lazy-src="@/assets/logoasso2.png" max-height="125px" class="grey darken-4"></v-img>
+      <!-- this list use breakpoints(https://vuetifyjs.com/en/customization/breakpoints) to be responsive, do not touch before you know what you are doing thx, by Eliott-->
+      <v-col v-for="article in articles" :key="article.id" class="d-flex flex-column" md="3" cols="6">
+        <v-card max-width="400" @click="setCurrentArticleId(article.id)" 
+          class="elevation-5 flex d-flex flex-column">
+          <v-img src="@/assets/logoasso2.png" lazy-src="@/assets/logoasso2.png" 
+            max-height="125px" class="grey darken-4" ></v-img>
           <v-card-subtitle class="pb-0">{{article.title}}</v-card-subtitle>
 
-          <v-card-text class="text--primary flex">
+          <v-card-text class="text--primary">
             <div>{{article.content}}</div>
             <div>{{article.userName}}</div>
           </v-card-text>
