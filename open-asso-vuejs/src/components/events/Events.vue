@@ -49,14 +49,14 @@ import ContentDialog from "@/components/dialogue/ContentDialog.vue";
 
 export default {
   firestore: {
-    documents: db.collection("documents")
+    events: db.collection("events")
   },
   components: {
     ContentDialog
   },
   data: () => ({
     dialog: false,
-    documents: [],
+    events: [],
     createEvPath: paths.createevent.path,
     currentEventId: null,
     allevents: [
