@@ -8,7 +8,11 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
+<<<<<<< HEAD
           <v-list-item-title v-text="!currentUser ? 'John Leider ' : userProfile.name"></v-list-item-title>
+=======
+          <v-list-item-title v-text="!currentUser ? 'Nobody ' : userProfile.title"></v-list-item-title>
+>>>>>>> 1d5a85058992939e725c6c19c109d2aea959c251
         </v-list-item-content>
       </v-list-item>
 
@@ -56,6 +60,7 @@
       </v-btn>
     </v-app-bar>
     <v-content>
+      <!-- the router switch automaticaly between components using routes or with buttons in the differents components -->
       <router-view></router-view>
     </v-content>
   </v-app>
@@ -65,6 +70,22 @@
 import { mapState }  from 'vuex';
 import paths from "@/routes/paths.js";
 import { auth } from "./db";
+
+/* 
+{ title: "Login", icon: "mdi-login", link: paths.login.path },
+        {
+          title: "S'inscrire",
+          icon: "mdi-login",
+          link: paths.userSubscribe.path
+        },
+        { title: "Test", icon: "mdi-help-circle", link: paths.test.path },
+        {
+          title: "Créer une Asso",
+          icon: "mdi-briefcase-plus",
+          link: paths.assoSubscribe.path
+        }
+*/ 
+
 export default {
   name: "App",
   data() {
@@ -94,6 +115,7 @@ export default {
           icon: "mdi-newspaper",
           link: paths.actualities.path
         },
+<<<<<<< HEAD
         { title: "Login", icon: "mdi-login", link: paths.login.path },
         {
           title: "S'inscrire",
@@ -105,6 +127,8 @@ export default {
           icon: "mdi-briefcase-plus",
           link: paths.assoSubscribe.path
         }
+=======
+>>>>>>> 1d5a85058992939e725c6c19c109d2aea959c251
       ]
     };
   },

@@ -158,7 +158,7 @@ export default {
     }
   },
   firestore: {
-    matchs: db.collection("match").where("date", ">", new Date())
+    matchs: db.collection("match").where("date", ">=", new Date()).orderBy("date", "asc")
   }
 };
 </script>

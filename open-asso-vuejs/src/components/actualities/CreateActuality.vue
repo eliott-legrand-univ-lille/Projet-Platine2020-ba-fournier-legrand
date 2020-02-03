@@ -70,7 +70,7 @@ export default {
                 db.collection("articles")
                     .add({
                         userID: this.currentUser.uid,
-                        userName: this.userProfile.name,
+                        userName: this.userProfile.title,
                         title: this.title,
                         content: this.content,
                         createdAt: new Date()
@@ -83,7 +83,7 @@ export default {
                         // eslint-disable-next-line no-console
                         console.error("Error adding actuality: ", error);
                     });
-                this.confirm=true;              
+                this.confirm=true;     
             }
         },
         reset() {

@@ -29,6 +29,12 @@ export default {
   data: () => ({
     Menu: [
       {
+        label: "Matchs à venir",
+        icon: "mdi-target",
+        color: "#673ab7",
+        link: paths.nextmatchs.path
+      },
+      {
         label: "Matchs passés",
         icon: "mdi-tshirt-crew-outline",
         color: "#673ab7",
@@ -39,12 +45,6 @@ export default {
         icon: "mdi-medal",
         color: "#673ab7",
         link: paths.stats.path
-      },
-      {
-        label: "Matchs à venir",
-        icon: "mdi-target",
-        color: "#673ab7",
-        link: paths.nextmatchs.path
       },
       {
         label: "Créer un match",
