@@ -4,11 +4,10 @@
       <!-- 
         this list use breakpoints(https://vuetifyjs.com/en/customization/breakpoints
         and https://stackoverflow.com/questions/57941447/how-to-make-all-v-card-equal-height-with-vuetify2) 
-        to be responsive, please do not touch before you know what you are doing thx.
-        Eliott
+        to be responsive
       -->
-      <v-col v-for="article in articles" :key="article.id" class="d-flex flex-column" md="3" cols="6">
-        <v-card max-width="400" @click="setCurrentArticleId(article.id)" 
+      <v-col v-for="article in articles" :key="article.id" class="d-flex flex-column" md="4" cols="6">
+        <v-card @click="setCurrentArticleId(article.id)" 
           class="elevation-5 flex d-flex flex-column">
           <v-img src="@/assets/logoasso2.png" lazy-src="@/assets/logoasso2.png" 
             max-height="125px" class="grey darken-4" ></v-img>
@@ -30,7 +29,7 @@
     </v-fab-transition>
 
     <v-row justify="center">
-        <v-dialog v-model="dialog">
+        <v-dialog max-width="1200px" v-model="dialog">
             <v-card>
                 <v-toolbar dark :color="$route.meta.color">
                 <v-spacer></v-spacer>
