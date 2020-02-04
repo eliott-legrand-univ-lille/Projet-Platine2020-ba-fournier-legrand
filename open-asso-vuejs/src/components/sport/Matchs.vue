@@ -21,9 +21,9 @@
                 <v-list-item-icon>
                   <v-icon @click="del(match.id)">mdi-delete</v-icon>
                 </v-list-item-icon>
-                <!--<v-list-item-icon>
+                <v-list-item-icon>
                   <v-icon >mdi-pencil</v-icon>
-                </v-list-item-icon>-->
+                </v-list-item-icon>
               </v-list-item>
             </template>
           </v-list-item-group>

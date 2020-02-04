@@ -7,9 +7,9 @@
           <v-list-item v-for="(document, i) in documentsFromBase" :key="i" :inactive="true">
             <v-list-item-title v-text="document.name"></v-list-item-title>
             <v-list-item-icon>
-              <v-btn icon @click.stop="downloadDocument(document)">
+              <!--<v-btn icon @click.stop="downloadDocument(document)">
                 <v-icon>mdi-download</v-icon>
-              </v-btn>
+              </v-btn>-->
               <v-btn icon @click.stop="deleteFileFromStorage(document)">
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
