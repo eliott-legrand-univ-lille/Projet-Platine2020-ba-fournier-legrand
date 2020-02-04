@@ -74,9 +74,9 @@ export default {
         event: [["Match contre Lens", "14h-16h", "Membres :", ""]]
       }
     ],
-    allNotifications = [],
-    selectedNotification = {},
-    focusedEvent = false,
+    allNotifications : [],
+    selectedNotification : {},
+    focusedEvent : false,
 
   }),
   methods: {
@@ -84,7 +84,7 @@ export default {
         db.collection("notifications").where('toInvite', "array-contains" , this.currentUser.uid).get()
         .then(querySnapshot => {
           let bilbo = [];
-          let eventObject = {};
+          //let eventObject = {};
 
           querySnapshot.forEach(element => {
               //si l'élément est de type évènement on récupère les éléments de l'évènement concerné
@@ -93,25 +93,25 @@ export default {
               }
           });
           return bilbo;
-          }).then(data => this.allevents = allNotifications);
+          }).then(data => this.allNotifications = data);
     },
     getNotificationDetails : function(type, idEvent) {
         if(type == 'event'){
-            db.collection("events").where(id, "==", idEvent).get().then(snapshot => {
+            db.collection("events").doc(idEvent).get().then(snapshot => {
                 let eventDetails = {};
                 snapshot.forEach(details => {
-                    eventDetails.idEvent = event.id;
-                    eventDetails.title = event.data().name;
-                    eventDetails.date = event.data().date;
-                    eventDetails.creationDate = event.data().createdAt;
-                    eventDetails.description = event.data().description;
-                    eventDetails.fees = event.data().fees;
-                    eventDetails.address = event.data().address.concat(", ", event.data().postal, " ", event.data().city);
-                    eventDetails.creator = event.data().createdBy;
+                    eventDetails.idEvent = details.id;
+                    eventDetails.title = details.data().name;
+                    eventDetails.date = details.data().date;
+                    eventDetails.creationDate = details.data().createdAt;
+                    eventDetails.description = details.data().description;
+                    eventDetails.fees = details.data().fees;
+                    eventDetails.address = details.data().address.concat(", ", details.data().postal, " ", event.data().city);
+                    eventDetails.creator = details.data().createdBy;
                 });
                 return eventDetails;
             }).then(data => {
-              this.selectedNotification = eventDetails;
+              this.selectedNotification = data;
               this.focusedEvent = true;
             })
         }

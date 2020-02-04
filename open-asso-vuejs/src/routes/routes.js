@@ -25,6 +25,8 @@ import Stats from "@/components/sport/Stats.vue";
 import Accounting from "@/components/admin/Accounting.vue";
 import NewMember from "@/components/members/NewMember"
 import CreateActuality from "@/components/actualities/CreateActuality.vue";
+import Notifications from "@/components/notifications/Notifications.vue";
+//import { turquoise } from 'color-name';
 
 Vue.use(Router)
 
@@ -245,6 +247,15 @@ const router = new Router({
         back: true
       },
       component: CreateActuality
+    },
+    {
+      path: paths.notifications.path,
+      name: "Notifications",
+      meta: {
+        color: "#1e35b4",
+        back: true,
+      },
+      component: Notifications
     },
   ]
 });

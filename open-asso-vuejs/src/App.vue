@@ -54,7 +54,7 @@
       <v-btn icon v-if="$route.meta.back" @click="$router.go(-1)">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-btn icon>
+      <v-btn icon :to="notification" link>
         <v-icon>mdi-bell</v-icon>
       </v-btn>
     </v-app-bar>
@@ -92,6 +92,7 @@ export default {
   data() {
     return {
       drawer: false,
+      notification : paths.notification.path,
       items: [
         { title: "Accueil", icon: "mdi-home", link: paths.home.path },
         { title: "Profil", icon: "mdi-account", link: paths.profile.path },

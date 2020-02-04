@@ -68,6 +68,9 @@ const paths = {
     },
     newactu:{
         path:"/newactu"
-    }
+    },
+    notifications:{
+        path:"/notifications"
+    },
 }
 export default paths;
