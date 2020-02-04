@@ -94,7 +94,7 @@ export default {
               .doc(cred.user.uid)
               .set({
                 name: this.name,
-                title: this.firstname,
+                firstname: this.firstname,
                 phone: this.phone
               })
               .then(() => {
