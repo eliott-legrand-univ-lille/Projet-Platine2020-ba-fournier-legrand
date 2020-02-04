@@ -135,6 +135,22 @@ export default {
           fees : this.cotisation,
           createdBy : this.currentUser.uid,
           participant : [this.currentUser.uid],
+        }).then(newDoc => {
+                  if(this.selected.length > 0){
+          //ajout des nouvelles notifications
+          this.selected.forEach(element => {
+            db.collection("notifications").add({
+              date: Date.now(),
+              titre: "Vous avez reçu une invitation à un évènement",
+              user : element,
+              source : this.userProfile,
+              //on le lie a l'évènement nouvellement créé
+              idLinked : newDoc.id,
+              type: "event",
+              read : false,
+            })
+          });
+        }
         });
 
         this.confirm=true;
@@ -144,22 +160,7 @@ export default {
         console.log(event.then(data => mam = data.id));
         console.log(mam);
         /* eslint-enable no-console */
-        if(this.selected.length > 0){
-          //ajout des nouvelles notifications
-          this.selected.forEach(element => {
-            db.collection("notifications").add({
-              date: Date.now(),
-              titre: "Vous avez reçu une invitation à un évènement",
-              user : element,
-              source : this.userProfile,
-              //on le lie a l'évènement nouvellement créé
-              type: "event",
-              read : false,
 
-
-            })
-          });
-        }
       }
     },
     reset() {

@@ -5,23 +5,45 @@
   <v-container>
     <v-row justify="center">
       <v-col>
-        <v-list subheader two-line v-for="(date, index) in allevents" :key="index">
-          <v-subheader v-text="date.date"></v-subheader>
-          <v-list-item v-for="(event, i) in date.event" :key="i">
+        <v-list subheader two-line>
+          <v-subheader>POPOPO</v-subheader>
+          <v-list-item v-for="(notification, i) in allNotifications" :key="i" @click="getNotificationDetails(notification.type, notification.idLinked);">
             <v-list-item-avatar>
               <v-img style="background-color:orange;"></v-img>
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title v-text="event[0]"></v-list-item-title>
-              <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event[2]"></v-list-item-subtitle>
+              <v-list-item-title v-text="notification.titre"></v-list-item-title>
+              <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="notification.titre"></v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-action>
-              <v-list-item-action-text v-text="event[1]"></v-list-item-action-text>
+              <v-list-item-action-text v-text="notification.date"></v-list-item-action-text>
             </v-list-item-action>
           </v-list-item>
         </v-list>
       </v-col>
     </v-row>
+
+    <v-dialog v-model="focusedEvent">
+      <v-card>
+        <v-card-title>
+          {{selectedNotification.title}}
+        </v-card-title>
+        <v-card-subtitle>
+          Organisé par {{selectedNotification.createdBy}} , Pour le {{selectedNotification.date}}
+        </v-card-subtitle>
+        <v-card-text>
+          {{selectedNotification.description}}
+        </v-card-text>
+        <v-card-text> Frais : {{selectedNotification.fees}}</v-card-text>
+        <v-card-text>
+          Adresse : {{selectedNotification}}
+        </v-card-text>
+        <v-card-actions>
+          <v-btn>Je participe!</v-btn>
+          <v-btn>Je décline...</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -54,6 +76,7 @@ export default {
     ],
     allNotifications = [],
     selectedNotification = {},
+    focusedEvent = false,
 
   }),
   methods: {
@@ -85,7 +108,11 @@ export default {
                     eventDetails.fees = event.data().fees;
                     eventDetails.address = event.data().address.concat(", ", event.data().postal, " ", event.data().city);
                     eventDetails.creator = event.data().createdBy;
-                })
+                });
+                return eventDetails;
+            }).then(data => {
+              this.selectedNotification = eventDetails;
+              this.focusedEvent = true;
             })
         }
     }
