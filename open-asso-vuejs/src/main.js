@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+// Modules for routing and local state
 import router from './routes/routes'
 import { store } from './store.js'
-
+// Module for CSS/JS Framework
 import vuetify from './plugins/vuetify'
+// Plugin to ease manipulation of firestore
 import { firestorePlugin } from 'vuefire'
 
 const fb = require('./db')

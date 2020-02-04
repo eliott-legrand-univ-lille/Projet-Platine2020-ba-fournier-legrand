@@ -1,6 +1,8 @@
 <template>
   <v-app>
+    <!--THe app componet is called once and contains the nivagation  -->
     <!-- v-if="currentUser" -->
+    <!-- The navigation bar drawer -->
     <v-navigation-drawer v-model="drawer" app temporary>
       <v-list-item>
         <v-list-item-avatar>
@@ -8,11 +10,7 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-<<<<<<< HEAD
-          <v-list-item-title v-text="!currentUser ? 'John Leider ' : userProfile.name"></v-list-item-title>
-=======
           <v-list-item-title v-text="!currentUser ? 'Nobody ' : userProfile.title"></v-list-item-title>
->>>>>>> 1d5a85058992939e725c6c19c109d2aea959c251
         </v-list-item-content>
       </v-list-item>
 
@@ -40,6 +38,7 @@
       </v-list>
     </v-navigation-drawer>
 
+    <!-- The appbar with the title and buttons -->
     <v-app-bar app :color="$route.meta.color" dark>
       <!--v-if="currentUser"-->
       <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -59,6 +58,7 @@
         <v-icon>mdi-bell</v-icon>
       </v-btn>
     </v-app-bar>
+    <!-- Here is the content of the app  -->
     <v-content>
       <!-- the router switch automaticaly between components using routes or with buttons in the differents components -->
       <router-view></router-view>
@@ -88,6 +88,7 @@ import { auth } from "./db";
 
 export default {
   name: "App",
+  /* The data for the drawer */
   data() {
     return {
       drawer: false,
@@ -115,27 +116,16 @@ export default {
           icon: "mdi-newspaper",
           link: paths.actualities.path
         },
-<<<<<<< HEAD
-        { title: "Login", icon: "mdi-login", link: paths.login.path },
-        {
-          title: "S'inscrire",
-          icon: "mdi-login",
-          link: paths.userSubscribe.path
-        },
-        {
-          title: "Créer une Asso",
-          icon: "mdi-briefcase-plus",
-          link: paths.assoSubscribe.path
-        }
-=======
->>>>>>> 1d5a85058992939e725c6c19c109d2aea959c251
       ]
     };
   },
+  /* The local state that we import for the store */
   computed: {
     ...mapState(['currentUser','userProfile'])
   },
+  /* Methods for the app component */
   methods: {
+    /* Logout method with firebase auth instance, also call to clear the local state */
     logout() {
       auth
         .signOut()

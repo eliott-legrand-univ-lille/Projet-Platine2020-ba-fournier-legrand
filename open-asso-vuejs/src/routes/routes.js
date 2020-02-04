@@ -30,7 +30,7 @@ Vue.use(Router)
 
 //Define the routes to the different pages
 const router = new Router({
-  mode: 'history',
+  mode: 'history', // easier to read url ( no #)
   routes: [
     { path: paths.all.path,
      redirect: paths.home.path 
@@ -39,7 +39,7 @@ const router = new Router({
       path: paths.home.path,
       name: "Accueil",
       meta: {
-        //other route meta...
+        // Meta data for the back button , the color of the bar and navigation guard
         color: "#1e35b4",
         back: false,
         requiresAuth: false

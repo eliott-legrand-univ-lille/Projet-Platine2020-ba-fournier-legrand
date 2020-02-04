@@ -1,3 +1,4 @@
+// Here we defines the path to avoid copying url 
 const paths = {
     all: {
         path: "*"

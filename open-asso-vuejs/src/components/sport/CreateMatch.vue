@@ -32,6 +32,7 @@
 import { mapState } from "vuex";
 import { db,fb } from "@/db";
 export default {
+  // Here the data for the component
   data: () => ({
     valid: true,
     name: "",
@@ -43,12 +44,16 @@ export default {
     date: new Date().toISOString().substr(0, 10),
     modal: false
   }),
+  // Here we load the local state with the deconstructor operator
   computed: {
     ...mapState(['userProfile','currentUser'])
   },
+  // We define the method of the component
   methods: {
     validate() {
+      // Check the form
       if (this.$refs.form.validate()) {
+        // Call db instance and add to the collection a doc with the corresponding fields
         db.collection("match")
           .add({
             userID: this.currentUser.uid,
@@ -68,6 +73,7 @@ export default {
             console.error("Error adding document: ", error);
           });
       }
+      // Display reset
       this.name = '';
       this.address = '';
     },

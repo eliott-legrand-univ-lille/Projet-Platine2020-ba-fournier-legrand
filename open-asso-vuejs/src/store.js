@@ -4,6 +4,8 @@ const fb = require('./db.js')
 
 Vue.use(Vuex)
 
+// Load everytime we detect log or logout
+// If logged then set local User and UserProfile
 fb.auth.onAuthStateChanged(user => {
     if (user) {
         store.commit('setCurrentUser', user)
@@ -15,16 +17,20 @@ fb.auth.onAuthStateChanged(user => {
     }
 })
 
+//  New vuex store instance
 export const store = new Vuex.Store({
+    // Local state to be saved
     state: {
         currentUser: null,
         userProfile: {}
     },
     actions: {
+        // Clear the local state
         clearData({ commit }){
             commit('setCurrentUser',null)
             commit('setUserProfile',{})
         },
+        // Fetch the userProfile from firestore
         fetchUserProfile({ commit, state }) {
             fb.db.collection("users").doc(state.currentUser.uid).get().then(res => {
                 commit('setUserProfile', res.data())
@@ -33,6 +39,7 @@ export const store = new Vuex.Store({
                 console.log(err)
             })
         },
+        // Update the users table then the tables where user is in
         updateProfile({ state }, data) {
             let name = data.name
             let firstname = data.firstname
@@ -52,6 +59,7 @@ export const store = new Vuex.Store({
             })
         }
     },
+    // Changes for the local state
     mutations: {
         setCurrentUser(state, val) {
             state.currentUser = val
