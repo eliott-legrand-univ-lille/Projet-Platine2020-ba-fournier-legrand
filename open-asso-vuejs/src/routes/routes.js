@@ -160,7 +160,7 @@ const router = new Router({
     },
     {
       path: paths.eventsmenu.path,
-      name: "Évènements",
+      name: "Menu Évènements",
       meta: {
         //other route meta...
         color: "#1e35b4",
