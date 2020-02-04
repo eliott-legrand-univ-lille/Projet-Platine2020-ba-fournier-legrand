@@ -180,7 +180,7 @@ const router = new Router({
     },
     {
       path: paths.matchs.path,
-      name: "Liste des matchs",
+      name: "Liste des matchs passés",
       meta: {
         //other route meta...
         color: "#673ab7",

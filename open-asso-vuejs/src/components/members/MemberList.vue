@@ -19,9 +19,9 @@
             </v-list-item-content>
             <v-list-item-icon>
               <!--Admin only-->
-              <v-btn icon>
+              <!--<v-btn icon>
                 <v-icon>mdi-pencil</v-icon>
-              </v-btn>
+              </v-btn>-->
             </v-list-item-icon>
           </v-list-item>
         </v-list>

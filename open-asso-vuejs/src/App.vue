@@ -54,9 +54,11 @@
       <v-btn icon v-if="$route.meta.back" @click="$router.go(-1)">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
+      <!--
       <v-btn icon>
         <v-icon>mdi-bell</v-icon>
       </v-btn>
+      -->
     </v-app-bar>
     <!-- Here is the content of the app  -->
     <v-content>

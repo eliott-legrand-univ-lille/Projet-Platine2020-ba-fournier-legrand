@@ -3,7 +3,7 @@
     <v-content>
       <OkDialog
         title="Invitation envoyée"
-        message="Invitation envoyée way !"
+        message="Invitation envoyée avec succès!"
         color="#1e35b4"
         btn1="Envoyer une autre"
         btn2="Retour Accueil"
