@@ -22,7 +22,7 @@
                   <v-icon @click="del(match.id)">mdi-delete</v-icon>
                 </v-list-item-icon>
                 <v-list-item-icon>
-                  <v-icon >mdi-pencil</v-icon>
+                  <v-icon @click="editHandle(match)">mdi-pencil</v-icon>
                 </v-list-item-icon>
               </v-list-item>
             </template>
@@ -75,12 +75,7 @@
                 ></v-autocomplete>
               </v-col>
               <v-col cols="12" sm="6">
-              <v-text-field
-                  label="Score du match"
-                  v-model="result"
-                  hint="2-3"
-                  required
-                ></v-text-field>
+                <v-text-field label="Score du match" v-model="result" hint="2-3" required></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -90,6 +85,38 @@
           <v-spacer></v-spacer>
           <v-btn color="orange darken-1" text @click="dialog = false">Close</v-btn>
           <v-btn color="orange darken-1" text @click="validate">Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog v-model="dialog2" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Edit match</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="6" md="4">
+                <v-text-field
+                  label="Titre du match"
+                  v-model="name"
+                  :rules="nameRules"
+                  hint="Paris VS Bordeaux"
+                  persistent-hint
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field label="Score du match" v-model="result" hint="2-3" required></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="orange darken-1" text @click="editCancel">Close</v-btn>
+          <v-btn color="orange darken-1" text @click="edit(currID)">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -103,6 +130,7 @@ import "moment/locale/fr.js";
 import { db, fb } from "../../db";
 export default {
   data: () => ({
+    currID: "",
     selected: 0,
     name: "",
     nameRules: [
@@ -111,13 +139,14 @@ export default {
     ],
     address: "",
     date: new Date().toISOString().substr(0, 10),
-    result: "", 
+    result: "",
     modal: false,
     dialog: false,
+    dialog2: false,
     matchs: []
   }),
   computed: {
-    ...mapState(['userProfile','currentUser'])
+    ...mapState(["userProfile", "currentUser"])
   },
   filters: {
     formatDate(val) {
@@ -143,13 +172,12 @@ export default {
         .then(function(docRef) {
           // eslint-disable-next-line no-console
           console.log("Document written with ID: ", docRef.id);
-         
         })
         .catch(function(error) {
           // eslint-disable-next-line no-console
           console.error("Error adding document: ", error);
         });
-        this.dialog = false;
+      this.dialog = false;
     },
     del(id) {
       db.collection("match")
@@ -163,10 +191,43 @@ export default {
           // eslint-disable-next-line no-console
           console.error("Error removing document: ", error);
         });
+    },
+    editHandle(match) {
+      this.currID = match.id;
+      this.name = match.title;
+      this.result = match.result;
+      this.dialog2 = true;
+    },
+    editCancel() {
+      this.currID = "";
+      this.name = "";
+      this.result = "";
+      this.dialog2 = false;
+    },
+    edit(id) {
+      db.collection("match")
+        .doc(id)
+        .update({
+          title: this.name,
+          result: this.result
+        })
+        .then(function() {
+          // eslint-disable-next-line no-console
+          console.log("Document successfully updated!");
+          
+        })
+        .catch(function(error) {
+          // eslint-disable-next-line no-console
+          console.error("Error updating document: ", error);
+        });
+        this.dialog2 = false;
     }
   },
   firestore: {
-    matchs: db.collection("match").where("date", "<", new Date()).orderBy("date", "desc")
+    matchs: db
+      .collection("match")
+      .where("date", "<", new Date())
+      .orderBy("date", "desc")
   }
 };
 </script>
