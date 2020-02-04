@@ -36,11 +36,12 @@
         </v-card-text>
         <v-card-text> Frais : {{selectedNotification.fees}}</v-card-text>
         <v-card-text>
-          Adresse : {{selectedNotification}}
+          Adresse : {{selectedNotification.address}}
         </v-card-text>
         <v-card-actions>
           <v-btn>Je participe!</v-btn>
           <v-btn>Je décline...</v-btn>
+          <v-btn @click="focusedEvent = false; selectedNotification = []">Fermer</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -81,11 +82,9 @@ export default {
   }),
   methods: {
     fetchAllNotifications: function() {
-        db.collection("notifications").where('toInvite', "array-contains" , this.currentUser.uid).get()
+        db.collection("notifications").where('user', '==' , this.currentUser.uid).get()
         .then(querySnapshot => {
           let bilbo = [];
-          //let eventObject = {};
-
           querySnapshot.forEach(element => {
               //si l'élément est de type évènement on récupère les éléments de l'évènement concerné
               if(element.data().type == "event"){
@@ -93,22 +92,24 @@ export default {
               }
           });
           return bilbo;
-          }).then(data => this.allNotifications = data);
+          }).then(data => {
+          this.allNotifications = data;
+          });
     },
     getNotificationDetails : function(type, idEvent) {
         if(type == 'event'){
-            db.collection("events").doc(idEvent).get().then(snapshot => {
+            db.collection("events").doc(idEvent).get().then(details => {
                 let eventDetails = {};
-                snapshot.forEach(details => {
+                
                     eventDetails.idEvent = details.id;
                     eventDetails.title = details.data().name;
                     eventDetails.date = details.data().date;
                     eventDetails.creationDate = details.data().createdAt;
                     eventDetails.description = details.data().description;
                     eventDetails.fees = details.data().fees;
-                    eventDetails.address = details.data().address.concat(", ", details.data().postal, " ", event.data().city);
+                    eventDetails.address = details.data().address.concat(", ", details.data().postal, " ", details.data().city);
                     eventDetails.creator = details.data().createdBy;
-                });
+                
                 return eventDetails;
             }).then(data => {
               this.selectedNotification = data;
@@ -120,5 +121,8 @@ export default {
   computed: {
     ...mapState(["currentUser", "userProfile"])
   },
+  mounted() {
+    this.fetchAllNotifications();
+  }
 };
 </script>

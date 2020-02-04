@@ -92,7 +92,7 @@ export default {
   data() {
     return {
       drawer: false,
-      notification : paths.notification.path,
+      notification : paths.notifications.path,
       items: [
         { title: "Accueil", icon: "mdi-home", link: paths.home.path },
         { title: "Profil", icon: "mdi-account", link: paths.profile.path },
