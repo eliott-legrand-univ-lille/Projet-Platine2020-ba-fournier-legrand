@@ -1,6 +1,6 @@
 <!--toroute
-    tostyle
-    toscript-->
+    tostyle jolie invitation organisation par la date subheader OK
+    toscript je participe je décline, notification à la poubelle, vider le conntenue quoi, notification lue ou non lue-->
 <template name="component-name">
   <v-container>
     <v-row justify="center">
