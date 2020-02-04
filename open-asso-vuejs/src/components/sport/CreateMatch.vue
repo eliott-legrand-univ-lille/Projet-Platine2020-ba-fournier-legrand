@@ -41,7 +41,7 @@
         :dial="this.dia"
         :link1="again"
         :link2="done"
-        @created="closedialogue"
+        @created="closeDialog"
     ></OkDialog>
 
   </v-container>
@@ -109,7 +109,7 @@ export default {
     reset() {
       this.$refs.form.reset();
     },
-    closedialogue() {
+    closeDialog() {
       this.dia = false;
       this.reset();
     }

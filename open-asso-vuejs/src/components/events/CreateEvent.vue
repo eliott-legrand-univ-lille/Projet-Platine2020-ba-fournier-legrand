@@ -68,9 +68,9 @@
       </v-container>
     </v-dialog>
     <Ok-Dialog title="Évènement créé avec succès"
-     message="L'ensemble des participants vont prochainement être notifiés
+      message="L'ensemble des participants vont prochainement être notifiés
       et pourront ainsi accepter ou décliner votre invitation avec" color="#1e35b4" 
-    btn1="Créer un nouvel évènement" btn2="Retour Accueil" :dial="confirm" :link1="again"
+      btn1="Créer un nouvel évènement" btn2="Retour Accueil" :dial="confirm" :link1="again"
      :link2="done" @created="closedialogue"></Ok-Dialog>
   </v-container>
 </template>
@@ -83,8 +83,8 @@ import { mapState }  from 'vuex';
 
 export default {
   data: () => ({
-    again : paths.eventsmenu.path,
-    done : paths.home.path,
+    again : paths.createevent.path,
+    done : paths.eventsmenu.path,
     confirm : false,
     valid: true,
     name: "",
@@ -112,7 +112,7 @@ export default {
     modal: false,
     selected: [],
     allmembers : [],
-    dialog : false,
+    dialog: false,
     //currentUser : {},
   }),
   computed: {
@@ -155,8 +155,6 @@ export default {
               //on le lie a l'évènement nouvellement créé
               type: "event",
               read : false,
-
-
             })
           });
         }
@@ -166,27 +164,24 @@ export default {
       this.$refs.form.reset();
     },
     fetchMembers(){
-    db.collection("users").get().then(function(querySnapshot) {
-    let bilbo = [];
-    querySnapshot.forEach(function(doc) {
-      let name = (doc.data().name ? doc.data().name : "");
-      let firstname =  (doc.data().firstname ? doc.data().firstname : "");
-        bilbo.push({id : doc.id, nom : firstname.concat(" ", name)});
-    });
+      db.collection("users").get().then(function(querySnapshot) {
+        let bilbo = [];
+        querySnapshot.forEach(function(doc) {
+          let name = (doc.data().name ? doc.data().name : "");
+          let firstname =  (doc.data().firstname ? doc.data().firstname : "");
+            bilbo.push({id : doc.id, nom : firstname.concat(" ", name)});
+        });
 
-     return bilbo;
+        return bilbo;
       }).then((niama) => {
-        this.allmembers = niama;
+          this.allmembers = niama;
       }).then(() => this.dialog = true);
     },
     closedialogue(){
-      this.dialog=false;
-      this.email = "";
-      this.invitation = "";
-      this.defaultVal = "Membre";
+      this.confirm=false;
+      this.reset();
     }
   },
-
   components: {
     OkDialog
   },

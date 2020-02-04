@@ -10,7 +10,7 @@
         :dial="this.dia"
         :link1="again"
         :link2="done"
-        @created="closedialogue"
+        @created="closeDialog"
       ></OkDialog>
       <v-container>
         <v-row align="center" justify="center">
@@ -73,7 +73,7 @@ export default {
     OkDialog
   },
   methods: {
-    closedialogue() {
+    closeDialog() {
       this.dia = false;
       this.email = "";
       this.invitation = "";
