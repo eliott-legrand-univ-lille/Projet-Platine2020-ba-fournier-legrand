@@ -39,12 +39,14 @@
           Adresse : {{selectedNotification.address}}
         </v-card-text>
         <v-card-actions>
-          <v-btn>Je participe!</v-btn>
-          <v-btn>Je décline...</v-btn>
+          <v-btn @click="addParticipant(selectedNotification.idEvent, true)">Je participe!</v-btn>
+          <v-btn @click="addParticipant(selectedNotification.idEvent, false)">Je décline...</v-btn>
+
           <v-btn @click="focusedEvent = false; selectedNotification = []">Fermer</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="confirme"></v-dialog>
   </v-container>
 </template>
 
@@ -53,6 +55,7 @@ import { db } from "@/db";
 import { mapState } from "vuex";
 export default {
   data: () => ({
+    confirme = false,
     allevents: [
       {
         date: "Aujourd'hui",
@@ -116,6 +119,26 @@ export default {
               this.focusedEvent = true;
             })
         }
+    },
+    addParticipant : function(idEvent, accept){
+      let eventRef = db.collection("events").doc(idEvent);
+      db.runTransaction(t => {
+        return t.get(eventRef).then(doc => {
+          let invited = doc.data().toInvite.slice();
+          let index = invited.indexOf(this.currentUser.id);
+          if(index > -1){
+            invited.splice(index, 1);
+          }
+          if(accept){
+          let participantL = doc.data().participant.slice().push(this.currentUser.uid);
+          t.update(eventRef, {participant : participantL});
+          }
+          t.update(eventRef, {toInvite : invited});
+        })
+      })
+      .then(event => {
+        db.collection("events").doc(idEvent).set()
+      });
     }
   },
   computed: {
