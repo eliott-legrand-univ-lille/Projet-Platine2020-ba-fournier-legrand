@@ -31,6 +31,8 @@
         <v-card-subtitle>
           Organisé par {{selectedNotification.createdBy}} , Pour le {{selectedNotification.date}}
         </v-card-subtitle>
+        <v-card-text v-if="inEvent == 1" class="orange--text">Vous participez déjà à cette évènement</v-card-text>
+        <v-card-text v-if="inEvent == -1" class="orange--text">Vous avez décliné cet évènement</v-card-text>
         <v-card-text>
           {{selectedNotification.description}}
         </v-card-text>
@@ -39,8 +41,9 @@
           Adresse : {{selectedNotification.address}}
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="addParticipant(selectedNotification.idEvent, true)">Je participe!</v-btn>
-          <v-btn @click="addParticipant(selectedNotification.idEvent, false)">Je décline...</v-btn>
+          <v-label v-if="inEvent != 0" class="orange--text">Je change d'avis</v-label>
+          <v-btn v-if="inEvent != 1" @click="addParticipant(selectedNotification.idEvent, true)">Je participe!</v-btn>
+          <v-btn v-if="inEvent != -1" @click="addParticipant(selectedNotification.idEvent, false)">Je décline...</v-btn>
 
           <v-btn @click="focusedEvent = false; selectedNotification = []">Fermer</v-btn>
         </v-card-actions>
@@ -53,6 +56,7 @@
 <script>
 import { db } from "@/db";
 import { mapState } from "vuex";
+import func from '../../../vue-temp/vue-editor-bridge';
 export default {
   data: () => ({
     confirme = false,
@@ -81,6 +85,7 @@ export default {
     allNotifications : [],
     selectedNotification : {},
     focusedEvent : false,
+    inEvent : 0,
 
   }),
   methods: {
@@ -117,6 +122,7 @@ export default {
             }).then(data => {
               this.selectedNotification = data;
               this.focusedEvent = true;
+              this.alreadyIn();
             })
         }
     },
@@ -125,13 +131,22 @@ export default {
       db.runTransaction(t => {
         return t.get(eventRef).then(doc => {
           let invited = doc.data().toInvite.slice();
+          //L'utilisateur donne sa réponse donc on peut le supprimer de la liste d'invités
           let index = invited.indexOf(this.currentUser.id);
           if(index > -1){
             invited.splice(index, 1);
           }
+          //s'il accepte de participer on l'ajoute à la liste des participants
           if(accept){
           let participantL = doc.data().participant.slice().push(this.currentUser.uid);
           t.update(eventRef, {participant : participantL});
+          }else{
+            //si l'utilisateur refuse de participer on le retire de la liste des participants dans le cas ou il aurait accepté auparavant
+            let participantR = doc.data().participant.slice();
+            index = participantR.indexOf(this.currentUser.id);
+            if(index > -1){
+              participantR.splice(index, 1);
+            }
           }
           t.update(eventRef, {toInvite : invited});
         })
@@ -139,7 +154,23 @@ export default {
       .then(event => {
         db.collection("events").doc(idEvent).set()
       });
-    }
+    },
+    alreadyIn : function(idEvent){
+      db.collection("events").doc(idEvent).get().then(details => {
+        //il participe déjà à l'évènement
+        if(details.data().participant.include(this.currentUser.id)){
+          return 1;
+        }
+        //il n'a pas encore répondu à l'invitation
+        if(details.data().toInvite.include(this.currentUser.id)){
+          return 0;
+        }
+        //il a refusé l'invitation
+        return -1;
+      }).then(response => {
+        this.inEvent = response;
+      })
+    },
   },
   computed: {
     ...mapState(["currentUser", "userProfile"])
