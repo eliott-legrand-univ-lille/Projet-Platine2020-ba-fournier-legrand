@@ -20,7 +20,7 @@
                 v-model="defaultVal"
                 :items="items"
                 filled
-                label="Filled style"
+                label="Role du menbre"
                 append-icon="mdi-plus"
               ></v-select>
               <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>

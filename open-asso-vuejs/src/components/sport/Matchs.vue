@@ -47,7 +47,7 @@
             <v-row>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
-                  label="Titre du match"
+                  label="Equipes du match"
                   v-model="name"
                   :rules="nameRules"
                   hint="Paris VS Bordeaux"
@@ -60,7 +60,7 @@
                   <template v-slot:activator="{ on }">
                     <v-text-field v-model="date" label="Date de l'événement" readonly v-on="on"></v-text-field>
                   </template>
-                  <v-date-picker v-model="date" full-width scrollable>
+                  <v-date-picker v-model="date" locale="fr" full-width scrollable>
                     <v-spacer></v-spacer>
                     <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
                     <v-btn text color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
@@ -106,6 +106,13 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
+                <v-autocomplete
+                  :items="['Stade Pierre', 'Salle Jean-Bart', 'Salle Io', 'Salle Nouméa']"
+                  label="Lieu de la rencontre"
+                  v-model="address"
+                ></v-autocomplete>
+              </v-col>
+              <v-col cols="12" sm="6">
                 <v-text-field label="Score du match" v-model="result" hint="2-3" required></v-text-field>
               </v-col>
             </v-row>
@@ -126,6 +133,7 @@ import { mapState } from "vuex";
 import moment from "moment";
 import "moment/locale/fr.js";
 import { db, fb } from "../../db";
+moment.locale('fr');
 export default {
   data: () => ({
     currID: "",
@@ -193,12 +201,14 @@ export default {
     editHandle(match) {
       this.currID = match.id;
       this.name = match.title;
+      this.address = match.address;
       this.result = match.result;
       this.dialog2 = true;
     },
     editCancel() {
       this.currID = "";
       this.name = "";
+      this.address = "";
       this.result = "";
       this.dialog2 = false;
     },
@@ -207,7 +217,8 @@ export default {
         .doc(id)
         .update({
           title: this.name,
-          result: this.result
+          result: this.result,
+          address : this.address
         })
         .then(function() {
           // eslint-disable-next-line no-console
