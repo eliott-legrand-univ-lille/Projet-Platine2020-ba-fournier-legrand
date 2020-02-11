@@ -1,6 +1,3 @@
-<!--toroute
-    tostyle
-    toscript (in case of admin type user) va voir banner pour le changement de role-->
 <template name="component-name">
   <v-container>
     <v-row justify="center">
@@ -18,8 +15,8 @@
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title v-text="user.name"></v-list-item-title>
-              <v-list-item-subtitle>Rôle : {{user.name}}</v-list-item-subtitle>
+              <v-list-item-title v-text="user.title+' '+user.name"></v-list-item-title>
+              <v-list-item-subtitle>Rôle : {{user.role}}</v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-icon>
               <!--Admin only-->
@@ -62,7 +59,7 @@ export default {
   computed: {
     filteredMembers: function() {
       return this.users.filter(user => {
-        return user.name.toLowerCase().includes(this.search.toLowerCase());
+        return (user.name.toLowerCase()+user.title.toLowerCase()).includes(this.search.toLowerCase());
       });
     }
   },
