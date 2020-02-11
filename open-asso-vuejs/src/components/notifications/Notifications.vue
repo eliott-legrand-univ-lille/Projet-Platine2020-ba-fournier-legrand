@@ -49,17 +49,17 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="confirme"></v-dialog>
+    <!--<v-dialog v-model="confirme"></v-dialog>-->
   </v-container>
 </template>
 
 <script>
 import { db } from "@/db";
 import { mapState } from "vuex";
-import func from '../../../vue-temp/vue-editor-bridge';
+//import func from '../../../vue-temp/vue-editor-bridge';
 export default {
   data: () => ({
-    confirme = false,
+    //confirme = false,
     allevents: [
       {
         date: "Aujourd'hui",
@@ -122,7 +122,7 @@ export default {
             }).then(data => {
               this.selectedNotification = data;
               this.focusedEvent = true;
-              this.alreadyIn();
+              //this.alreadyIn();
             })
         }
     },
@@ -150,9 +150,6 @@ export default {
           }
           t.update(eventRef, {toInvite : invited});
         })
-      })
-      .then(event => {
-        db.collection("events").doc(idEvent).set()
       });
     },
     alreadyIn : function(idEvent){
