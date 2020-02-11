@@ -1,5 +1,6 @@
 <template>
   <v-container fluid>
+    <canvas ref="chart"  width="350" height="300"></canvas>
     <v-row align="center" justify="center">
       <v-col>
         <v-list v-for="n in Content.length" :key="n">
@@ -20,6 +21,7 @@
   </v-container>
 </template>
 <script>
+import Chart from "chart.js";
 export default {
   data: () => ({
     Content: [
@@ -33,6 +35,41 @@ export default {
         stat: "Meilleur Score de la saison: 5-1"
       }
     ]
-  })
+  }),
+  mounted() {
+    var chart = this.$refs.chart;
+    var ctx = chart.getContext("2d");
+    // eslint-disable-next-line no-unused-vars
+    new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ["Bloque", "Passe", "Attaque", "Défense", "Cohésion"],
+      datasets: [
+        {
+          label: "2019",
+          fill: true,
+          backgroundColor: "rgba(120,175,225,1)",
+          borderColor: "rgba(120,175,225,1)",
+          pointBorderColor: "#fff",
+          pointBackgroundColor: "rgba(179,181,198,1)",
+          data: [42.0,43.0,44.0,40.0,39.0]
+        }, {
+          label: "2020",
+          fill: true,
+          backgroundColor: "rgba(255,99,132,1)",
+          borderColor: "rgba(255,99,132,1)",
+          pointBorderColor: "rgba(255,99,132,1)",
+          pointBackgroundColor: "rgba(255,99,132,1)",
+          data: [48.0,47.0,50.0,44.0,45.0]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Forces de l'équipe"      }
+    }
+});
+  },
 };
 </script>
