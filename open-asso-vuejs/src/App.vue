@@ -70,6 +70,7 @@
 import { mapState }  from 'vuex';
 import paths from "@/routes/paths.js";
 import { auth } from "./db";
+import { db } from "@/db";
 
 /* 
 { title: "Login", icon: "mdi-login", link: paths.login.path },
@@ -117,7 +118,9 @@ export default {
           icon: "mdi-newspaper",
           link: paths.actualities.path
         },
-      ]
+      ],
+      notifications : 0,
+      showNotification : false,
     };
   },
   /* The local state that we import for the store */
@@ -138,7 +141,22 @@ export default {
           // eslint-disable-next-line no-console
           console.log(err);
         });
+    },
+    getNumberNotification(){
+      db.collection("notifications").where('user', '==' , this.currentUser.uid).get().then(results => {
+        let size = results.length;
+        return size
+      }
+      ).then(len => {
+        this.notifications = len;
+        if(len > 0){
+          this.showNotification = true;
+        }
+      });
     }
-  }
+  },
+  mounted (){
+    this.getNumberNotification();
+  } 
 };
 </script>
