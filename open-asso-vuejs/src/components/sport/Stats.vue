@@ -1,6 +1,8 @@
 <template>
   <v-container fluid>
-    <canvas ref="chart"  width="350" height="300"></canvas>
+    <div class="chart-container" width="300" height="350">
+    <canvas ref="chart" ></canvas>
+    </div>
     <v-row align="center" justify="center">
       <v-col>
         <v-list v-for="n in Content.length" :key="n">

@@ -14,7 +14,7 @@
               <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event.description"></v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-action>
-              <v-list-item-action-text v-text="$moment(event.date).format('DD-MM-YY')"></v-list-item-action-text>
+              <v-list-item-action-text class ="title" v-text="$moment(event.date).format('DD-MM-YY')"></v-list-item-action-text>
             </v-list-item-action>
           </v-list-item>
         </v-list>
@@ -29,7 +29,7 @@
               <v-list-item-subtitle style="font-color:gray; font-size:12px" v-text="event.description"></v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-action>
-              <v-list-item-action-text v-text="$moment(event.date).format('DD-MM-YY')"></v-list-item-action-text>
+              <v-list-item-action-text class="title" v-text="$moment(event.date).format('DD-MM-YY')"></v-list-item-action-text>
             </v-list-item-action>
           </v-list-item>
         </v-list>
