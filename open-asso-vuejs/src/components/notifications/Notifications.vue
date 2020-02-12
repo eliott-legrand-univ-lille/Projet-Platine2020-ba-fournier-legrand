@@ -64,28 +64,6 @@ import { mapState } from "vuex";
 export default {
   data: () => ({
     //confirme = false,
-    allevents: [
-      {
-        date: "Aujourd'hui",
-        event: [
-          [
-            "Projection match",
-            "19h-20",
-            "Match de l'équipe de France",
-            "img_link"
-          ],
-          ["Barbecue", "18h", "Oulalah du viande", ""]
-        ]
-      },
-      {
-        date: "Hier",
-        event: [["Entrainement", "10h-12h", "à la salle", ""]]
-      },
-      {
-        date: "15/11/2019",
-        event: [["Match contre Lens", "14h-16h", "Membres :", ""]]
-      }
-    ],
     allNotifications: [],
     selectedNotification: {},
     focusedEvent: false,
@@ -148,68 +126,78 @@ export default {
           .then(data => {
             this.selectedNotification = data;
             this.focusedEvent = true;
-            this.alreadyIn();
+            this.alreadyIn(idEvent);
           });
       }
     },
     addParticipant: function(idEvent, accept) {
-      let eventRef = db.collection("events").doc(idEvent);
-      /* eslint-disable no-console */
-      console.log("je réponds à l'invitation");
-      /* eslint-enable no-console */
-      db.runTransaction(t => {
-        return t.get(eventRef).then(doc => {
-          var invited = doc.data().toInvite;
-
+      db
+        .collection("events")
+        .doc(idEvent)
+        .get()
+        .then(doc => {
+          var element = {
+            participant: doc.data().participant,
+            invited: doc.data().toInvite
+          };
+          return element;
+        })
+        .then(toChange => {
           /* eslint-disable no-console */
-          console.log(invited);
-          /* eslint-enable no-console */
 
-          //L'utilisateur donne sa réponse donc on peut le supprimer de la liste d'invités
-          var index = invited.indexOf(this.currentUser.id);
+          console.log(toChange);
+          /* eslint-enable no-console */
+          var index;
+          index = toChange.invited.indexOf(this.currentUser.uid);
           if (index > -1) {
-            invited.splice(index, 1);
+            //on le retire des invités
+            toChange.invited.splice(this.currentUser.uid, 1);
           }
-          /* eslint-disable no-console */
-
-          console.log(invited);
-          /* eslint-enable no-console */
-          //s'il accepte de participer on l'ajoute à la liste des participants
+          index = toChange.participant.indexOf(this.currentUser.uid);
           if (accept) {
-            var participantL = doc
-              .data()
-              .participant;
-              participantL.push(this.currentUser.uid);
-            t.update(eventRef, { participant: participantL });
-            /* eslint-disable no-console */
-            console.log(participantL);
-            /* eslint-enable no-console */
-          } else {
-            //si l'utilisateur refuse de participer on le retire de la liste des participants dans le cas ou il aurait accepté auparavant
-            var participantR = doc.data().participant.slice();
-            index = participantR.indexOf(this.currentUser.id);
-            if (index > -1) {
-              participantR.splice(index, 1);
+            if(index <= -1){
+              toChange.participant.push(this.currentUser.uid);
             }
-            /* eslint-disable no-console */
-            console.log(participantR);
-            /* eslint-enable no-console */
+          } else {
+            if(index >= -1){
+              toChange.participant.splice(this.currentUser.uid, 1);
+            }
           }
-          t.update(eventRef, { toInvite: invited });
+          let batch = db.batch();
+           /* eslint-disable no-console */
+
+          console.log(toChange);
+          /* eslint-enable no-console */
+          let eventRef2 = db.collection("events").doc(idEvent);
+          batch.update(eventRef2, {toInvite : toChange.invited});
+          batch.update(eventRef2, {participant : toChange.participant});
+          batch.commit();
+        }).then(() => {
+          this.focusedEvent = false;
         });
-      });
     },
     alreadyIn: function(idEvent) {
+      /* eslint-disable no-console */
+
+          console.log(idEvent);
+          /* eslint-enable no-console */
       db.collection("events")
         .doc(idEvent)
         .get()
+        .then(doc => {
+          var element = {
+            participant: doc.data().participant,
+            invited: doc.data().toInvite
+          };
+          return element;
+        })
         .then(details => {
           //il participe déjà à l'évènement
-          if (details.data().participant.include(this.currentUser.id)) {
+          if (details.participant.includes(this.currentUser.uid)) {
             return 1;
           }
           //il n'a pas encore répondu à l'invitation
-          if (details.data().toInvite.include(this.currentUser.id)) {
+          if (details.invited.includes(this.currentUser.uid)) {
             return 0;
           }
           //il a refusé l'invitation
