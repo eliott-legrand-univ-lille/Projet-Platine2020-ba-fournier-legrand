@@ -82,10 +82,10 @@
                   <template v-slot:activator="{ on }">
                     <v-text-field v-model="date" label="Date de l'événement" readonly v-on="on"></v-text-field>
                   </template>
-                  <v-date-picker v-model="date" locale="fr" full-width scrollable>
+                  <v-date-picker v-model="date" color="orange" locale="fr" full-width scrollable>
                     <v-spacer></v-spacer>
-                    <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
-                    <v-btn text color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+                    <v-btn text color="orange" @click="modal = false">Cancel</v-btn>
+                    <v-btn text color="orange" @click="$refs.dialog.save(date)">OK</v-btn>
                   </v-date-picker>
                 </v-dialog>
               </v-col>
@@ -143,7 +143,7 @@ export default {
           {
             label: "# of Votes",
             backgroundColor: ["#F83C42", "#6FF248"],
-            data: [50, 50],
+            data: [73, 37],
             borderWidth: 1
           }
         ]

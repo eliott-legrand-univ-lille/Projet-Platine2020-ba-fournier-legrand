@@ -10,7 +10,7 @@
             <template v-for="match in matchs">
               <v-list-item :key="match.id">
                 <v-list-item-avatar>
-                  <v-img style="background-color:orange;"></v-img>
+                  <v-img src="@/assets/logoseul.png" style="background-color:#673ab7;"></v-img>
                 </v-list-item-avatar>
                 <v-list-item-content>
                   <v-list-item-title>{{match.title}}</v-list-item-title>
@@ -62,8 +62,8 @@
                   </template>
                   <v-date-picker v-model="date" color="orange" locale="fr" full-width scrollable>
                     <v-spacer></v-spacer>
-                    <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
-                    <v-btn text color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+                    <v-btn text color="orange" @click="modal = false">Cancel</v-btn>
+                    <v-btn text color="orange" @click="$refs.dialog.save(date)">OK</v-btn>
                   </v-date-picker>
                 </v-dialog>
               </v-col>

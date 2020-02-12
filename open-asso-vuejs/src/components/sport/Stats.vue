@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <div class="chart-container" width="300" height="350">
+    <div class="chart-container" width="300" height="425">
     <canvas ref="chart" ></canvas>
     </div>
     <v-row align="center" justify="center">

@@ -10,7 +10,7 @@
             <template v-for="match in matchs">
               <v-list-item :key="match.id">
                 <v-list-item-avatar>
-                  <v-img style="background-color:orange;"></v-img>
+                  <v-img src="@/assets/logoseul.png" style="background-color:#673ab7;"></v-img>
                 </v-list-item-avatar>
                 <v-list-item-content>
                   <v-list-item-title>{{match.title}}</v-list-item-title>
