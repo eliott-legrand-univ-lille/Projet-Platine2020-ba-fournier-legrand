@@ -27,8 +27,7 @@ describe('Home.vue', () => {
       vuetify,
       router
     })
-    const title = "Membres"
-    const card1Title = wrapper.find( {name: title} )
-    expect(card1Title.text()).toMatch(title)
+    //console.log(wrapper.html())
+    expect(wrapper.html()).toContain('<p class="orange--text">Membres</p>')
   })
 })
