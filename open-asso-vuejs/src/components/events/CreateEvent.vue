@@ -39,11 +39,17 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col>
-          <v-btn min-width="150" color="#1e35b4" class="orange--text" @click="fetchMembers; selected = allmembers">Tous membres</v-btn>
+        <v-col cols="3">
         </v-col>
-        <v-col>
-          <v-btn min-width="150" color="#1e35b4" class="orange--text" @click.stop="fetchMembers">Sélectionner des membres</v-btn>
+        <v-col cols="6">
+          <v-btn
+            width="100%"
+            color="#1e35b4"
+            class="orange--text text-center"
+            @click.stop="fetchMembers"
+          >Ajouter membres</v-btn>
+        </v-col>
+        <v-col cols="3">
         </v-col>
       </v-row>Cotisation par membre (en euros)
       <v-slider v-model="cotisation" min="0" max="70" color="#FF9052" thumb-label></v-slider>
@@ -58,33 +64,38 @@
     </v-form>
 
     <v-dialog v-model="dialog">
-      <v-container class="d-flex align-center justify-center">
-      <v-card style="width:50%" >
-      <v-row v-for="(member, i) in allmembers" :key="i" style="width: 85%; margin-left: 5%">
-        <v-checkbox v-model="selected" :label="member.nom" :value="member.id"></v-checkbox>
-      </v-row>
-      <v-btn @click="dialog = false" >{{selected.length}} membres sélectionnés</v-btn>
+      <v-card>
+        <v-row v-for="(member, i) in allmembers" :key="i" style="width: 85%; margin-left: 5%">
+          <v-checkbox v-model="selected" :label="member.nom" :value="member.id"></v-checkbox>
+        </v-row>
+        <v-btn @click="dialog = false">{{selected.length}} membres sélectionnés</v-btn>
       </v-card>
-      </v-container>
     </v-dialog>
-    <Ok-Dialog title="Évènement créé avec succès"
-     message="L'ensemble des participants vont prochainement être notifiés
-      et pourront ainsi accepter ou décliner votre invitation avec" color="#1e35b4" 
-    btn1="Créer un nouvel évènement" btn2="Retour Accueil" :dial="confirm" :link1="again"
-     :link2="done" @created="closedialogue"></Ok-Dialog>
+    <Ok-Dialog
+      title="Évènement créé avec succès"
+      message="L'ensemble des participants vont prochainement être notifiés
+      et pourront ainsi accepter ou décliner votre invitation avec"
+      color="#1e35b4"
+      btn1="Créer un nouvel évènement"
+      btn2="Retour Accueil"
+      :dial="confirm"
+      :link1="again"
+      :link2="done"
+      @created="closeConfirm"
+    ></Ok-Dialog>
   </v-container>
 </template>
 
 <script>
 import { db } from "@/db";
 import OkDialog from "@/components/dialogue/OkDialog.vue";
-import paths   from "@/routes/paths.js";
-import { mapState }  from 'vuex';
+import paths from "@/routes/paths.js";
+import { mapState } from "vuex";
 
 export default {
   data: () => ({
-    again : paths.eventsmenu.path,
-    done : paths.home.path,
+    again : paths.createevent.path,
+    done : paths.eventsmenu.path,
     confirm : false,
     valid: true,
     name: "",
@@ -111,12 +122,12 @@ export default {
     date: new Date().toISOString().substr(0, 10),
     modal: false,
     selected: [],
-    allmembers : [],
-    dialog : false,
+    allmembers: [],
+    dialog: false
     //currentUser : {},
   }),
   computed: {
-    ...mapState(['currentUser','userProfile'])
+    ...mapState(["currentUser", "userProfile"])
   },
 
   methods: {
@@ -136,19 +147,20 @@ export default {
           createdBy : this.currentUser.uid,
           participant : [this.currentUser.uid],
         }).then(newDoc => {
-                  if(this.selected.length > 0){
+          if(this.selected.length > 0){
           //ajout des nouvelles notifications
           this.selected.forEach(element => {
             db.collection("notifications").add({
               date: Date.now(),
               titre: "Vous avez reçu une invitation à un évènement",
-              user : element,
-              source : this.userProfile,
+              user: element,
+              source: this.userProfile,
               //on le lie a l'évènement nouvellement créé
               idLinked : newDoc.id,
               type: "event",
               read : false,
             })
+
           });
         }
         });
@@ -166,30 +178,31 @@ export default {
     reset() {
       this.$refs.form.reset();
     },
-    fetchMembers(){
-    db.collection("users").get().then(function(querySnapshot) {
-    let bilbo = [];
-    querySnapshot.forEach(function(doc) {
-      let name = (doc.data().name ? doc.data().name : "");
-      let firstname =  (doc.data().firstname ? doc.data().firstname : "");
-        bilbo.push({id : doc.id, nom : firstname.concat(" ", name)});
-    });
+    fetchMembers() {
+      db.collection("users")
+        .get()
+        .then(function(querySnapshot) {
+          let bilbo = [];
+          querySnapshot.forEach(function(doc) {
+            let name = doc.data().name ? doc.data().name : "";
+            let firstname = doc.data().firstname ? doc.data().firstname : "";
+            bilbo.push({ id: doc.id, nom: firstname.concat(" ", name) });
+          });
 
-     return bilbo;
-      }).then((niama) => {
-        this.allmembers = niama;
-      }).then(() => this.dialog = true);
+          return bilbo;
+        })
+        .then(niama => {
+          this.allmembers = niama;
+        })
+        .then(() => (this.dialog = true));
     },
-    closedialogue(){
-      this.dialog=false;
-      this.email = "";
-      this.invitation = "";
-      this.defaultVal = "Membre";
+    closeConfirm() {
+      this.confirm = false;
+      this.reset();
     }
   },
-
   components: {
     OkDialog
-  },
+  }
 };
 </script>

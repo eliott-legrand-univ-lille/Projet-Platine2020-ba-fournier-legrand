@@ -3,14 +3,14 @@
     <v-content>
       <OkDialog
         title="Invitation envoyée"
-        message="Invitation envoyée way !"
+        message="Invitation envoyée avec succès!"
         color="#1e35b4"
         btn1="Envoyer une autre"
         btn2="Retour Accueil"
         :dial="this.dia"
         :link1="again"
         :link2="done"
-        @created="closedialogue"
+        @created="closeDialog"
       ></OkDialog>
       <v-container>
         <v-row align="center" justify="center">
@@ -20,7 +20,7 @@
                 v-model="defaultVal"
                 :items="items"
                 filled
-                label="Filled style"
+                label="Role du menbre"
                 append-icon="mdi-plus"
               ></v-select>
               <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
@@ -73,7 +73,7 @@ export default {
     OkDialog
   },
   methods: {
-    closedialogue() {
+    closeDialog() {
       this.dia = false;
       this.email = "";
       this.invitation = "";

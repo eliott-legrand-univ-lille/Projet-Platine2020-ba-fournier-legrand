@@ -60,8 +60,18 @@
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>(650) 555-1234</v-list-item-title>
+          <v-list-item-title>06 42 50 12 34</v-list-item-title>
           <v-list-item-subtitle>Mobile</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon color="indigo">mdi-phone</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title v-text="userProfile.phone"></v-list-item-title>
+          <v-list-item-subtitle>Fixe</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 

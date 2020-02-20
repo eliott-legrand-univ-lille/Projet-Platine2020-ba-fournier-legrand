@@ -25,6 +25,17 @@
 
 <script>
 import paths from "@/routes/paths.js";
+
+/*
+{
+        label: "Divers",
+        icon: "mdi-dots-horizontal-circle-outline",
+        textcolor: "white",
+        color: "#673ab7",
+        link: ""
+      }
+*/
+
 export default {
   data: () => ({
     Menu: [
@@ -64,11 +75,11 @@ export default {
         link: paths.accounting.path
       },
       {
-        label: "Divers",
-        icon: "mdi-dots-horizontal-circle-outline",
+        label: "Profil",
+        icon: "mdi-account-outline",
         textcolor: "white",
         color: "#673ab7",
-        link: ""
+        link: paths.profile.path
       }
     ]
   })

@@ -2,13 +2,10 @@
     tostyle-->
 <template>
   <v-container>
-    <v-row>
-      <v-col v-for="(item,i) in Menu" :key="i">
-        <v-row align="center" justify="center" class="grey lighten-5">
+    <v-row justify="center">
+      <v-col v-for="(item,i) in Menu" :key="i" class="d-flex flex-column" cols="6" md="4">
           <v-card
-            class="d-flex justify-space-around align-center flex-column"
-            width="150px"
-            height="150px"
+            class="flex d-flex justify-space-around align-center flex-column"
             color="#673ab7"
             link
             :to="item.link"
@@ -17,7 +14,6 @@
             </v-card-title>
             <v-icon color="white" x-large v-text="item.icon"></v-icon>
           </v-card>
-        </v-row>
       </v-col>
     </v-row>
   </v-container>

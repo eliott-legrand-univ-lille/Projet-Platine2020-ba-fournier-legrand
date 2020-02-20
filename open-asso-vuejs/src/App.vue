@@ -54,13 +54,16 @@
       <v-btn icon v-if="$route.meta.back" @click="$router.go(-1)">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
+
       <v-btn icon :to="notification" link>
         <v-badge
-        :value="notifications"
-        color="orange"
-        overlap
-      ><v-icon>mdi-bell</v-icon></v-badge>
+          :value="notifications"
+          color="orange"
+          overlap
+        ><v-icon>mdi-bell</v-icon>
+        </v-badge>
       </v-btn>
+
     </v-app-bar>
     <!-- Here is the content of the app  -->
     <v-content>

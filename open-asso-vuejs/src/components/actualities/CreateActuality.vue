@@ -22,15 +22,15 @@
                     <v-btn width="100%" color="#FF9052" @click="reset" class="white--text">Recommencer</v-btn>
                 </v-col>
                 <v-col>
-                    <v-btn width="100%" color="#FF9052" @click="validate" class="white--text">Valider</v-btn>
+                    <v-btn width="100%" color="#FF9052" :disabled="currentUser===null" @click="validate" class="white--text">Valider</v-btn>
                 </v-col>
             </v-row>
         </v-form>
 
         <Ok-Dialog title="Actualité créée avec succès"
             btn1="Nouvelle actualité" btn2="Retour à l'accueil"
-            :dial="confirm" :link1="again"
-            :link2="done"
+            :dial="this.dialog" :link1="again"
+            :link2="done" @created="closeDialog"
         />
 
     </v-container>
@@ -54,7 +54,8 @@ export default {
             v => (v && v.length <= 1000) || "Le contenu doit faire moins de 1000 caractères"
         ],
         valid: true,
-        again : paths.actualities.path,
+        dialog: false,
+        again : paths.newactu.path,
         done : paths.home.path,
         confirm : false,
     }),
@@ -66,7 +67,7 @@ export default {
     },
     methods: {
         validate() {
-            if (this.$refs.form.validate()) { 
+            if (this.$refs.form.validate() && this.currentUser != null) { 
                 db.collection("articles")
                     .add({
                         userID: this.currentUser.uid,
@@ -76,18 +77,26 @@ export default {
                         createdAt: new Date()
                     })
                     .then(function(docRef) {
+                        // can't use 'this' here
                         // eslint-disable-next-line no-console
                         console.log("Actuality written with ID: ", docRef.id);
+                    })
+                    .then(() => {
+                        // if updated successfully show the dialog
+                        this.dialog=true;  
                     })
                     .catch(function(error) {
                         // eslint-disable-next-line no-console
                         console.error("Error adding actuality: ", error);
                     });
-                this.confirm=true;     
             }
         },
         reset() {
             this.$refs.form.reset();
+        },
+        closeDialog() {
+            this.dialog = false;
+            this.reset();
         }
     },
     

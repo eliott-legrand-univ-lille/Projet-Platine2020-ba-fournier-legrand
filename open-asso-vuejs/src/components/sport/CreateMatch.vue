@@ -21,16 +21,38 @@
           <v-btn width="100%" color="#FF9052" class="white--text" @click="reset">Recommencer</v-btn>
         </v-col>
         <v-col>
-          <v-btn :disabled="!valid" width="100%" color="#FF9052"  class="white--text" @click="validate">Valider</v-btn>
+          <v-btn
+            :disabled="!valid"
+            width="100%"
+            color="#FF9052"
+            class="white--text"
+            @click="validate"
+          >Valider</v-btn>
         </v-col>
       </v-row>
     </v-form>
+
+    <OkDialog
+        title="Match créé"
+        message="Match créé avec succès!"
+        color="#1e35b4"
+        btn1="Créer un autre"
+        btn2="Retour Menu Sport"
+        :dial="this.dia"
+        :link1="again"
+        :link2="done"
+        @created="closeDialog"
+    ></OkDialog>
+
   </v-container>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import { db,fb } from "@/db";
+import { db, fb } from "@/db";
+import OkDialog from "@/components/dialogue/OkDialog.vue";
+import paths from "@/routes/paths.js";
+
 export default {
   // Here the data for the component
   data: () => ({
@@ -42,11 +64,14 @@ export default {
     ],
     address: "",
     date: new Date().toISOString().substr(0, 10),
-    modal: false
+    modal: false,
+    dia: false,
+    again: paths.creatematch.path,
+    done: paths.sports.path,
   }),
   // Here we load the local state with the deconstructor operator
   computed: {
-    ...mapState(['userProfile','currentUser'])
+    ...mapState(["userProfile", "currentUser"])
   },
   // We define the method of the component
   methods: {
@@ -68,18 +93,29 @@ export default {
             // eslint-disable-next-line no-console
             console.log("Document written with ID: ", docRef.id);
           })
+          .then(
+            () => {this.dia=true;}
+          )
           .catch(function(error) {
             // eslint-disable-next-line no-console
             console.error("Error adding document: ", error);
           });
+          this.dia=true;
       }
       // Display reset
-      this.name = '';
-      this.address = '';
+      this.name = "";
+      this.address = "";
     },
     reset() {
       this.$refs.form.reset();
+    },
+    closeDialog() {
+      this.dia = false;
+      this.reset();
     }
+  },
+  components: {
+    OkDialog
   }
 };
 </script>

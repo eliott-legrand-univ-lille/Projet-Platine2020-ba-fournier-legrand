@@ -6,7 +6,7 @@
     <v-row justify="center">
       <v-col>
         <v-list subheader two-line v-for="(date, index) in allevents" :key="index">
-          <v-subheader v-text="getDate"></v-subheader>
+          <v-subheader>{{date.date}}</v-subheader>
           <v-list-item v-for="(event, i) in date.event" :key="i">
             <v-list-item-avatar>
               <v-img style="background-color:orange;"></v-img>

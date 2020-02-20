@@ -72,5 +72,6 @@ const paths = {
     notifications:{
         path:"/notifications"
     },
+
 }
 export default paths;

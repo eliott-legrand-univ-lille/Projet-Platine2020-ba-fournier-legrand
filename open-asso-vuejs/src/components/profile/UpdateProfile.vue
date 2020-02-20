@@ -5,10 +5,20 @@
 
       <v-text-field v-model="firstname" label="Prénom" required></v-text-field>
 
-      <v-btn color="error" class="mr-4" @click="reset">Recommencer</v-btn>
-
-       <v-btn :disabled="!valid" color="success" class="mr-4" @click="updateProfile">Valider</v-btn>
-
+      <v-row>
+        <v-col>
+          <v-btn width="100%" color="orange" class="white--text" @click="reset">Recommencer</v-btn>
+        </v-col>
+        <v-col>
+          <v-btn
+            width="100%"
+            :disabled="!valid"
+            color="orange"
+            class="white--text"
+            @click="updateProfile"
+          >Valider</v-btn>
+        </v-col>
+      </v-row>
     </v-form>
   </v-container>
 </template>
@@ -36,7 +46,8 @@ export default {
     updateProfile() {
       this.$store.dispatch("updateProfile", {
         name: this.name !== "" ? this.name : this.userProfile.name,
-        firstname:this.firstname !== "" ? this.firstname : this.userProfile.firstname
+        firstname:
+          this.firstname !== "" ? this.firstname : this.userProfile.firstname
       });
       this.name = "";
       this.firstname = "";
