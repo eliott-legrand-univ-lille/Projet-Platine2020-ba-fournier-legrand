@@ -54,11 +54,16 @@
       <v-btn icon v-if="$route.meta.back" @click="$router.go(-1)">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <!--
-      <v-btn icon>
-        <v-icon>mdi-bell</v-icon>
+
+      <v-btn icon :to="notification" link>
+        <v-badge
+          :value="notifications"
+          color="orange"
+          overlap
+        ><v-icon>mdi-bell</v-icon>
+        </v-badge>
       </v-btn>
-      -->
+
     </v-app-bar>
     <!-- Here is the content of the app  -->
     <v-content>
@@ -72,6 +77,7 @@
 import { mapState }  from 'vuex';
 import paths from "@/routes/paths.js";
 import { auth } from "./db";
+import { db } from "@/db";
 
 /* 
 { title: "Login", icon: "mdi-login", link: paths.login.path },
@@ -94,6 +100,7 @@ export default {
   data() {
     return {
       drawer: false,
+      notification : paths.notifications.path,
       items: [
         { title: "Accueil", icon: "mdi-home", link: paths.home.path },
         { title: "Profil", icon: "mdi-account", link: paths.profile.path },
@@ -118,7 +125,9 @@ export default {
           icon: "mdi-newspaper",
           link: paths.actualities.path
         },
-      ]
+      ],
+      notifications : 0,
+      showNotification : false,
     };
   },
   /* The local state that we import for the store */
@@ -139,7 +148,22 @@ export default {
           // eslint-disable-next-line no-console
           console.log(err);
         });
+    },
+    getNumberNotification(){
+      db.collection("notifications").where('user', '==' , this.currentUser.uid).get().then(results => {
+        let size = results.length;
+        return size
+      }
+      ).then(len => {
+        this.notifications = len;
+        if(len > 0){
+          this.showNotification = true;
+        }
+      });
     }
-  }
+  },
+  mounted (){
+    this.getNumberNotification();
+  } 
 };
 </script>

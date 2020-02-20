@@ -142,21 +142,12 @@ export default {
           city: this.city,
           postal: this.postal,
           createdAt: new Date(),
-          toInvite: this.selected,
-          fees: this.cotisation,
-          createdBy: this.currentUser.uid,
-          participant: [this.currentUser.uid]
-        });
-
-        this.confirm = true;
-
-        /* eslint-disable no-console */
-        let mam;
-        console.log(event.then(data => (mam = data.id)));
-        console.log(mam);
-        /* eslint-enable no-console */
-
-        if (this.selected.length > 0) {
+          toInvite : this.selected,
+          fees : this.cotisation,
+          createdBy : this.currentUser.uid,
+          participant : [this.currentUser.uid],
+        }).then(newDoc => {
+          if(this.selected.length > 0){
           //ajout des nouvelles notifications
           this.selected.forEach(element => {
             db.collection("notifications").add({
@@ -165,11 +156,23 @@ export default {
               user: element,
               source: this.userProfile,
               //on le lie a l'évènement nouvellement créé
+              idLinked : newDoc.id,
               type: "event",
-              read: false
-            });
+              read : false,
+            })
+
           });
         }
+        });
+
+        this.confirm=true;
+
+        /* eslint-disable no-console */
+        let mam;
+        console.log(event.then(data => mam = data.id));
+        console.log(mam);
+        /* eslint-enable no-console */
+
       }
     },
     reset() {

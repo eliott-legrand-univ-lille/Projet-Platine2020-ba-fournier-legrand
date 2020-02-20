@@ -67,7 +67,11 @@ const paths = {
         path:"/newmember"
     },
     newactu:{
-        path:"/new-actu"
-    }
+        path:"/newactu"
+    },
+    notifications:{
+        path:"/notifications"
+    },
+
 }
 export default paths;
