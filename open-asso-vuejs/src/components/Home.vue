@@ -1,5 +1,3 @@
-<!--toroute
-    tostyle-->
 <template>
   <v-container fluid>
     <v-row>
@@ -25,17 +23,6 @@
 
 <script>
 import paths from "@/routes/paths.js";
-
-/*
-{
-        label: "Divers",
-        icon: "mdi-dots-horizontal-circle-outline",
-        textcolor: "white",
-        color: "#673ab7",
-        link: ""
-      }
-*/
-
 export default {
   data: () => ({
     Menu: [
